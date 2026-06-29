@@ -1,0 +1,11 @@
+# Raw, confidential source inputs (financials, loan docs, rent rolls) and the
+# provided skills — kept out of the repo. The derived analysis/data.json is committed
+# so the renderers reproduce the deliverables without them.
+_uploads/
+
+# scratch / temp
+analysis/_scratch/
+**/__pycache__/
+*.pyc
+.DS_Store
+scratch/
