@@ -43,7 +43,7 @@ def build():
     dash.kpi_cards([
         ("Total Units", tot_units, "num", None, None, "5 properties / 4 deals"),
         ("Total Ask", tot_price, "m", None, None, f"${tot_price/tot_units:,.0f}/unit blended"),
-        ("Blended Going-in Cap", blend_goingin, "pct2", f"{blend_trailing*100:.2f}% on actuals", None, "JLL Yr-0 NOI ÷ price"),
+        ("Blended JLL UW Cap", blend_goingin, "pct2", f"{blend_trailing*100:.2f}% on actuals", None, "JLL UW Yr-0 NOI ÷ price"),
         ("Blended Exit Cap", blend_exit, "pct2", None, None, "5-yr hold"),
         ("Wtd Occupancy", wtd_occ, "pct", None, wtd_occ >= 0.93, "physical, rent roll"),
         ("Total T12 NOI", tot_noi, "m", f"UW ${tot_noi_yr0/1e6:,.1f}M", None, "seller trailing-12"),
@@ -51,17 +51,17 @@ def build():
 
     # ── Asset data tape ──
     dash.section("Asset-Level Data Tape",
-                 "Act Cap = trailing-12 NOI ÷ ask · JLL Cap = underwritten Year-0 (in-place) NOI ÷ price · "
-                 "New T/O = rent-weighted new-lease trade-out vs prior lease (Yardi LTO, T90)")
+                 "Act Cap = trailing-12 NOI ÷ ask · JLL UW Cap = JLL underwritten Year-0 (in-place) NOI ÷ price · "
+                 "Contract /mo = T1 AGPR ÷ units · New T/O = rent-weighted new-lease trade-out vs prior lease (Yardi LTO, T90)")
     cols = [("Units", "num"), ("Built", "year"), ("Ask", "m"), ("$/Unit", "usd"), ("Occ", "pct"),
-            ("In-Place /mo", "usd"), ("New T/O", "pct"), ("T12 NOI", "m"), ("Act Cap", "pct2"),
-            ("JLL UW Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("Lev IRR", "pct"), ("EM", "ratio")]
+            ("Contract /mo", "usd"), ("New T/O", "pct"), ("T12 NOI", "m"), ("Act Cap", "pct2"),
+            ("JLL UW Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("JLL UW LIRR", "pct"), ("EM", "ratio")]
     rows = []
     for x in DEALS:
         j, op, lto, occ = x["jll"], x["op"], x["lto"], x["occ"]
         rows.append((SHORT[x["key"]], [
             occ["units"], _year(j.get("year_built")), j["price"], j["price_unit"], occ["phys_occ"],
-            x["rents"]["avg_inplace_rent"], lto.get("new_tradeout_pct"), op["noi_t12"],
+            x["agpr"]["t1_agpr_unit"], lto.get("new_tradeout_pct"), op["noi_t12"],
             x["derived"]["trailing_cap"], j["cap_yr0"], j["cap_yr1"], j["exit_cap"], j["irr_lev"], j["em_lev"],
         ], "num", None))
     rows.append(("PORTFOLIO", [tot_units, None, tot_price, tot_price / tot_units, wtd_occ, None, None,
@@ -139,7 +139,7 @@ def operating_df():
 def leasing_df():
     recs = []
     for x in DEALS:
-        j, op, lto, occ, m = x["jll"], x["op"], x["lto"], x["occ"], x["mix"]
+        j, op, lto, occ, m, mt = x["jll"], x["op"], x["lto"], x["occ"], x["mix"], x["mtm"]
         recs.append({
             "Asset": SHORT[x["key"]], "Units": occ["units"], "Phys Occ": round(occ["phys_occ"], 4),
             "Leased Occ": round(occ["leased_occ"], 4), "In-Place Rent": round(x["rents"]["avg_inplace_rent"]),
@@ -147,6 +147,7 @@ def leasing_df():
             "Blended T/O": _r(lto.get("tradeout_lease_pct")), "New-Lease T/O": _r(lto.get("new_tradeout_pct")),
             "Renewal T/O": _r(lto.get("renewal_tradeout_pct")),
             "HD T90 Ask": round(m["hd_t90_ask"]), "HD T90 Eff": round(m["hd_t90_eff"]),
+            "HD365 leases (n)": mt["hd_t12_n"], "HD90 leases (n)": mt["hd_t3_n"],
             "HD Ask YoY": _r(m.get("hd_yoy_ask")), "T12 Conc % EGR": round(x["derived"]["conc_pct_egr"], 4),
             "30+ Delinq % GPR": round(x["derived"]["delinq_pct"], 4),
         })
@@ -211,15 +212,18 @@ def capstack_df():
 
 
 def mtm_df():
-    """Mark-to-market on HelloData EXECUTED rents (T12=HD365, T3=HD90, mix-wtd) + forward signal."""
+    """Mark-to-market: contract rent (T1 AGPR/unit) vs HelloData EXECUTED rents
+    (T12=HD365, T3=HD90, mix-wtd, with executed-lease sample n) + forward signal."""
     recs = []
     for x in DEALS:
         m, lto = x["mtm"], x["lto"]
         recs.append({
-            "Asset": SHORT[x["key"]], "In-Place Rent": round(m["in_place"]),
+            "Asset": SHORT[x["key"]], "Contract Rent (T1 AGPR/unit)": round(x["agpr"]["t1_agpr_unit"]),
+            "Avg In-Place (occupied)": round(m["in_place"]),
             "Mkt T12 (HD365 eff)": round(m["mkt_t12_eff"]), "Mkt T3 (HD90 eff)": round(m["mkt_t3_eff"]),
             "Mkt T12 (HD365 ask)": round(m["mkt_t12_ask"]), "Mkt T3 (HD90 ask)": round(m["mkt_t3_ask"]),
-            "Loss-to-Lease T12": _r(m["loss_to_lease_t12"]), "Loss-to-Lease T3": _r(m["loss_to_lease_t3"]),
+            "HD365 leases (n)": m["hd_t12_n"], "HD90 leases (n)": m["hd_t3_n"],
+            "Contract vs Mkt T12": _r(m["loss_to_lease_t12"]), "Contract vs Mkt T3": _r(m["loss_to_lease_t3"]),
             "Market Direction (T3 vs T12)": _r(m["mkt_direction"]),
             "HD Concession T12": _r(m["conc_t12"]), "HD Concession T3": _r(m["conc_t3"]),
             "New-Lease T/O (gross)": _r(lto.get("new_tradeout_pct")), "New-Lease T/O (eff)": _r(lto.get("new_tradeout_eff_pct")),

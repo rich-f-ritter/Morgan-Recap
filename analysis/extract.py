@@ -82,12 +82,22 @@ def split_hellodata(prop_names):
 # RENT ROLL  (occupancy, in-place contract rent, unit mix, lease classification)
 # ════════════════════════════════════════════════════════════════════════════
 def parse_rr(paths):
-    """Parse one or more rent rolls (combined) -> merged RentRoll-like dict of metrics."""
+    """Parse one or more rent rolls (combined) -> merged units.
+
+    Amenity rent is reclassified into CONTRACT rent (it folds into Rental Income — there is
+    no separate amenity line in Other Income, and including it ties the rent-roll AGPR to the
+    T12 statement's T1 AGPR within ~1% on every deal; see references/account_mapping.md)."""
     units = []
     as_of = None
     for p in paths:
         look = build_charge_lookup(p)
         rr = il.parse_rent_roll(p, charge_lookup=look)
+        for u in rr.units:
+            amen = sum(v for cc, v in u.charges.items() if "amenity" in cc.lower())
+            if amen:
+                u.contract_rent += amen
+                u.other_income -= amen
+                u.net_effective = u.contract_rent + u.concessions
         units.extend(rr.units)
         as_of = rr.as_of or as_of
     return units, as_of
@@ -237,10 +247,12 @@ def unit_mix_summary(segments, lto=None):
         bd = m.bed if isinstance(m.bed, int) else None
         g = by_bed.setdefault(bd, {"units": 0, "occ": 0, "vac": 0, "sf": 0.0, "sf_n": 0,
                                    "contract_sum": 0.0, "contract_n": 0,
-                                   "t90a": 0.0, "t90e": 0.0, "t90w": 0, "t365a": 0.0, "t365e": 0.0, "t365w": 0,
+                                   "t90a": 0.0, "t90e": 0.0, "t90w": 0, "t90n": 0,
+                                   "t365a": 0.0, "t365e": 0.0, "t365w": 0, "t365n": 0,
                                    "new": 0, "renewal": 0})
         g["units"] += m.units; g["occ"] += m.occ; g["vac"] += m.vac
         g["new"] += m.new_count; g["renewal"] += m.renewal_count
+        g["t90n"] += m.t90_n; g["t365n"] += m.t365_n
         if m.avg_sqft:
             g["sf"] += m.avg_sqft * m.units; g["sf_n"] += m.units
         if m.avg_contract:
@@ -261,6 +273,7 @@ def unit_mix_summary(segments, lto=None):
             "hd90_eff": g["t90e"] / g["t90w"] if g["t90w"] else 0,
             "hd365_ask": g["t365a"] / g["t365w"] if g["t365w"] else 0,
             "hd365_eff": g["t365e"] / g["t365w"] if g["t365w"] else 0,
+            "hd90_n": g["t90n"], "hd365_n": g["t365n"],
             "lto_new_n": lb.get("new_n", 0), "lto_ren_n": lb.get("ren_n", 0),
             "lto_new_to": lb.get("new_tradeout"), "lto_new_to_eff": lb.get("new_tradeout_eff"),
             "lto_ren_to": lb.get("ren_tradeout"), "lto_to": lb.get("tradeout"),
@@ -292,6 +305,7 @@ def unit_mix_summary(segments, lto=None):
         "by_bed": rows, "by_plan": plans,
         "hd_t90_ask": wavg("t90_ask"), "hd_t90_eff": wavg("t90_eff"),
         "hd_t365_ask": wavg("t365_ask"), "hd_t365_eff": wavg("t365_eff"),
+        "hd_t90_n": sum(m.t90_n for m in mix), "hd_t365_n": sum(m.t365_n for m in mix),
         "hd_yoy_ask": yoy_num / yoy_w if yoy_w else None, "n_plans": len(mix),
     }
 
@@ -828,6 +842,7 @@ def run_deal(d):
         "rr_agpr_mo": rents["rr_agpr_mo"], "t1_agpr_mo": t1_agpr_mo,
         "var_pct": (rents["rr_agpr_mo"] / t1_agpr_mo - 1) if t1_agpr_mo else None,
         "rr_agpr_unit": rents["rr_agpr_mo"] / occ["units"] if occ["units"] else 0,
+        "t1_agpr_unit": t1_agpr_mo / occ["units"] if occ["units"] else 0,   # contract rent / unit (AGPR basis)
     }
     losses = loss_ratios(op, jll_pnl["lines"])
     trends = operating_trends(op)
@@ -849,20 +864,23 @@ def run_deal(d):
             "opex_ex_tax": other_exp_delta, "uw_noi": jll["noi_yr0"]}
     # Mark-to-market on HelloData EXECUTED rents (seller asking ignored):
     #   T12 market = HD365 executed (mix-wtd); T3 market = HD90 executed (mix-wtd).
+    # Contract basis = T1 AGPR ÷ units (ties to the financials), so the page's
+    # "Contract/U" and "vs market" columns are computed off the same number.
     ip = rents["avg_inplace_rent"]
+    contract_u = agpr_tie["t1_agpr_unit"] or ip
     m_t12_eff, m_t3_eff = mix["hd_t365_eff"], mix["hd_t90_eff"]
     m_t12_ask, m_t3_ask = mix["hd_t365_ask"], mix["hd_t90_ask"]
     mtm = {
-        "in_place": ip,
+        "in_place": ip, "contract_u": contract_u,
         "mkt_t12_eff": m_t12_eff, "mkt_t3_eff": m_t3_eff,        # executed effective, T12=HD365 / T3=HD90
         "mkt_t12_ask": m_t12_ask, "mkt_t3_ask": m_t3_ask,        # executed asking
-        "loss_to_lease_t12": (m_t12_eff / ip - 1) if ip and m_t12_eff else None,   # in-place vs T12 market (HD365 eff)
-        "loss_to_lease_t3": (m_t3_eff / ip - 1) if ip and m_t3_eff else None,      # in-place vs T3 market (HD90 eff)
+        "loss_to_lease_t12": (m_t12_eff / contract_u - 1) if contract_u and m_t12_eff else None,  # contract vs T12 market
+        "loss_to_lease_t3": (m_t3_eff / contract_u - 1) if contract_u and m_t3_eff else None,     # contract vs T3 market
         "mkt_direction": (m_t3_eff / m_t12_eff - 1) if (m_t12_eff and m_t3_eff) else None,  # HD90 vs HD365 = market trend
         "conc_t12": (1 - m_t12_eff / m_t12_ask) if m_t12_ask else None,
         "conc_t3": (1 - m_t3_eff / m_t3_ask) if m_t3_ask else None,
         "new_lease_to": lto.get("new_tradeout_pct"), "new_lease_to_eff": lto.get("new_tradeout_eff_pct"),
-        "hd_yoy": mix["hd_yoy_ask"],
+        "hd_yoy": mix["hd_yoy_ask"], "hd_t12_n": mix["hd_t365_n"], "hd_t3_n": mix["hd_t90_n"],
     }
 
     rec = {

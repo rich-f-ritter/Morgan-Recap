@@ -13,17 +13,20 @@ and resident demographics — compared against the JLL models.
 
 | File | What it is |
 |---|---|
-| `Morgan_Recap_Analysis.pdf` | 5 branded, **table‑driven** pages. **p1** portfolio data tape + NOI‑bridge / tax / economic‑loss table; then **one page per deal** that flows top‑to‑bottom: **NOI & cap‑rate bridge** (GPR → loss‑to‑lease → **AGPR** → vacancy/bad‑debt/concessions → NRI → EGR → opex → NOI, columns T12/T3/JLL, with the cap stack + NOI walk in the note) · **Market Rent (HelloData executed) & economic‑loss trend** (T12/T3/JLL) · **unit mix** (in‑place vs HD‑executed market, new/renewal counts, gross & effective trade‑outs) · **resident demographics**. |
-| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard + ten raw tabs — NOI bridge (T12 vs JLL), **cap stack & NOI walk**, **economic losses (%AGPR)**, **mark‑to‑market**, operating T12 monthly, rent & leasing, **unit mix by plan** (86 floor plans), underwriting & returns, demographics. |
+| `Morgan_Recap_Analysis.pdf` | 5 branded, **table‑driven** pages. **p1** portfolio data tape + NOI‑bridge / tax / economic‑loss table; then **one page per deal** that flows top‑to‑bottom: **NOI & cap‑rate bridge** (GPR → loss‑to‑lease → **AGPR** → vacancy/bad‑debt/concessions → NRI → EGR → opex → NOI, columns T12 / T3 / JLL UW / **per‑unit**, with the cap stack + NOI walk in the note) · **Market Rent (HelloData executed) & economic‑loss trend** (T12/T3/JLL UW, with executed‑lease sample **n**) · **unit mix** (contract rent vs HD‑executed market, HD **n**, new/renewal counts, gross & effective trade‑outs) · **resident demographics**. Money is formatted consistently throughout (**$X.XXM / $XXXK**, per‑unit annual whole‑$, accounting parens for contras). |
+| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard + nine raw tabs — NOI bridge (T12 vs JLL UW), **cap stack & NOI walk**, **economic losses (%AGPR)**, **mark‑to‑market** (contract rent vs HD executed, with sample n), operating T12 monthly, rent & leasing, **unit mix by plan** (95 floor plans), underwriting & returns, demographics. |
 | `*.png` | Page previews of each PDF page. |
 
-### Market rent = HelloData executed only (seller asking ignored)
-Per the underwriting view, the seller's "market rent" (rent‑roll asking / GPR) is **not** used
-as a market signal. Market rent is **HelloData executed, mix‑weighted**, aligned to the
-operating window: **T12 market = HD365 executed**, **T3 market = HD90 executed**. Comparing
-in‑place to that market gives the true mark: at **Pearl Washington (−4%)** and **Golden Glades
-(−10%)** in‑place rents are **above** executed market (over‑rented → downside on turnover),
-while only **City Centre (+6%)** has genuine embedded upside. HD90‑vs‑HD365 also reads the
+### Contract rent vs. market = HelloData executed only (seller asking ignored)
+**Contract rent** is **T1 AGPR ÷ unit count** — the latest month's adjusted gross potential
+rent (GPR + loss‑to‑lease, incl. amenity) per unit, which ties to the financials. Per the
+underwriting view, the seller's "market rent" (rent‑roll asking / GPR) is **not** used as a
+market signal. Market rent is **HelloData executed, mix‑weighted**, aligned to the operating
+window: **T12 market = HD365 executed**, **T3 market = HD90 executed**, each shown with its
+**executed‑lease sample count (n)**. Comparing contract rent to that market gives the true
+mark: at **Pearl Washington (−9%)**, **Golden Glades (−11%)** and **21 Eleven (−4%)** contract
+rents sit **above** executed market (over‑rented → downside on turnover), while only **City
+Centre (+1%)** is at/below market with genuine embedded upside. HD90‑vs‑HD365 also reads the
 market's own direction. Trade‑outs are shown **gross (face) and effective (net of concessions)**.
 
 ### The cap rates, broken out (each defined)
@@ -43,10 +46,10 @@ normalizes expenses and steps taxes to the new basis; the walk shows exactly why
 
 ## Portfolio at a glance
 
-5 properties · **1,232 units** · **$318.5M ask** · blended **4.96% in‑place cap**
+5 properties · **1,232 units** · **$318.5M ask** · blended **4.96% JLL UW cap**
 (4.83% on trailing‑12 actuals) → **4.93% exit** · 5‑yr hold.
 
-| Deal | Units | Built | Ask | $/Unit | Occ | New‑lease T/O | Trailing cap | JLL in‑place cap | Exit | Debt | Lev IRR / EM |
+| Deal | Units | Built | Ask | $/Unit | Occ | New‑lease T/O | Act cap (T12) | JLL UW cap | Exit | Debt | JLL UW LIRR / EM |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|--:|---|--:|
 | Pearl City Centre + Residences | 459 | '15/'16 | $127.0M | $277K | 96.9% | **+3.5%** | 5.16% | 5.07% | 5.00% | New 5.55% IO | 16.3% / 2.00x |
 | Caroline Golden Glades (Miami) | 236 | 2024 | $85.0M | $360K | 92.4% | **−11.5%** | 4.47% | 4.67% | 4.75% | New 5.55% IO | 15.2% / 1.92x |
@@ -68,7 +71,7 @@ normalizes expenses and steps taxes to the new basis; the walk shows exactly why
   at GG/21E), while it is **−2% (conservative) at City Centre**. The PW gap, paired with a
   **7.0% loss‑to‑lease recapture assumption against new leases trading −15.2%**, is the
   sharpest underwriting tension in the portfolio.
-- **Cap rates are full.** Blended ~4.96% in‑place to a ~4.93% exit, with **Golden Glades
+- **Cap rates are full.** Blended ~4.96% JLL UW (4.83% trailing) to a ~4.93% exit, with **Golden Glades
   the tightest (4.67% in‑place / 4.75% exit) and highest basis ($360K/unit)** despite the
   weakest market‑rent momentum (HelloData asking −7.4% YoY).
 - **Debt is the standout value.** Two deals (Pearl Washington, Pearl 21 Eleven) carry
@@ -80,9 +83,10 @@ normalizes expenses and steps taxes to the new basis; the walk shows exactly why
   (TX) −3%** steps *down* (over‑assessed at $64.4M vs a $60M price; Texas is non‑disclosure).
   Stated on the seller's actual trailing‑12 taxes (RedIQ) for consistency with the bridge.
 - **Loss‑to‑lease "upside" is not equal across assets.** City Centre's embedded upside is
-  *real* — HelloData market sits ~6% above in‑place **and** new leases trade **+3.5%**.
-  At Pearl Washington the HD asking implies ~+5% upside but new leases trade **−15%**: the
-  advertised upside is illusory and in‑place rents are rolling *down* to market.
+  *real* — contract rent sits **+1% below** executed market (and HD asking is **+7.6% YoY**)
+  **and** new leases trade **+3.5%**. At Pearl Washington contract rent is **−9% above**
+  executed market and new leases trade **−15%**: any advertised upside is illusory and
+  contract rents are rolling *down* to market on turnover.
 - **JLL underwrites expenses below the seller's actuals** at most assets (e.g. Pearl
   Washington ≈ −$218K ex‑tax), which — with the tax step‑downs — is what lifts JLL's Year‑0
   NOI above trailing. The per‑asset **NOI walk** quantifies revenue vs tax vs expense
@@ -99,10 +103,11 @@ normalizes expenses and steps taxes to the new basis; the walk shows exactly why
 - **Operating trend (EGR / Opex / NOI, vacancy, concessions, loss‑to‑lease):** RedIQ
   standardized operating statements, trailing‑12 May 2025 – Apr 2026 (monthly series +
   T3/T6 annualizations).
-- **Occupancy & in‑place rent / unit mix:** Yardi rent rolls (May 2026), parsed via the
-  RR‑T12 library; charge codes remapped `MNEMONIC - Name → Name` so base rent ties to
-  contract rent. **Physical occupancy reconciles exactly to the JLL models** (resident‑
-  in‑place incl. units on notice ÷ total units).
+- **Occupancy, contract rent & unit mix:** Yardi rent rolls (May 2026), parsed via the
+  RR‑T12 library; charge codes remapped `MNEMONIC - Name → Name` and **amenity rent folded
+  into base** so **contract rent ties to T1 AGPR** (rent‑roll AGPR vs the financials' T1 AGPR
+  within ±1%). Reported **contract rent = T1 AGPR ÷ unit count**. **Physical occupancy
+  reconciles exactly to the JLL models** (resident‑in‑place incl. units on notice ÷ total units).
 - **Rent direction:** Yardi Lease Trade‑Out (trailing 90 days) — rent‑weighted
   current‑vs‑prior lease, split into new (Application) vs renewal — cross‑checked against
   HelloData executed T90 asking/effective and HD asking YoY.
