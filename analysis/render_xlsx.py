@@ -100,6 +100,9 @@ def build():
 
     # ── raw detail tabs ──
     XL.add_raw_tab(wb, "NOI Bridge (T12 vs JLL)", noibridge_df())
+    XL.add_raw_tab(wb, "Cap Stack & NOI Walk", capstack_df())
+    XL.add_raw_tab(wb, "Economic Losses (%AGPR)", losses_df())
+    XL.add_raw_tab(wb, "Mark-to-Market", mtm_df())
     XL.add_raw_tab(wb, "Operating T12 (monthly)", operating_df())
     XL.add_raw_tab(wb, "Rent & Leasing", leasing_df())
     XL.add_raw_tab(wb, "Unit Mix (by plan)", unitmix_df())
@@ -151,24 +154,73 @@ def leasing_df():
 
 
 def noibridge_df():
-    """Per-asset NOI bridge: T12 actual vs JLL Year-0 (in-place) for each line, with
-    the tax reassessment and the implied caps at the asking price."""
+    """Per-asset NOI bridge: T12 actual (RedIQ) vs JLL Year-0 (in-place) for each line,
+    with AGPR, the tax reassessment (RedIQ actual-tax basis), and the implied caps."""
     recs = []
     for x in DEALS:
-        op, L, j, der = x["op"], x["jll_pnl"]["lines"], x["jll"], x["derived"]
-        e = op["expense_t12"]
-        tx = x["jll_pnl"]["tax"]
+        op, L, j, der, lo = x["op"], x["jll_pnl"]["lines"], x["jll"], x["derived"], x["losses"]
+        rtax = op["expense_t12"].get("Real Estate Taxes", 0)
+        utax = x["jll_pnl"]["tax"]["uw_taxes_yr0"]
         recs.append({
             "Asset": SHORT[x["key"]],
             "GPR (T12)": round(op["rentinc_t12"]), "GPR (JLL Yr0)": round(L["gsr"]["yr0"]),
+            "AGPR (T12)": round(lo["agpr_t12"]), "AGPR (JLL Yr0)": round(L["gsr"]["yr0"] + L["ltl"]["yr0"]),
             "EGR (T12)": round(op["egr_t12"]), "EGR (JLL Yr0)": round(L["egr"]["yr0"]),
             "Opex (T12)": round(op["opex_t12"]), "Opex (JLL Yr0)": round(L["opex"]["yr0"]),
-            "RE Taxes (T12 actual)": round(tx["actual_taxes"]), "RE Taxes (JLL UW)": round(tx["uw_taxes_yr0"]),
-            "Tax Adjustment": round(tx["adjustment"]),
-            "Current Assessment": round(tx["current_assessment"]), "Purchase Basis": round(tx["purchase_price_basis"]),
+            "RE Taxes (T12 actual)": round(rtax), "RE Taxes (JLL UW)": round(utax),
+            "Tax Δ %": _r((utax - rtax) / rtax if rtax else 0), "Tax NOI Impact": round(x["walk"]["tax"]),
+            "Current Assessment": round(x["jll_pnl"]["tax"]["current_assessment"]),
+            "Purchase Basis": round(x["jll_pnl"]["tax"]["purchase_price_basis"]),
             "NOI (T12)": round(op["noi_t12"]), "NOI (T3 ann)": round(op["noi_t3_ann"]), "NOI (JLL Yr0)": round(j["noi_yr0"]),
-            "Trailing Cap": _r(der["trailing_cap"]), "In-Place Cap (JLL)": _r(der["inplace_cap"]),
+            "Actual Cap (T12)": _r(der["trailing_cap"]), "JLL UW Cap (Yr0)": _r(der["inplace_cap"]),
             "NOI UW vs Trailing": _r(der["jll_noi_vs_trailing"]),
+        })
+    return pd.DataFrame(recs)
+
+
+def losses_df():
+    """Economic losses as a % of AGPR on a T12 / T6 / T3 trend, per asset, vs JLL Year-0."""
+    recs = []
+    for x in DEALS:
+        lo = x["losses"]
+        r = {"Asset": SHORT[x["key"]], "AGPR T12": round(lo["agpr_t12"]), "AGPR T3 ann": round(lo["agpr_t3"])}
+        for metric in ("ltl", "vacancy", "bad_debt", "concessions"):
+            lab = {"ltl": "Loss-to-Lease", "vacancy": "Vacancy", "bad_debt": "Bad Debt", "concessions": "Concessions"}[metric]
+            r[f"{lab} T12"] = _r(lo[metric]["t12"]); r[f"{lab} T6"] = _r(lo[metric]["t6"])
+            r[f"{lab} T3"] = _r(lo[metric]["t3"]); r[f"{lab} JLL"] = _r(lo["jll"][metric])
+        r["Econ Occ T12"] = _r(lo["econ_occ"]["t12"]); r["Econ Occ T3"] = _r(lo["econ_occ"]["t3"])
+        recs.append(r)
+    return pd.DataFrame(recs)
+
+
+def capstack_df():
+    """Cap-rate stack and the NOI walk (actual trailing-12 -> JLL underwritten Year-0)."""
+    recs = []
+    for x in DEALS:
+        c, w = x["caps"], x["walk"]
+        recs.append({
+            "Asset": SHORT[x["key"]],
+            "Actual T12 NOI": round(c["actual_t12"]["noi"]), "Actual T12 Cap": _r(c["actual_t12"]["cap"]),
+            "Actual T3 NOI": round(c["actual_t3"]["noi"]), "Actual T3 Cap": _r(c["actual_t3"]["cap"]),
+            "Walk: +Revenue": round(w["rev"]), "Walk: ±Tax": round(w["tax"]), "Walk: ±Opex": round(w["opex_ex_tax"]),
+            "JLL UW Yr0 NOI": round(c["jll_uw_yr0"]["noi"]), "JLL UW Yr0 Cap": _r(c["jll_uw_yr0"]["cap"]),
+            "JLL Yr1 NOI": round(c["jll_yr1"]["noi"]), "JLL Yr1 Cap": _r(c["jll_yr1"]["cap"]),
+            "Exit NOI": round(c["exit"]["noi"]), "Exit Cap": _r(c["exit"]["cap"]),
+        })
+    return pd.DataFrame(recs)
+
+
+def mtm_df():
+    """Mark-to-market: in-place vs HelloData market/effective + the forward rent signal."""
+    recs = []
+    for x in DEALS:
+        m = x["mtm"]
+        recs.append({
+            "Asset": SHORT[x["key"]], "In-Place Rent": round(m["in_place"]),
+            "HD Market T90": round(m["hd_market_t90"]), "HD Market T365": round(m["hd_market_t365"]),
+            "HD Effective T90": round(m["hd_eff_t90"]), "Loss-to-Lease %": _r(m["loss_to_lease_pct"]),
+            "HD Concession %": _r(m["hd_conc_pct"]), "New-Lease Trade-Out": _r(m["new_lease_to"]),
+            "HD Asking YoY": _r(m["hd_yoy"]),
         })
     return pd.DataFrame(recs)
 

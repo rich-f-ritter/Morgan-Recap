@@ -13,17 +13,24 @@ and resident demographics — compared against the JLL models.
 
 | File | What it is |
 |---|---|
-| `Morgan_Recap_Analysis.pdf` | 5 branded, **table‑driven** pages. p1 = portfolio data tape + a NOI‑bridge / tax‑reassessment / assumptions table. p2–5 = a one‑pager per deal, each built around (1) a **NOI & cap‑rate bridge** (Revenue T12/T3/JLL · Expenses T12/JLL · a tax‑reassessment line · NOI · implied cap on each basis), (2) an **in‑place‑vs‑market unit mix** (in‑place tied to T1 AGPR, HD90/HD365, new/renewal counts, trade‑outs by bed), and (3) a **resident demographics** table. |
-| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard (KPIs + asset tape + underwriting + trend scorecard) and six raw detail tabs — NOI bridge (T12 vs JLL), operating T12 monthly, rent & leasing, **unit mix by plan** (86 floor plans), underwriting & returns, and demographics. |
+| `Morgan_Recap_Analysis.pdf` | 10 branded, **table‑driven** pages. **p1** portfolio data tape + NOI‑bridge / tax / economic‑loss table; **p2** Key Findings & Trends scorecard; then **two pages per deal** — **A (Financials):** NOI & cap‑rate bridge (GPR → loss‑to‑lease → **AGPR** → vacancy/bad‑debt/concessions → NRI → EGR → opex → NOI, columns T12/T3/JLL), the **cap‑rate stack with explicit definitions + the NOI walk** (actual → JLL underwritten), and **economic losses as % of AGPR on a T12/T6/T3 trend**; **B (Rents & Residents):** **mark‑to‑market** (in‑place vs HelloData market/effective), the full **unit mix** (in‑place / HD90 ask+eff / HD365 / new & renewal counts / trade‑outs by bed), and **resident demographics**. |
+| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard + ten raw tabs — NOI bridge (T12 vs JLL), **cap stack & NOI walk**, **economic losses (%AGPR)**, **mark‑to‑market**, operating T12 monthly, rent & leasing, **unit mix by plan** (86 floor plans), underwriting & returns, demographics. |
 | `*.png` | Page previews of each PDF page. |
 
-### "In‑place cap," defined
-**In‑place cap = JLL underwritten Year‑0 NOI ÷ purchase price.** Year‑0 NOI uses the
-**in‑place** rent roll (current signed leases, not forward growth), JLL's **normalized
-operating expenses**, and **property taxes reassessed to the purchase price**, taken
-**before replacement reserves** (JLL's cap‑rate convention). It sits between the seller's
-**trailing‑12 actual** cap (T12 NOI ÷ ask) and JLL's **Year‑1** (forward) cap.
-Each asset page shows all three side‑by‑side in the NOI bridge.
+### The cap rates, broken out (each defined)
+- **Actual cap — Trailing‑12 (the true in‑place cap):** seller's standardized T12 NOI ÷ ask.
+- **Actual cap — T3 run‑rate:** last‑3‑month actual NOI annualized ÷ ask.
+- **JLL underwritten cap — Year‑0:** the **same in‑place rent roll** but with JLL's
+  **normalized operating expenses** and **property taxes reassessed to the purchase price**,
+  before replacement reserves (JLL's cap convention). The **NOI walk** on each asset's Page A
+  bridges Actual → JLL UW Year‑0 component by component (revenue norm · tax reassessment ·
+  expense norm), so the two are no longer conflated.
+- **JLL Year‑1 cap:** after one year of growth / value‑add.
+- **Exit cap:** Year‑5 residual ÷ exit price.
+
+"Actual" and "in‑place" are the same thing here — the seller's current trailing‑12 — and that
+is the **Actual Cap (T12)**. The thing that differs is JLL's **underwritten** Year‑0, which
+normalizes expenses and steps taxes to the new basis; the walk shows exactly why.
 
 ## Portfolio at a glance
 
@@ -58,12 +65,23 @@ Each asset page shows all three side‑by‑side in the NOI bridge.
 - **Debt is the standout value.** Two deals (Pearl Washington, Pearl 21 Eleven) carry
   **assumable below‑market fixed‑rate debt at 4.26% / 3.90%, interest‑only** — a meaningful
   edge versus the ~5.55% new financing on the other two.
-- **Property‑tax reassessment is a key swing.** JLL reassesses taxes to the purchase price:
-  **Golden Glades (FL) steps up +$184K (+19%)** — currently under‑assessed at $51.5M vs an
-  $85M price — while **Pearl Washington (TX) steps *down* −$88K (−7%)**, currently
-  over‑assessed at $64.4M vs a $60M price (Texas is a non‑disclosure state). City Centre
-  +12%, 21 Eleven +1%; portfolio taxes +7%. This tax line is the largest single driver of
-  the gap between trailing and in‑place NOI.
+- **Property‑tax reassessment is a key swing (≈ −$0.57M / −4% of NOI portfolio‑wide).**
+  JLL reassesses taxes to the purchase price: **Golden Glades (FL) +28%** (under‑assessed
+  at $51.5M vs an $85M price) and **City Centre +15%** step *up*, while **Pearl Washington
+  (TX) −3%** steps *down* (over‑assessed at $64.4M vs a $60M price; Texas is non‑disclosure).
+  Stated on the seller's actual trailing‑12 taxes (RedIQ) for consistency with the bridge.
+- **Loss‑to‑lease "upside" is not equal across assets.** City Centre's embedded upside is
+  *real* — HelloData market sits ~6% above in‑place **and** new leases trade **+3.5%**.
+  At Pearl Washington the HD asking implies ~+5% upside but new leases trade **−15%**: the
+  advertised upside is illusory and in‑place rents are rolling *down* to market.
+- **JLL underwrites expenses below the seller's actuals** at most assets (e.g. Pearl
+  Washington ≈ −$218K ex‑tax), which — with the tax step‑downs — is what lifts JLL's Year‑0
+  NOI above trailing. The per‑asset **NOI walk** quantifies revenue vs tax vs expense
+  normalization.
+- **Methodology note / fix:** for the combined **City Centre + Residences** deal, HelloData
+  is joined to each property's own rent roll by unit number *per property* — pooling the two
+  first collided on shared unit numbers and corrupted the 3BR market reads (now: 3BR in‑place
+  $4,136 with HD90 $4,847, vs a corrupted $2,842 before).
 - **Resident credit is strong across the board** — median household income $93K–$150K,
   rent‑to‑income 19–24%, and 30+ day delinquency under 0.5% of GPR.
 

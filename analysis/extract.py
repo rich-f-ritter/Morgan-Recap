@@ -222,13 +222,15 @@ def _income_bands(agg):
     return bands
 
 
-def unit_mix_summary(units, hd, lto=None):
-    """Per-bedroom unit mix joined to HelloData (T90/T365 asking & effective) and the
-    LTO trade-outs (blended, new, renewal). Also returns per-plan detail and the
-    mix-weighted portfolio HelloData reads."""
-    rr = il.RentRoll(units=units)
-    mix = il.build_unit_mix(rr, hd)
-    ref = il.classify_lease  # noqa
+def unit_mix_summary(segments, lto=None):
+    """Per-bedroom unit mix. `segments` is a list of (units, hellodata) pairs — ONE per
+    physical property — so HelloData is joined to its OWN rent roll by unit number
+    (combining properties first would collide on shared unit numbers and corrupt the
+    HD market reads / bed inference). Per-segment mixes are concatenated, then aggregated
+    by bedroom; also returns per-plan detail and mix-weighted portfolio HelloData reads."""
+    mix = []
+    for su, shd in segments:
+        mix += il.build_unit_mix(il.RentRoll(units=su), shd)
     bed_to = lto_by_bed(lto) if lto else {}
     by_bed = {}
     for m in mix:
@@ -334,6 +336,7 @@ def parse_rediq(path):
         "concessions": row_series("conc", "code"),
         "ltl": row_series("ltl", "code"),
         "bad_debt": row_series("cl", "code"),
+        "nonrev": row_series("nr", "code"),
         "other_income": row_series("OI", "code"),
     }
     # expense line items (T12 totals)
@@ -362,8 +365,58 @@ def parse_rediq(path):
     out["egr_t6_ann"] = t(egr, 6)
     out["rentinc_t12"] = sum(out["rentinc"])
     out["concessions_t12"] = sum(out["concessions"])
+    # AGPR (Adjusted Gross Potential Rent) = Gross Potential + Loss-to-Lease, per month
+    out["agpr"] = [out["rentinc"][i] + out["ltl"][i] for i in range(12)]
     wb.close()
     return out
+
+
+def _win(series, n):
+    """Trailing-n-month sum, annualized."""
+    return sum(series[-n:]) * (12 / n)
+
+
+def loss_ratios(op, jll_lines):
+    """Economic losses as a % of AGPR, on a trailing T12 / T6 / T3 basis (and JLL Year-0).
+    AGPR = Gross Potential Rent + Loss-to-Lease (the 'adjusted GPR' off the financials).
+    Vacancy, bad debt and concessions are expressed as a share of AGPR; loss-to-lease as a
+    share of gross potential. Rising loss ratios = softening; falling = tightening."""
+    agpr = op["agpr"]
+    def ratio(series_code, denom_code="agpr", win=12):
+        s = op[series_code]
+        d = op[denom_code]
+        num_ = abs(_win(s, win))
+        den = _win(d, win)
+        return num_ / den if den else 0.0
+    out = {"agpr_t12": _win(agpr, 12), "agpr_t6": _win(agpr, 6), "agpr_t3": _win(agpr, 3)}
+    for code, label in (("vacancy", "vacancy"), ("bad_debt", "bad_debt"), ("concessions", "concessions")):
+        out[label] = {"t12": ratio(code, "agpr", 12), "t6": ratio(code, "agpr", 6), "t3": ratio(code, "agpr", 3)}
+    # loss-to-lease as % of gross potential (how far in-place sits below market scheduled)
+    out["ltl"] = {"t12": abs(_win(op["ltl"], 12)) / _win(op["rentinc"], 12),
+                  "t6": abs(_win(op["ltl"], 6)) / _win(op["rentinc"], 6),
+                  "t3": abs(_win(op["ltl"], 3)) / _win(op["rentinc"], 3)}
+    # economic occupancy = 1 - vacancy/AGPR
+    out["econ_occ"] = {"t12": 1 - out["vacancy"]["t12"], "t6": 1 - out["vacancy"]["t6"], "t3": 1 - out["vacancy"]["t3"]}
+    # JLL Year-0 loss ratios (off the model's in-place line items)
+    L = jll_lines
+    agpr_j = L["gsr"]["yr0"] + L["ltl"]["yr0"]
+    out["jll"] = {
+        "agpr": agpr_j,
+        "vacancy": abs(L["vacancy"]["yr0"] + L["model"]["yr0"]) / agpr_j if agpr_j else 0,
+        "bad_debt": abs(L["collection"]["yr0"]) / agpr_j if agpr_j else 0,
+        "concessions": abs(L["conc"]["yr0"]) / agpr_j if agpr_j else 0,
+        "ltl": abs(L["ltl"]["yr0"]) / L["gsr"]["yr0"] if L["gsr"]["yr0"] else 0,
+    }
+    return out
+
+
+def operating_trends(op):
+    """T12 / T6 / T3 annualized operating series — the momentum read (revenue/NOI run-rate)."""
+    return {
+        "egr": {"t12": _win(op["egr"], 12), "t6": _win(op["egr"], 6), "t3": _win(op["egr"], 3)},
+        "noi": {"t12": _win(op["noi"], 12), "t6": _win(op["noi"], 6), "t3": _win(op["noi"], 3)},
+        "agpr": {"t12": _win(op["agpr"], 12), "t6": _win(op["agpr"], 6), "t3": _win(op["agpr"], 3)},
+    }
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -730,16 +783,27 @@ def combine_lto(paths):
     return finalize_lto(res)
 
 
+def build_segments(rr_paths, hd_props):
+    """Pair each rent roll with its OWN property's HelloData (by index) so the HD-by-unit
+    join never crosses properties (which share unit numbers)."""
+    segs = []
+    for rrp, prop in zip(rr_paths, hd_props):
+        su, _ = parse_rr([rrp])
+        hp, _ = split_hellodata([prop])
+        segs.append((su, il.parse_hellodata(hp)))
+    return segs
+
+
 def run_deal(d):
     print(f"\n{'='*70}\n{d['label']}")
-    hd_path, hd_n = split_hellodata(d["hd_props"])
-    hd = il.parse_hellodata(hd_path)
+    _, hd_n = split_hellodata(d["hd_props"])
     units, as_of = parse_rr(d["rr"])
     occ = occ_breakdown(units)
     rents = inplace_rents(units)
     op = parse_rediq(d["rediq"])
     lto = combine_lto(d["lto"]) if len(d["lto"]) > 1 else parse_lto(d["lto"][0])
-    mix = unit_mix_summary(units, hd, lto)
+    segments = build_segments(d["rr"], d["hd_props"])
+    mix = unit_mix_summary(segments, lto)
     _dq = [parse_delinquency(p) for p in d["delinq"]]
     delq = {k: sum(x[k] for x in _dq) for k in ("total_delinquent", "past_due_30", "net_balance")}
     demo = parse_demographics_full(d["demo"])
@@ -760,11 +824,39 @@ def run_deal(d):
         "var_pct": (rents["rr_agpr_mo"] / t1_agpr_mo - 1) if t1_agpr_mo else None,
         "rr_agpr_unit": rents["rr_agpr_mo"] / occ["units"] if occ["units"] else 0,
     }
+    losses = loss_ratios(op, jll_pnl["lines"])
+    trends = operating_trends(op)
+    # cap-rate stack — every cap defined off ONE basis so the reconciliation ties
+    L = jll_pnl["lines"]
+    caps = {
+        "actual_t12": {"noi": op["noi_t12"], "cap": op["noi_t12"] / jll["price"]},
+        "actual_t3": {"noi": op["noi_t3_ann"], "cap": op["noi_t3_ann"] / jll["price"]},
+        "jll_actual": {"noi": L["noi"]["actual"], "cap": L["noi"]["actual"] / jll["price"]},
+        "jll_uw_yr0": {"noi": jll["noi_yr0"], "cap": jll["noi_yr0"] / jll["price"]},
+        "jll_yr1": {"noi": jll["noi_yr1"], "cap": jll["noi_yr1"] / jll["price"]},
+        "exit": {"noi": jll["noi_exit"], "cap": jll["exit_cap"]},
+    }
+    # NOI walk: seller trailing-12 actual -> JLL UW Year-0, component by component
+    tax_delta = -(jll_pnl["tax"]["uw_taxes_yr0"] - op["expense_t12"].get("Real Estate Taxes", 0))  # +NOI if taxes fall
+    rev_delta = L["egr"]["yr0"] - op["egr_t12"]
+    other_exp_delta = (op["opex_t12"] - op["expense_t12"].get("Real Estate Taxes", 0)) - (L["opex"]["yr0"] - L["taxes"]["yr0"])
+    walk = {"actual_noi": op["noi_t12"], "rev": rev_delta, "tax": tax_delta,
+            "opex_ex_tax": other_exp_delta, "uw_noi": jll["noi_yr0"]}
+    # mark-to-market: in-place vs HelloData executed market (loss/gain to lease) + forward signal
+    hd_mkt = mix["hd_t90_ask"] or mix["hd_t365_ask"]
+    mtm = {
+        "in_place": rents["avg_inplace_rent"], "hd_market_t90": mix["hd_t90_ask"], "hd_eff_t90": mix["hd_t90_eff"],
+        "hd_market_t365": mix["hd_t365_ask"],
+        "loss_to_lease_pct": (hd_mkt / rents["avg_inplace_rent"] - 1) if rents["avg_inplace_rent"] else None,
+        "new_lease_to": lto.get("new_tradeout_pct"), "hd_yoy": mix["hd_yoy_ask"],
+        "hd_conc_pct": (1 - mix["hd_t90_eff"] / mix["hd_t90_ask"]) if mix["hd_t90_ask"] else None,
+    }
 
     rec = {
         "label": d["label"], "key": d["key"],
         "occ": occ, "rents": rents, "mix": mix, "op": op, "lto": lto,
         "delinq": delq, "demo": demo, "jll": jll, "jll_pnl": jll_pnl, "agpr": agpr_tie,
+        "losses": losses, "trends": trends, "caps": caps, "walk": walk, "mtm": mtm,
         "hd_rows": hd_n, "as_of": as_of,
         "derived": {
             "trailing_cap": trailing_cap, "forward_cap_t3": forward_cap_t3,
@@ -777,14 +869,13 @@ def run_deal(d):
     if d.get("sub"):
         s = d["sub"]
         su, _ = parse_rr(s["rr"])
-        sub_hd_path, _ = split_hellodata(s["hd_props"])
-        sub_hd = il.parse_hellodata(sub_hd_path)
         sub_lto = combine_lto(s["lto"]) if len(s["lto"]) > 1 else parse_lto(s["lto"][0])
+        sub_segments = build_segments(s["rr"], s["hd_props"])
         rec["sub"] = {
             "label": s["label"],
             "occ": occ_breakdown(su),
             "rents": inplace_rents(su),
-            "mix": unit_mix_summary(su, sub_hd, sub_lto),
+            "mix": unit_mix_summary(sub_segments, sub_lto),
             "lto": sub_lto,
         }
     # print summary
