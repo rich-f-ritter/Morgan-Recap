@@ -13,9 +13,17 @@ and resident demographics — compared against the JLL models.
 
 | File | What it is |
 |---|---|
-| `Morgan_Recap_Analysis.pdf` | 5 branded pages — **portfolio data tape** (p1) + a **one‑pager per deal** (p2–5). |
-| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: dashboard (KPIs + asset tape + underwriting + trend scorecard) and four raw detail tabs (operating T12 monthly, rent & leasing, underwriting & returns, demographics). |
+| `Morgan_Recap_Analysis.pdf` | 5 branded, **table‑driven** pages. p1 = portfolio data tape + a NOI‑bridge / tax‑reassessment / assumptions table. p2–5 = a one‑pager per deal, each built around (1) a **NOI & cap‑rate bridge** (Revenue T12/T3/JLL · Expenses T12/JLL · a tax‑reassessment line · NOI · implied cap on each basis), (2) an **in‑place‑vs‑market unit mix** (in‑place tied to T1 AGPR, HD90/HD365, new/renewal counts, trade‑outs by bed), and (3) a **resident demographics** table. |
+| `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard (KPIs + asset tape + underwriting + trend scorecard) and six raw detail tabs — NOI bridge (T12 vs JLL), operating T12 monthly, rent & leasing, **unit mix by plan** (86 floor plans), underwriting & returns, and demographics. |
 | `*.png` | Page previews of each PDF page. |
+
+### "In‑place cap," defined
+**In‑place cap = JLL underwritten Year‑0 NOI ÷ purchase price.** Year‑0 NOI uses the
+**in‑place** rent roll (current signed leases, not forward growth), JLL's **normalized
+operating expenses**, and **property taxes reassessed to the purchase price**, taken
+**before replacement reserves** (JLL's cap‑rate convention). It sits between the seller's
+**trailing‑12 actual** cap (T12 NOI ÷ ask) and JLL's **Year‑1** (forward) cap.
+Each asset page shows all three side‑by‑side in the NOI bridge.
 
 ## Portfolio at a glance
 
@@ -50,6 +58,12 @@ and resident demographics — compared against the JLL models.
 - **Debt is the standout value.** Two deals (Pearl Washington, Pearl 21 Eleven) carry
   **assumable below‑market fixed‑rate debt at 4.26% / 3.90%, interest‑only** — a meaningful
   edge versus the ~5.55% new financing on the other two.
+- **Property‑tax reassessment is a key swing.** JLL reassesses taxes to the purchase price:
+  **Golden Glades (FL) steps up +$184K (+19%)** — currently under‑assessed at $51.5M vs an
+  $85M price — while **Pearl Washington (TX) steps *down* −$88K (−7%)**, currently
+  over‑assessed at $64.4M vs a $60M price (Texas is a non‑disclosure state). City Centre
+  +12%, 21 Eleven +1%; portfolio taxes +7%. This tax line is the largest single driver of
+  the gap between trailing and in‑place NOI.
 - **Resident credit is strong across the board** — median household income $93K–$150K,
   rent‑to‑income 19–24%, and 30+ day delinquency under 0.5% of GPR.
 

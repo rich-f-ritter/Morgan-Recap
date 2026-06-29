@@ -55,7 +55,7 @@ def build():
                  "New T/O = rent-weighted new-lease trade-out vs prior lease (Yardi LTO, T90)")
     cols = [("Units", "num"), ("Built", "year"), ("Ask", "m"), ("$/Unit", "usd"), ("Occ", "pct"),
             ("In-Place /mo", "usd"), ("New T/O", "pct"), ("T12 NOI", "m"), ("Act Cap", "pct2"),
-            ("JLL Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("Lev IRR", "pct"), ("EM", "ratio")]
+            ("In-Place Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("Lev IRR", "pct"), ("EM", "ratio")]
     rows = []
     for x in DEALS:
         j, op, lto, occ = x["jll"], x["op"], x["lto"], x["occ"]
@@ -99,8 +99,10 @@ def build():
                 "(T12 May 2025–Apr 2026); HelloData unit details (Jun 2026); resident demographics (May 2026); JLL models (Jun 2026).")
 
     # ── raw detail tabs ──
+    XL.add_raw_tab(wb, "NOI Bridge (T12 vs JLL)", noibridge_df())
     XL.add_raw_tab(wb, "Operating T12 (monthly)", operating_df())
     XL.add_raw_tab(wb, "Rent & Leasing", leasing_df())
+    XL.add_raw_tab(wb, "Unit Mix (by plan)", unitmix_df())
     XL.add_raw_tab(wb, "Underwriting & Returns", underwriting_df())
     XL.add_raw_tab(wb, "Demographics", demo_df())
 
@@ -148,6 +150,45 @@ def leasing_df():
     return pd.DataFrame(recs)
 
 
+def noibridge_df():
+    """Per-asset NOI bridge: T12 actual vs JLL Year-0 (in-place) for each line, with
+    the tax reassessment and the implied caps at the asking price."""
+    recs = []
+    for x in DEALS:
+        op, L, j, der = x["op"], x["jll_pnl"]["lines"], x["jll"], x["derived"]
+        e = op["expense_t12"]
+        tx = x["jll_pnl"]["tax"]
+        recs.append({
+            "Asset": SHORT[x["key"]],
+            "GPR (T12)": round(op["rentinc_t12"]), "GPR (JLL Yr0)": round(L["gsr"]["yr0"]),
+            "EGR (T12)": round(op["egr_t12"]), "EGR (JLL Yr0)": round(L["egr"]["yr0"]),
+            "Opex (T12)": round(op["opex_t12"]), "Opex (JLL Yr0)": round(L["opex"]["yr0"]),
+            "RE Taxes (T12 actual)": round(tx["actual_taxes"]), "RE Taxes (JLL UW)": round(tx["uw_taxes_yr0"]),
+            "Tax Adjustment": round(tx["adjustment"]),
+            "Current Assessment": round(tx["current_assessment"]), "Purchase Basis": round(tx["purchase_price_basis"]),
+            "NOI (T12)": round(op["noi_t12"]), "NOI (T3 ann)": round(op["noi_t3_ann"]), "NOI (JLL Yr0)": round(j["noi_yr0"]),
+            "Trailing Cap": _r(der["trailing_cap"]), "In-Place Cap (JLL)": _r(der["inplace_cap"]),
+            "NOI UW vs Trailing": _r(der["jll_noi_vs_trailing"]),
+        })
+    return pd.DataFrame(recs)
+
+
+def unitmix_df():
+    """Per-floor-plan unit mix across all deals: in-place, HD90/HD365 asking & effective,
+    new vs renewal counts, last-5 new-lease average, HD asking YoY."""
+    recs = []
+    for x in DEALS:
+        for m in x["mix"]["by_plan"]:
+            recs.append({"Asset": SHORT[x["key"]], "Plan": m["plan"],
+                         "Bed": m["bed"], "Bath": m["bath"], "Units": m["units"],
+                         "Occ": m["occ"], "Vac": m["vac"], "Avg SF": m["avg_sf"],
+                         "In-Place": m["in_place"], "HD90 Ask": m["hd90_ask"], "HD90 Eff": m["hd90_eff"],
+                         "HD365 Ask": m["hd365_ask"], "HD365 Eff": m["hd365_eff"],
+                         "New Leases": m["new_n"], "Renewals": m["renewal_n"],
+                         "Last5 New Avg": m["last5_new_avg"], "HD Ask YoY": _r(m["hd_yoy_ask"])})
+    return pd.DataFrame(recs)
+
+
 def underwriting_df():
     recs = []
     for x in DEALS:
@@ -171,12 +212,20 @@ def demo_df():
     recs = []
     for x in DEALS:
         de = x["demo"]
+        bands = de.get("income_dist", {})
+        btot = sum(bands.values()) or 1
         recs.append({
             "Asset": SHORT[x["key"]], "Resident Median HH Income": round(de["hh_income_median"]),
             "Resident Mean HH Income": round(de["hh_income_mean"]),
+            "% Earning $100K+": round(de.get("pct_over_100k", 0), 3),
             "Median Personal Income": round(de["personal_income_median"]),
             "Median HH Size": round(de.get("hh_size_median", 0), 1), "Median Age": round(de["age_median"], 0),
             "Rent-to-Income": round(x["derived"]["rent_to_income"], 3),
+            "Inc <$50K": round(bands.get("<$50K", 0) / btot, 3),
+            "Inc $50-75K": round(bands.get("$50–75K", 0) / btot, 3),
+            "Inc $75-100K": round(bands.get("$75–100K", 0) / btot, 3),
+            "Inc $100K+": round(bands.get("$100K+", 0) / btot, 3),
+            "Resident Records": round(de.get("resident_total", 0)), "Prospect Leads": round(de.get("lead_count", 0)),
         })
     return pd.DataFrame(recs)
 

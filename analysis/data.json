@@ -28,11 +28,12 @@
         }
       },
       "rents": {
-        "avg_inplace_rent": 2305.4857819905214,
-        "avg_inplace_psf": 2.015109463349972,
+        "avg_inplace_rent": 2295.846846846847,
+        "avg_inplace_psf": 2.0205232497061454,
         "total_contract_mo": 1019356.0,
+        "rr_agpr_mo": 1054130.0,
         "total_other_mo": 91003.02,
-        "n_occ": 422
+        "n_occ": 444
       },
       "mix": {
         "by_bed": [
@@ -42,8 +43,16 @@
             "occ": 19,
             "vac": 2,
             "avg_sf": 657.0,
-            "avg_contract": 1477.5714285714287,
-            "t90_ask": 1540.0
+            "in_place": 1477.5714285714287,
+            "hd90_ask": 1540.0,
+            "hd90_eff": 1540.0,
+            "hd365_ask": 1495.3333333333333,
+            "hd365_eff": 1481.3333333333333,
+            "lto_new_n": 0,
+            "lto_ren_n": 0,
+            "lto_new_to": null,
+            "lto_ren_to": null,
+            "lto_to": null
           },
           {
             "bed": 1,
@@ -51,8 +60,16 @@
             "occ": 235,
             "vac": 24,
             "avg_sf": 879.7595419847328,
-            "avg_contract": 1785.5622010010734,
-            "t90_ask": 1976.612913486005
+            "in_place": 1785.5622010010734,
+            "hd90_ask": 1976.612913486005,
+            "hd90_eff": 1976.612913486005,
+            "hd365_ask": 1837.0816455458203,
+            "hd365_eff": 1821.9504328785192,
+            "lto_new_n": 26,
+            "lto_ren_n": 39,
+            "lto_new_to": 0.007222764160146111,
+            "lto_ren_to": 0.028011794439764204,
+            "lto_to": 0.019622951231564212
           },
           {
             "bed": 2,
@@ -60,8 +77,16 @@
             "occ": 131,
             "vac": 4,
             "avg_sf": 1442.4779411764705,
-            "avg_contract": 2840.639655509885,
-            "t90_ask": 2714.0499999999997
+            "in_place": 2840.639655509885,
+            "hd90_ask": 2714.0499999999997,
+            "hd90_eff": 2712.8852941176474,
+            "hd365_ask": 2622.9231283422455,
+            "hd365_eff": 2614.311263368984,
+            "lto_new_n": 16,
+            "lto_ren_n": 22,
+            "lto_new_to": 0.02638611971323135,
+            "lto_ren_to": 0.03515826696499813,
+            "lto_to": 0.03143430850824358
           },
           {
             "bed": 3,
@@ -69,8 +94,468 @@
             "occ": 38,
             "vac": 2,
             "avg_sf": 1987.35,
-            "avg_contract": 4136.43062200957,
-            "t90_ask": 2841.6
+            "in_place": 4136.43062200957,
+            "hd90_ask": 2841.6,
+            "hd90_eff": 2841.6,
+            "hd365_ask": 2999.2183333333332,
+            "hd365_eff": 2991.6833333333334,
+            "lto_new_n": 7,
+            "lto_ren_n": 9,
+            "lto_new_to": 0.09453729983531312,
+            "lto_ren_to": 0.02933483266922532,
+            "lto_to": 0.05612994268928384
+          }
+        ],
+        "by_plan": [
+          {
+            "plan": "A0",
+            "bed": 0,
+            "bath": 1,
+            "units": 21,
+            "occ": 19,
+            "vac": 2,
+            "avg_sf": 657,
+            "in_place": 1478,
+            "hd90_ask": 1540,
+            "hd90_eff": 1540,
+            "hd365_ask": 1495,
+            "hd365_eff": 1481,
+            "new_n": 7,
+            "renewal_n": 14,
+            "last5_new_avg": 1427,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1",
+            "bed": 1,
+            "bath": 1,
+            "units": 71,
+            "occ": 63,
+            "vac": 7,
+            "avg_sf": 704,
+            "in_place": 1559,
+            "hd90_ask": 1774,
+            "hd90_eff": 1774,
+            "hd365_ask": 1673,
+            "hd365_eff": 1662,
+            "new_n": 26,
+            "renewal_n": 42,
+            "last5_new_avg": 1588,
+            "hd_yoy_ask": 0.029346354670276575
+          },
+          {
+            "plan": "A1.1",
+            "bed": 1,
+            "bath": 1,
+            "units": 19,
+            "occ": 17,
+            "vac": 2,
+            "avg_sf": 754,
+            "in_place": 1638,
+            "hd90_ask": 1740,
+            "hd90_eff": 1740,
+            "hd365_ask": 1646,
+            "hd365_eff": 1616,
+            "new_n": 8,
+            "renewal_n": 10,
+            "last5_new_avg": 1652,
+            "hd_yoy_ask": 0.09678436317780581
+          },
+          {
+            "plan": "A1.2",
+            "bed": 1,
+            "bath": 1,
+            "units": 14,
+            "occ": 14,
+            "vac": 0,
+            "avg_sf": 776,
+            "in_place": 1709,
+            "hd90_ask": 1774,
+            "hd90_eff": 1774,
+            "hd365_ask": 1673,
+            "hd365_eff": 1662,
+            "new_n": 4,
+            "renewal_n": 10,
+            "last5_new_avg": 1626,
+            "hd_yoy_ask": 0.029346354670276575
+          },
+          {
+            "plan": "A1.3",
+            "bed": 1,
+            "bath": 1,
+            "units": 14,
+            "occ": 14,
+            "vac": 0,
+            "avg_sf": 739,
+            "in_place": 1646,
+            "hd90_ask": 1774,
+            "hd90_eff": 1774,
+            "hd365_ask": 1673,
+            "hd365_eff": 1662,
+            "new_n": 4,
+            "renewal_n": 10,
+            "last5_new_avg": 1606,
+            "hd_yoy_ask": 0.029346354670276575
+          },
+          {
+            "plan": "A10",
+            "bed": 1,
+            "bath": 1,
+            "units": 21,
+            "occ": 19,
+            "vac": 2,
+            "avg_sf": 887,
+            "in_place": 1736,
+            "hd90_ask": 1781,
+            "hd90_eff": 1781,
+            "hd365_ask": 1786,
+            "hd365_eff": 1752,
+            "new_n": 11,
+            "renewal_n": 10,
+            "last5_new_avg": 1695,
+            "hd_yoy_ask": -0.03989218328840971
+          },
+          {
+            "plan": "A2",
+            "bed": 1,
+            "bath": 1,
+            "units": 42,
+            "occ": 37,
+            "vac": 4,
+            "avg_sf": 1092,
+            "in_place": 2054,
+            "hd90_ask": 2438,
+            "hd90_eff": 2438,
+            "hd365_ask": 2096,
+            "hd365_eff": 2085,
+            "new_n": 21,
+            "renewal_n": 19,
+            "last5_new_avg": 2105,
+            "hd_yoy_ask": 0.11850152905198774
+          },
+          {
+            "plan": "A2.1",
+            "bed": 1,
+            "bath": 1,
+            "units": 12,
+            "occ": 10,
+            "vac": 2,
+            "avg_sf": 822,
+            "in_place": 1827,
+            "hd90_ask": 1847,
+            "hd90_eff": 1847,
+            "hd365_ask": 1780,
+            "hd365_eff": 1766,
+            "new_n": 5,
+            "renewal_n": 7,
+            "last5_new_avg": 1625,
+            "hd_yoy_ask": 0.08328445747800584
+          },
+          {
+            "plan": "A2.1a",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 896,
+            "in_place": 1706,
+            "hd90_ask": 2438,
+            "hd90_eff": 2438,
+            "hd365_ask": 2096,
+            "hd365_eff": 2085,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 1706,
+            "hd_yoy_ask": 0.11850152905198774
+          },
+          {
+            "plan": "A2.3",
+            "bed": 1,
+            "bath": 1,
+            "units": 12,
+            "occ": 11,
+            "vac": 1,
+            "avg_sf": 904,
+            "in_place": 1761,
+            "hd90_ask": 2438,
+            "hd90_eff": 2438,
+            "hd365_ask": 1850,
+            "hd365_eff": 1821,
+            "new_n": 5,
+            "renewal_n": 7,
+            "last5_new_avg": 1779,
+            "hd_yoy_ask": 0.11850152905198774
+          },
+          {
+            "plan": "A3",
+            "bed": 1,
+            "bath": 1,
+            "units": 7,
+            "occ": 7,
+            "vac": 0,
+            "avg_sf": 1121,
+            "in_place": 2058,
+            "hd90_ask": 2030,
+            "hd90_eff": 2030,
+            "hd365_ask": 2023,
+            "hd365_eff": 2011,
+            "new_n": 4,
+            "renewal_n": 3,
+            "last5_new_avg": 2165,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A4",
+            "bed": 1,
+            "bath": 1,
+            "units": 12,
+            "occ": 9,
+            "vac": 3,
+            "avg_sf": 948,
+            "in_place": 2001,
+            "hd90_ask": 2074,
+            "hd90_eff": 2074,
+            "hd365_ask": 1979,
+            "hd365_eff": 1969,
+            "new_n": 5,
+            "renewal_n": 5,
+            "last5_new_avg": 1970,
+            "hd_yoy_ask": 0.07238883143743546
+          },
+          {
+            "plan": "A5",
+            "bed": 1,
+            "bath": 1,
+            "units": 2,
+            "occ": 0,
+            "vac": 1,
+            "avg_sf": 1021,
+            "in_place": 2415,
+            "hd90_ask": 2290,
+            "hd90_eff": 2290,
+            "hd365_ask": 2290,
+            "hd365_eff": 2290,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 2415,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A6",
+            "bed": 1,
+            "bath": 1,
+            "units": 31,
+            "occ": 29,
+            "vac": 2,
+            "avg_sf": 1082,
+            "in_place": 1984,
+            "hd90_ask": 2052,
+            "hd90_eff": 2052,
+            "hd365_ask": 2022,
+            "hd365_eff": 2010,
+            "new_n": 12,
+            "renewal_n": 17,
+            "last5_new_avg": 2010,
+            "hd_yoy_ask": 0.04800817160367732
+          },
+          {
+            "plan": "A6.1",
+            "bed": 1,
+            "bath": 1,
+            "units": 4,
+            "occ": 4,
+            "vac": 0,
+            "avg_sf": 1022,
+            "in_place": 2084,
+            "hd90_ask": 2052,
+            "hd90_eff": 2052,
+            "hd365_ask": 2011,
+            "hd365_eff": 2011,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 2026,
+            "hd_yoy_ask": 0.04800817160367732
+          },
+          {
+            "plan": "B1",
+            "bed": 2,
+            "bath": 2,
+            "units": 26,
+            "occ": 26,
+            "vac": 0,
+            "avg_sf": 1569,
+            "in_place": 2928,
+            "hd90_ask": 2452,
+            "hd90_eff": 2452,
+            "hd365_ask": 2767,
+            "hd365_eff": 2758,
+            "new_n": 13,
+            "renewal_n": 13,
+            "last5_new_avg": 2921,
+            "hd_yoy_ask": -0.2744488829708537
+          },
+          {
+            "plan": "B3",
+            "bed": 2,
+            "bath": 2,
+            "units": 24,
+            "occ": 24,
+            "vac": 0,
+            "avg_sf": 1511,
+            "in_place": 3151,
+            "hd90_ask": 2673,
+            "hd90_eff": 2667,
+            "hd365_ask": 2703,
+            "hd365_eff": 2694,
+            "new_n": 10,
+            "renewal_n": 14,
+            "last5_new_avg": 3090,
+            "hd_yoy_ask": -0.0025373134328359193
+          },
+          {
+            "plan": "B4",
+            "bed": 2,
+            "bath": 2,
+            "units": 34,
+            "occ": 33,
+            "vac": 1,
+            "avg_sf": 1296,
+            "in_place": 2698,
+            "hd90_ask": 2497,
+            "hd90_eff": 2497,
+            "hd365_ask": 2520,
+            "hd365_eff": 2511,
+            "new_n": 13,
+            "renewal_n": 20,
+            "last5_new_avg": 2707,
+            "hd_yoy_ask": 0.06527303754266223
+          },
+          {
+            "plan": "B4a",
+            "bed": 2,
+            "bath": 2,
+            "units": 6,
+            "occ": 5,
+            "vac": 1,
+            "avg_sf": 1278,
+            "in_place": 2350,
+            "hd90_ask": 2497,
+            "hd90_eff": 2497,
+            "hd365_ask": 2520,
+            "hd365_eff": 2511,
+            "new_n": 2,
+            "renewal_n": 4,
+            "last5_new_avg": 2422,
+            "hd_yoy_ask": 0.06527303754266223
+          },
+          {
+            "plan": "B4b",
+            "bed": 2,
+            "bath": 2,
+            "units": 6,
+            "occ": 6,
+            "vac": 0,
+            "avg_sf": 1330,
+            "in_place": 2366,
+            "hd90_ask": 2497,
+            "hd90_eff": 2497,
+            "hd365_ask": 2520,
+            "hd365_eff": 2511,
+            "new_n": 2,
+            "renewal_n": 4,
+            "last5_new_avg": 2302,
+            "hd_yoy_ask": 0.06527303754266223
+          },
+          {
+            "plan": "B5",
+            "bed": 2,
+            "bath": 2,
+            "units": 40,
+            "occ": 37,
+            "vac": 2,
+            "avg_sf": 1485,
+            "in_place": 2848,
+            "hd90_ask": 3158,
+            "hd90_eff": 3158,
+            "hd365_ask": 2599,
+            "hd365_eff": 2592,
+            "new_n": 10,
+            "renewal_n": 29,
+            "last5_new_avg": 2927,
+            "hd_yoy_ask": 0.10636931519645043
+          },
+          {
+            "plan": "C1",
+            "bed": 3,
+            "bath": 3,
+            "units": 6,
+            "occ": 6,
+            "vac": 0,
+            "avg_sf": 1637,
+            "in_place": 3549,
+            "hd90_ask": 3829,
+            "hd90_eff": 3829,
+            "hd365_ask": 3789,
+            "hd365_eff": 3789,
+            "new_n": 3,
+            "renewal_n": 3,
+            "last5_new_avg": 3554,
+            "hd_yoy_ask": 0.3682329819546186
+          },
+          {
+            "plan": "C2",
+            "bed": 3,
+            "bath": 3,
+            "units": 12,
+            "occ": 10,
+            "vac": 2,
+            "avg_sf": 1995,
+            "in_place": 4030,
+            "hd90_ask": 2620,
+            "hd90_eff": 2620,
+            "hd365_ask": 3028,
+            "hd365_eff": 3024,
+            "new_n": 4,
+            "renewal_n": 7,
+            "last5_new_avg": 3960,
+            "hd_yoy_ask": -0.22864081242181178
+          },
+          {
+            "plan": "C3",
+            "bed": 3,
+            "bath": 3,
+            "units": 12,
+            "occ": 12,
+            "vac": 0,
+            "avg_sf": 2256,
+            "in_place": 5036,
+            "hd90_ask": 3387,
+            "hd90_eff": 3387,
+            "hd365_ask": 2848,
+            "hd365_eff": 2836,
+            "new_n": 4,
+            "renewal_n": 8,
+            "last5_new_avg": 4902,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "C4",
+            "bed": 3,
+            "bath": 3,
+            "units": 10,
+            "occ": 10,
+            "vac": 0,
+            "avg_sf": 1866,
+            "in_place": 3516,
+            "hd90_ask": 1860,
+            "hd90_eff": 1860,
+            "hd365_ask": 2672,
+            "hd365_eff": 2662,
+            "new_n": 4,
+            "renewal_n": 6,
+            "last5_new_avg": 3414,
+            "hd_yoy_ask": -0.4406856111862878
           }
         ],
         "hd_t90_ask": 2250.5171750181553,
@@ -254,18 +739,960 @@
         "period": "02/25/2026 - 05/25/2026",
         "tradeout_lease_pct": 0.0585147732766369,
         "tradeout_eff_pct": 0.060712720635754946,
-        "_groups": {
-          "new": [
-            123866.0,
-            128156.0,
-            49
-          ],
-          "renewal": [
-            176038.0,
-            181480.0,
-            70
-          ]
-        },
+        "rows": [
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1495.0,
+            "cur": 1525.0,
+            "prior_eff": 1495.0,
+            "cur_eff": 1525.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1420.0,
+            "cur": 1452.0,
+            "prior_eff": 1420.0,
+            "cur_eff": 1452.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1540.0,
+            "cur": 1599.0,
+            "prior_eff": 1540.0,
+            "cur_eff": 1599.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1647.0,
+            "cur": 1696.0,
+            "prior_eff": 1647.0,
+            "cur_eff": 1696.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2874.0,
+            "cur": 2023.0,
+            "prior_eff": 2874.0,
+            "cur_eff": 1984.5384615385
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1594.0,
+            "cur": 1645.0,
+            "prior_eff": 1594.0,
+            "cur_eff": 1645.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1875.0,
+            "cur": 1947.0,
+            "prior_eff": 1875.0,
+            "cur_eff": 1947.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2084.0,
+            "cur": 2162.0,
+            "prior_eff": 2084.0,
+            "cur_eff": 2162.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1546.0,
+            "cur": 1585.0,
+            "prior_eff": 1546.0,
+            "cur_eff": 1585.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2137.0,
+            "cur": 1908.0,
+            "prior_eff": 2137.0,
+            "cur_eff": 1908.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1504.0,
+            "cur": 1633.0,
+            "prior_eff": 1504.0,
+            "cur_eff": 1633.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2085.0,
+            "cur": 2053.0,
+            "prior_eff": 2085.0,
+            "cur_eff": 2053.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1572.0,
+            "cur": 1623.0,
+            "prior_eff": 1572.0,
+            "cur_eff": 1623.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1490.0,
+            "cur": 1575.0,
+            "prior_eff": 1490.0,
+            "cur_eff": 1575.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1941.0,
+            "cur": 2076.0,
+            "prior_eff": 1941.0,
+            "cur_eff": 2076.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 4499.0,
+            "cur": 2405.0,
+            "prior_eff": 4499.0,
+            "cur_eff": 2405.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1408.0,
+            "cur": 1623.0,
+            "prior_eff": 1408.0,
+            "cur_eff": 1623.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1363.0,
+            "cur": 1739.0,
+            "prior_eff": 1363.0,
+            "cur_eff": 1739.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3416.0,
+            "cur": 2863.0,
+            "prior_eff": 3416.0,
+            "cur_eff": 2863.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1646.0,
+            "cur": 1680.0,
+            "prior_eff": 1646.0,
+            "cur_eff": 1680.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2364.0,
+            "cur": 2364.0,
+            "prior_eff": 2364.0,
+            "cur_eff": 2364.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2854.0,
+            "cur": 2954.0,
+            "prior_eff": 2854.0,
+            "cur_eff": 2954.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1975.0,
+            "cur": 1938.0,
+            "prior_eff": 1975.0,
+            "cur_eff": 1938.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2620.0,
+            "cur": 2639.0,
+            "prior_eff": 2620.0,
+            "cur_eff": 2639.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1976.0,
+            "cur": 2105.0,
+            "prior_eff": 1976.0,
+            "cur_eff": 2105.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2500.0,
+            "cur": 2625.0,
+            "prior_eff": 2500.0,
+            "cur_eff": 2625.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1673.0,
+            "cur": 1723.0,
+            "prior_eff": 1673.0,
+            "cur_eff": 1723.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1874.0,
+            "cur": 1930.0,
+            "prior_eff": 1874.0,
+            "cur_eff": 1930.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1939.0,
+            "cur": 2035.0,
+            "prior_eff": 1939.0,
+            "cur_eff": 2035.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2364.0,
+            "cur": 2625.0,
+            "prior_eff": 2364.0,
+            "cur_eff": 2625.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2818.0,
+            "cur": 2902.0,
+            "prior_eff": 2818.0,
+            "cur_eff": 2902.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2026.0,
+            "cur": 2130.0,
+            "prior_eff": 2026.0,
+            "cur_eff": 2130.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1400.0,
+            "cur": 1678.0,
+            "prior_eff": 1400.0,
+            "cur_eff": 1678.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1657.0,
+            "cur": 1715.0,
+            "prior_eff": 1657.0,
+            "cur_eff": 1715.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3774.0,
+            "cur": 2675.0,
+            "prior_eff": 3774.0,
+            "cur_eff": 2675.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3019.0,
+            "cur": 3094.0,
+            "prior_eff": 3019.0,
+            "cur_eff": 3094.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2603.0,
+            "cur": 1571.0,
+            "prior_eff": 2603.0,
+            "cur_eff": 1571.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1812.0,
+            "cur": 1793.0,
+            "prior_eff": 1812.0,
+            "cur_eff": 1793.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2740.0,
+            "cur": 2991.0,
+            "prior_eff": 2740.0,
+            "cur_eff": 2991.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2403.0,
+            "cur": 3125.0,
+            "prior_eff": 2403.0,
+            "cur_eff": 3125.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1541.0,
+            "cur": 1618.0,
+            "prior_eff": 1541.0,
+            "cur_eff": 1618.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2478.0,
+            "cur": 3145.0,
+            "prior_eff": 2478.0,
+            "cur_eff": 3145.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1747.0,
+            "cur": 1899.0,
+            "prior_eff": 1747.0,
+            "cur_eff": 1899.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1886.0,
+            "cur": 1886.0,
+            "prior_eff": 1886.0,
+            "cur_eff": 1886.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1822.0,
+            "cur": 1748.0,
+            "prior_eff": 1822.0,
+            "cur_eff": 1748.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1838.0,
+            "cur": 1893.0,
+            "prior_eff": 1838.0,
+            "cur_eff": 1893.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1684.0,
+            "cur": 1786.0,
+            "prior_eff": 1684.0,
+            "cur_eff": 1786.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1829.0,
+            "cur": 1923.0,
+            "prior_eff": 1643.4642857143,
+            "cur_eff": 1923.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1472.0,
+            "cur": 1529.0,
+            "prior_eff": 1472.0,
+            "cur_eff": 1529.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 1996.0,
+            "cur": 2095.0,
+            "prior_eff": 1996.0,
+            "cur_eff": 2095.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1705.0,
+            "cur": 1785.0,
+            "prior_eff": 1705.0,
+            "cur_eff": 1785.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1693.0,
+            "cur": 1743.0,
+            "prior_eff": 1693.0,
+            "cur_eff": 1743.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2581.0,
+            "cur": 2658.0,
+            "prior_eff": 2581.0,
+            "cur_eff": 2658.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1911.0,
+            "cur": 2003.0,
+            "prior_eff": 1911.0,
+            "cur_eff": 2003.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1666.0,
+            "cur": 1666.0,
+            "prior_eff": 1601.4191666667,
+            "cur_eff": 1666.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1971.0,
+            "cur": 2087.0,
+            "prior_eff": 1971.0,
+            "cur_eff": 2087.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1726.0,
+            "cur": 1779.0,
+            "prior_eff": 1726.0,
+            "cur_eff": 1779.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2328.0,
+            "cur": 2397.0,
+            "prior_eff": 2328.0,
+            "cur_eff": 2397.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1615.0,
+            "cur": 1655.0,
+            "prior_eff": 1615.0,
+            "cur_eff": 1655.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1886.0,
+            "cur": 1988.0,
+            "prior_eff": 1886.0,
+            "cur_eff": 1988.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1717.0,
+            "cur": 1717.0,
+            "prior_eff": 1717.0,
+            "cur_eff": 1717.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2248.0,
+            "cur": 2360.0,
+            "prior_eff": 2248.0,
+            "cur_eff": 2360.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1594.0,
+            "cur": 1743.0,
+            "prior_eff": 1582.8888888889,
+            "cur_eff": 1743.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1999.0,
+            "cur": 2080.0,
+            "prior_eff": 1999.0,
+            "cur_eff": 2080.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2664.0,
+            "cur": 3228.0,
+            "prior_eff": 2664.0,
+            "cur_eff": 3228.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1812.0,
+            "cur": 1812.0,
+            "prior_eff": 1812.0,
+            "cur_eff": 1812.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1746.0,
+            "cur": 1798.0,
+            "prior_eff": 1746.0,
+            "cur_eff": 1798.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2043.0,
+            "cur": 2104.0,
+            "prior_eff": 2022.1666666667,
+            "cur_eff": 2104.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1570.0,
+            "cur": 1570.0,
+            "prior_eff": 1570.0,
+            "cur_eff": 1570.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1681.0,
+            "cur": 1748.0,
+            "prior_eff": 1677.4,
+            "cur_eff": 1748.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2023.0,
+            "cur": 2164.0,
+            "prior_eff": 2023.0,
+            "cur_eff": 2164.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1366.0,
+            "cur": 1434.0,
+            "prior_eff": 1366.0,
+            "cur_eff": 1434.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1449.0,
+            "cur": 1581.0,
+            "prior_eff": 1449.0,
+            "cur_eff": 1581.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2805.0,
+            "cur": 2945.0,
+            "prior_eff": 2805.0,
+            "cur_eff": 2945.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3327.0,
+            "cur": 3520.0,
+            "prior_eff": 3327.0,
+            "cur_eff": 3520.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3253.0,
+            "cur": 3253.0,
+            "prior_eff": 3253.0,
+            "cur_eff": 3253.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2731.0,
+            "cur": 2867.0,
+            "prior_eff": 2731.0,
+            "cur_eff": 2867.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2370.0,
+            "cur": 2370.0,
+            "prior_eff": 2342.9166666667,
+            "cur_eff": 2370.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2559.0,
+            "cur": 2692.0,
+            "prior_eff": 2559.0,
+            "cur_eff": 2692.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2145.0,
+            "cur": 2447.0,
+            "prior_eff": 2145.0,
+            "cur_eff": 2447.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 3401.0,
+            "cur": 3602.0,
+            "prior_eff": 3401.0,
+            "cur_eff": 3602.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2155.0,
+            "cur": 2262.0,
+            "prior_eff": 2155.0,
+            "cur_eff": 2262.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 4147.0,
+            "cur": 4147.0,
+            "prior_eff": 4147.0,
+            "cur_eff": 4147.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2218.0,
+            "cur": 2262.0,
+            "prior_eff": 2218.0,
+            "cur_eff": 2262.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 4738.0,
+            "cur": 4908.0,
+            "prior_eff": 4738.0,
+            "cur_eff": 4908.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2771.0,
+            "cur": 3148.0,
+            "prior_eff": 2771.0,
+            "cur_eff": 3148.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 3544.0,
+            "cur": 3838.0,
+            "prior_eff": 3544.0,
+            "cur_eff": 3838.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2433.0,
+            "cur": 2505.0,
+            "prior_eff": 2433.0,
+            "cur_eff": 2505.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2805.0,
+            "cur": 3498.0,
+            "prior_eff": 2805.0,
+            "cur_eff": 3498.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 4684.0,
+            "cur": 5053.0,
+            "prior_eff": 4684.0,
+            "cur_eff": 5053.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 4342.0,
+            "cur": 4367.0,
+            "prior_eff": 4342.0,
+            "cur_eff": 4367.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2294.0,
+            "cur": 2294.0,
+            "prior_eff": 2294.0,
+            "cur_eff": 2294.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 3753.0,
+            "cur": 3800.0,
+            "prior_eff": 3753.0,
+            "cur_eff": 3800.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 4782.0,
+            "cur": 5063.0,
+            "prior_eff": 4782.0,
+            "cur_eff": 5063.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2927.0,
+            "cur": 3324.0,
+            "prior_eff": 2927.0,
+            "cur_eff": 3324.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2927.0,
+            "cur": 2927.0,
+            "prior_eff": 2927.0,
+            "cur_eff": 2927.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3891.0,
+            "cur": 4259.0,
+            "prior_eff": 3891.0,
+            "cur_eff": 4259.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 4770.0,
+            "cur": 4913.0,
+            "prior_eff": 4770.0,
+            "cur_eff": 4913.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 5990.0,
+            "cur": 6169.0,
+            "prior_eff": 5990.0,
+            "cur_eff": 6169.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 4028.0,
+            "cur": 4129.0,
+            "prior_eff": 3692.3333333333,
+            "cur_eff": 4129.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 4282.0,
+            "cur": 4410.0,
+            "prior_eff": 4282.0,
+            "cur_eff": 4410.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 3740.0,
+            "cur": 3927.0,
+            "prior_eff": 3740.0,
+            "cur_eff": 3927.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3118.0,
+            "cur": 3184.0,
+            "prior_eff": 3109.5555555556,
+            "cur_eff": 3184.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1741.0,
+            "cur": 1793.0,
+            "prior_eff": 1741.0,
+            "cur_eff": 1793.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 3546.0,
+            "cur": 3650.0,
+            "prior_eff": 3546.0,
+            "cur_eff": 3650.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 5748.0,
+            "cur": 5920.0,
+            "prior_eff": 5748.0,
+            "cur_eff": 5920.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2282.0,
+            "cur": 2350.0,
+            "prior_eff": 2282.0,
+            "cur_eff": 2350.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3088.0,
+            "cur": 3230.0,
+            "prior_eff": 3088.0,
+            "cur_eff": 3230.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3160.0,
+            "cur": 3528.0,
+            "prior_eff": 3160.0,
+            "cur_eff": 3528.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2173.0,
+            "cur": 2216.0,
+            "prior_eff": 2173.0,
+            "cur_eff": 2216.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2695.0,
+            "cur": 2829.0,
+            "prior_eff": 2668.0769230769,
+            "cur_eff": 2829.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1747.0,
+            "cur": 1799.0,
+            "prior_eff": 1747.0,
+            "cur_eff": 1799.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2483.0,
+            "cur": 2483.0,
+            "prior_eff": 2483.0,
+            "cur_eff": 2483.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3376.0,
+            "cur": 3376.0,
+            "prior_eff": 3376.0,
+            "cur_eff": 3376.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 4814.0,
+            "cur": 4958.0,
+            "prior_eff": 4814.0,
+            "cur_eff": 4958.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 4033.0,
+            "cur": 5514.0,
+            "prior_eff": 4033.0,
+            "cur_eff": 5514.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2319.0,
+            "cur": 2388.0,
+            "prior_eff": 2319.0,
+            "cur_eff": 2388.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 3533.0,
+            "cur": 3533.0,
+            "prior_eff": 3533.0,
+            "cur_eff": 3533.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3422.0,
+            "cur": 3940.0,
+            "prior_eff": 3422.0,
+            "cur_eff": 3940.0
+          }
+        ],
         "new_n": 49,
         "new_tradeout_pct": 0.03463420147578833,
         "renewal_n": 70,
@@ -277,14 +1704,23 @@
         "net_balance": -6226.99
       },
       "demo": {
-        "hh_income_mean": 287107.17324561405,
         "hh_income_median": 149506.57894736843,
-        "personal_income_mean": 205313.55263157896,
+        "hh_income_mean": 287107.17324561405,
         "personal_income_median": 108714.64912280702,
+        "personal_income_mean": 205313.55263157896,
+        "lead_income_mean": 287107.17324561405,
         "hh_size_median": 1.3267543859649122,
         "age_median": 40.6140350877193,
         "age_mean": 43.6140350877193,
-        "resident_total": 456.0
+        "resident_total": 456.0,
+        "pct_over_100k": 0.7505668934240363,
+        "income_dist": {
+          "<$50K": 9.0,
+          "$50\u201375K": 38.0,
+          "$75\u2013100K": 63.0,
+          "$100K+": 331.0
+        },
+        "lead_count": 11.0
       },
       "jll": {
         "name": "Pearl City Centre",
@@ -352,15 +1788,153 @@
         "noi_yr1": 6775468.887014454,
         "noi_exit": 8544787.69702195
       },
+      "jll_pnl": {
+        "lines": {
+          "gsr": {
+            "actual": 13027512.0,
+            "yr0": 13027512.0,
+            "yr1": 13385632.935994916
+          },
+          "ltl": {
+            "actual": -223680.0,
+            "yr0": -223680.0,
+            "yr1": -229828.87101722433
+          },
+          "conc": {
+            "actual": -5000.0,
+            "yr0": -5000.0,
+            "yr1": -5137.44793940505
+          },
+          "vacancy": {
+            "actual": -433524.0,
+            "yr0": -651375.6000000001,
+            "yr1": -669281.6467997456
+          },
+          "model": {
+            "actual": -89328.0,
+            "yr0": -89328.0,
+            "yr1": -91783.58990623486
+          },
+          "collection": {
+            "actual": -14804.0,
+            "yr0": -14804.000000000002,
+            "yr1": -15210.955858990475
+          },
+          "nri": {
+            "actual": 12261176.0,
+            "yr0": 12043324.4,
+            "yr1": 12374390.424473315
+          },
+          "other_income": {
+            "actual": 1106689.0,
+            "yr0": 1106689.0,
+            "yr1": 1121824.761861216
+          },
+          "util_reimb": {
+            "actual": 137457.0,
+            "yr0": 137457.0,
+            "yr1": 139336.94677651732
+          },
+          "egr": {
+            "actual": 13505322.0,
+            "yr0": 13287470.4,
+            "yr1": 13635552.133111048
+          },
+          "salaries": {
+            "actual": 960702.0,
+            "yr0": 849150.0,
+            "yr1": 849150.0
+          },
+          "advertising": {
+            "actual": 279839.0,
+            "yr0": 242811.0,
+            "yr1": 242811.0
+          },
+          "contract": {
+            "actual": 708314.0,
+            "yr0": 743580.0,
+            "yr1": 743580.0
+          },
+          "turnover": {
+            "actual": 211365.0,
+            "yr0": 223074.0,
+            "yr1": 223074.0
+          },
+          "maintenance": {
+            "actual": 246105.0,
+            "yr0": 266220.0,
+            "yr1": 266220.0
+          },
+          "ga": {
+            "actual": 223232.0,
+            "yr0": 234090.0,
+            "yr1": 234090.0
+          },
+          "utilities": {
+            "actual": 486309.0,
+            "yr0": 496035.18000000005,
+            "yr1": 496035.1800000001
+          },
+          "mgmt": {
+            "actual": 394204.0,
+            "yr0": 398624.112,
+            "yr1": 409066.5639933314
+          },
+          "insurance": {
+            "actual": 644820.0,
+            "yr0": 612765.0,
+            "yr1": 612765.0
+          },
+          "taxes": {
+            "actual": 2446542.0,
+            "yr0": 2737885.1135,
+            "yr1": 2737885.1135000004
+          },
+          "franchise": {
+            "actual": 42909.0,
+            "yr0": 44247.276432,
+            "yr1": 45406.38860325979
+          },
+          "opex": {
+            "actual": 6644341.0,
+            "yr0": 6848481.681932,
+            "yr1": 6860083.246096592
+          },
+          "reserves": {
+            "actual": 0.0,
+            "yr0": 126225.0,
+            "yr1": 160650.0
+          },
+          "noi": {
+            "actual": 6860981.0,
+            "yr0": 6438988.718068,
+            "yr1": 6775468.887014456
+          }
+        },
+        "tax": {
+          "current_assessment": 127743502.0,
+          "purchase_price_basis": 127000000.0,
+          "actual_taxes": 2446542.0,
+          "uw_taxes_yr0": 2737885.1135,
+          "adjustment": 291343.1135
+        }
+      },
+      "agpr": {
+        "rr_agpr_mo": 1054130.0,
+        "t1_agpr_mo": 1069691.0,
+        "var_pct": -0.014547191665630566,
+        "rr_agpr_unit": 2296.579520697168
+      },
       "hd_rows": 538,
       "as_of": "May 2026",
       "derived": {
         "trailing_cap": 0.051623913385826774,
         "forward_cap_t3": 0.05350412598425197,
+        "inplace_cap": 0.050700698567464564,
         "jll_noi_vs_trailing": -0.017883472170392878,
         "delinq_pct": 0.000659173046730372,
         "conc_pct_egr": 0.0015420603783878478,
-        "rent_to_income": 0.18504757167659897
+        "rent_to_income": 0.1842739119317337
       },
       "sub": {
         "label": "Pearl Residences",
@@ -385,11 +1959,12 @@
           }
         },
         "rents": {
-          "avg_inplace_rent": 3072.5,
-          "avg_inplace_psf": 1.988900312238215,
+          "avg_inplace_rent": 3042.7412587412587,
+          "avg_inplace_psf": 1.9876750188437906,
           "total_contract_mo": 435112.0,
+          "rr_agpr_mo": 448734.0,
           "total_other_mo": 35297.020000000004,
-          "n_occ": 136
+          "n_occ": 143
         },
         "mix": {
           "by_bed": [
@@ -399,8 +1974,16 @@
               "occ": 44,
               "vac": 8,
               "avg_sf": 1064.5849056603774,
-              "avg_contract": 2033.5762167125804,
-              "t90_ask": 2140.7232704402513
+              "in_place": 2033.5762167125804,
+              "hd90_ask": 2140.7232704402513,
+              "hd90_eff": 2140.7232704402513,
+              "hd365_ask": 2100.9103773584907,
+              "hd365_eff": 2100.9103773584907,
+              "lto_new_n": 2,
+              "lto_ren_n": 10,
+              "lto_new_to": 0.0951162790697675,
+              "lto_ren_to": 0.01813236627379866,
+              "lto_to": 0.030690440060697988
             },
             {
               "bed": 2,
@@ -408,8 +1991,16 @@
               "occ": 54,
               "vac": 1,
               "avg_sf": 1614.0181818181818,
-              "avg_contract": 3173.2521367521367,
-              "t90_ask": 3525.5510204081634
+              "in_place": 3173.2521367521367,
+              "hd90_ask": 3525.5510204081634,
+              "hd90_eff": 3525.5510204081634,
+              "hd365_ask": 3425.1272727272726,
+              "hd365_eff": 3425.1272727272726,
+              "lto_new_n": 5,
+              "lto_ren_n": 13,
+              "lto_new_to": 0.15598276433543257,
+              "lto_ren_to": 0.034124031375150965,
+              "lto_to": 0.06621395153969689
             },
             {
               "bed": 3,
@@ -417,8 +2008,234 @@
               "occ": 38,
               "vac": 2,
               "avg_sf": 1987.35,
-              "avg_contract": 4136.43062200957,
-              "t90_ask": 4847.4
+              "in_place": 4136.43062200957,
+              "hd90_ask": 4847.4,
+              "hd90_eff": 4847.4,
+              "hd365_ask": 4240.3550000000005,
+              "hd365_eff": 4240.3550000000005,
+              "lto_new_n": 7,
+              "lto_ren_n": 9,
+              "lto_new_to": 0.09453729983531312,
+              "lto_ren_to": 0.02933483266922532,
+              "lto_to": 0.05612994268928384
+            }
+          ],
+          "by_plan": [
+            {
+              "plan": "A1",
+              "bed": 1,
+              "bath": 1,
+              "units": 11,
+              "occ": 8,
+              "vac": 3,
+              "avg_sf": 750,
+              "in_place": 1571,
+              "hd90_ask": 1651,
+              "hd90_eff": 1651,
+              "hd365_ask": 1656,
+              "hd365_eff": 1656,
+              "new_n": 3,
+              "renewal_n": 6,
+              "last5_new_avg": 1567,
+              "hd_yoy_ask": 0.06768700150894591
+            },
+            {
+              "plan": "A2",
+              "bed": 1,
+              "bath": 1,
+              "units": 35,
+              "occ": 30,
+              "vac": 4,
+              "avg_sf": 1144,
+              "in_place": 2139,
+              "hd90_ask": 2267,
+              "hd90_eff": 2267,
+              "hd365_ask": 2204,
+              "hd365_eff": 2204,
+              "new_n": 17,
+              "renewal_n": 16,
+              "last5_new_avg": 2205,
+              "hd_yoy_ask": 0.039755351681957096
+            },
+            {
+              "plan": "A3",
+              "bed": 1,
+              "bath": 1,
+              "units": 6,
+              "occ": 6,
+              "vac": 0,
+              "avg_sf": 1164,
+              "in_place": 2122,
+              "hd90_ask": 2279,
+              "hd90_eff": 2279,
+              "hd365_ask": 2285,
+              "hd365_eff": 2285,
+              "new_n": 4,
+              "renewal_n": 2,
+              "last5_new_avg": 2165,
+              "hd_yoy_ask": null
+            },
+            {
+              "plan": "A5",
+              "bed": 1,
+              "bath": 1,
+              "units": 1,
+              "occ": 0,
+              "vac": 1,
+              "avg_sf": 1149,
+              "in_place": 2415,
+              "hd90_ask": 2290,
+              "hd90_eff": 2290,
+              "hd365_ask": 2290,
+              "hd365_eff": 2290,
+              "new_n": 1,
+              "renewal_n": 0,
+              "last5_new_avg": 2415,
+              "hd_yoy_ask": null
+            },
+            {
+              "plan": "B1",
+              "bed": 2,
+              "bath": 2,
+              "units": 6,
+              "occ": 6,
+              "vac": 0,
+              "avg_sf": 2220,
+              "in_place": 4124,
+              "hd90_ask": 0,
+              "hd90_eff": 0,
+              "hd365_ask": 4287,
+              "hd365_eff": 4287,
+              "new_n": 3,
+              "renewal_n": 3,
+              "last5_new_avg": 4083,
+              "hd_yoy_ask": null
+            },
+            {
+              "plan": "B3",
+              "bed": 2,
+              "bath": 2,
+              "units": 24,
+              "occ": 24,
+              "vac": 0,
+              "avg_sf": 1511,
+              "in_place": 3151,
+              "hd90_ask": 3506,
+              "hd90_eff": 3506,
+              "hd365_ask": 3257,
+              "hd365_eff": 3257,
+              "new_n": 10,
+              "renewal_n": 14,
+              "last5_new_avg": 3090,
+              "hd_yoy_ask": 0.1235576923076922
+            },
+            {
+              "plan": "B4",
+              "bed": 2,
+              "bath": 2,
+              "units": 12,
+              "occ": 12,
+              "vac": 0,
+              "avg_sf": 1659,
+              "in_place": 3255,
+              "hd90_ask": 3940,
+              "hd90_eff": 3940,
+              "hd365_ask": 3596,
+              "hd365_eff": 3596,
+              "new_n": 5,
+              "renewal_n": 7,
+              "last5_new_avg": 3204,
+              "hd_yoy_ask": 0.22170542635658919
+            },
+            {
+              "plan": "B5",
+              "bed": 2,
+              "bath": 2,
+              "units": 13,
+              "occ": 12,
+              "vac": 1,
+              "avg_sf": 1483,
+              "in_place": 2661,
+              "hd90_ask": 3180,
+              "hd90_eff": 3180,
+              "hd365_ask": 3180,
+              "hd365_eff": 3180,
+              "new_n": 2,
+              "renewal_n": 11,
+              "last5_new_avg": 2751,
+              "hd_yoy_ask": 0.15868099836035698
+            },
+            {
+              "plan": "C1",
+              "bed": 3,
+              "bath": 3,
+              "units": 6,
+              "occ": 6,
+              "vac": 0,
+              "avg_sf": 1637,
+              "in_place": 3549,
+              "hd90_ask": 3829,
+              "hd90_eff": 3829,
+              "hd365_ask": 3789,
+              "hd365_eff": 3789,
+              "new_n": 3,
+              "renewal_n": 3,
+              "last5_new_avg": 3554,
+              "hd_yoy_ask": 0.14332636607942661
+            },
+            {
+              "plan": "C2",
+              "bed": 3,
+              "bath": 3,
+              "units": 12,
+              "occ": 10,
+              "vac": 2,
+              "avg_sf": 1995,
+              "in_place": 4030,
+              "hd90_ask": 5151,
+              "hd90_eff": 5151,
+              "hd365_ask": 4304,
+              "hd365_eff": 4304,
+              "new_n": 4,
+              "renewal_n": 7,
+              "last5_new_avg": 3960,
+              "hd_yoy_ask": 0.32433474739683765
+            },
+            {
+              "plan": "C3",
+              "bed": 3,
+              "bath": 3,
+              "units": 12,
+              "occ": 12,
+              "vac": 0,
+              "avg_sf": 2256,
+              "in_place": 5036,
+              "hd90_ask": 5053,
+              "hd90_eff": 5053,
+              "hd365_ask": 4961,
+              "hd365_eff": 4961,
+              "new_n": 4,
+              "renewal_n": 8,
+              "last5_new_avg": 4902,
+              "hd_yoy_ask": null
+            },
+            {
+              "plan": "C4",
+              "bed": 3,
+              "bath": 3,
+              "units": 10,
+              "occ": 10,
+              "vac": 0,
+              "avg_sf": 1866,
+              "in_place": 3516,
+              "hd90_ask": 0,
+              "hd90_eff": 0,
+              "hd365_ask": 3570,
+              "hd365_eff": 3570,
+              "new_n": 4,
+              "renewal_n": 6,
+              "last5_new_avg": 3414,
+              "hd_yoy_ask": null
             }
           ],
           "hd_t90_ask": 3269.941919191919,
@@ -430,25 +2247,396 @@
         },
         "lto": {
           "period": "02/25/2026 - 05/25/2026",
+          "rows": [
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 2805.0,
+              "cur": 2945.0,
+              "prior_eff": 2805.0,
+              "cur_eff": 2945.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3327.0,
+              "cur": 3520.0,
+              "prior_eff": 3327.0,
+              "cur_eff": 3520.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3253.0,
+              "cur": 3253.0,
+              "prior_eff": 3253.0,
+              "cur_eff": 3253.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 2731.0,
+              "cur": 2867.0,
+              "prior_eff": 2731.0,
+              "cur_eff": 2867.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2370.0,
+              "cur": 2370.0,
+              "prior_eff": 2342.9166666667,
+              "cur_eff": 2370.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 2559.0,
+              "cur": 2692.0,
+              "prior_eff": 2559.0,
+              "cur_eff": 2692.0
+            },
+            {
+              "beds": 1,
+              "kind": "new",
+              "prior": 2145.0,
+              "cur": 2447.0,
+              "prior_eff": 2145.0,
+              "cur_eff": 2447.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 3401.0,
+              "cur": 3602.0,
+              "prior_eff": 3401.0,
+              "cur_eff": 3602.0
+            },
+            {
+              "beds": 1,
+              "kind": "new",
+              "prior": 2155.0,
+              "cur": 2262.0,
+              "prior_eff": 2155.0,
+              "cur_eff": 2262.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 4147.0,
+              "cur": 4147.0,
+              "prior_eff": 4147.0,
+              "cur_eff": 4147.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2218.0,
+              "cur": 2262.0,
+              "prior_eff": 2218.0,
+              "cur_eff": 2262.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 4738.0,
+              "cur": 4908.0,
+              "prior_eff": 4738.0,
+              "cur_eff": 4908.0
+            },
+            {
+              "beds": 2,
+              "kind": "new",
+              "prior": 2771.0,
+              "cur": 3148.0,
+              "prior_eff": 2771.0,
+              "cur_eff": 3148.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 3544.0,
+              "cur": 3838.0,
+              "prior_eff": 3544.0,
+              "cur_eff": 3838.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2433.0,
+              "cur": 2505.0,
+              "prior_eff": 2433.0,
+              "cur_eff": 2505.0
+            },
+            {
+              "beds": 2,
+              "kind": "new",
+              "prior": 2805.0,
+              "cur": 3498.0,
+              "prior_eff": 2805.0,
+              "cur_eff": 3498.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 4684.0,
+              "cur": 5053.0,
+              "prior_eff": 4684.0,
+              "cur_eff": 5053.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 4342.0,
+              "cur": 4367.0,
+              "prior_eff": 4342.0,
+              "cur_eff": 4367.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2294.0,
+              "cur": 2294.0,
+              "prior_eff": 2294.0,
+              "cur_eff": 2294.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 3753.0,
+              "cur": 3800.0,
+              "prior_eff": 3753.0,
+              "cur_eff": 3800.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 4782.0,
+              "cur": 5063.0,
+              "prior_eff": 4782.0,
+              "cur_eff": 5063.0
+            },
+            {
+              "beds": 2,
+              "kind": "new",
+              "prior": 2927.0,
+              "cur": 3324.0,
+              "prior_eff": 2927.0,
+              "cur_eff": 3324.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 2927.0,
+              "cur": 2927.0,
+              "prior_eff": 2927.0,
+              "cur_eff": 2927.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3891.0,
+              "cur": 4259.0,
+              "prior_eff": 3891.0,
+              "cur_eff": 4259.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 4770.0,
+              "cur": 4913.0,
+              "prior_eff": 4770.0,
+              "cur_eff": 4913.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 5990.0,
+              "cur": 6169.0,
+              "prior_eff": 5990.0,
+              "cur_eff": 6169.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 4028.0,
+              "cur": 4129.0,
+              "prior_eff": 3692.3333333333,
+              "cur_eff": 4129.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 4282.0,
+              "cur": 4410.0,
+              "prior_eff": 4282.0,
+              "cur_eff": 4410.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 3740.0,
+              "cur": 3927.0,
+              "prior_eff": 3740.0,
+              "cur_eff": 3927.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3118.0,
+              "cur": 3184.0,
+              "prior_eff": 3109.5555555556,
+              "cur_eff": 3184.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 1741.0,
+              "cur": 1793.0,
+              "prior_eff": 1741.0,
+              "cur_eff": 1793.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 3546.0,
+              "cur": 3650.0,
+              "prior_eff": 3546.0,
+              "cur_eff": 3650.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 5748.0,
+              "cur": 5920.0,
+              "prior_eff": 5748.0,
+              "cur_eff": 5920.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2282.0,
+              "cur": 2350.0,
+              "prior_eff": 2282.0,
+              "cur_eff": 2350.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3088.0,
+              "cur": 3230.0,
+              "prior_eff": 3088.0,
+              "cur_eff": 3230.0
+            },
+            {
+              "beds": 2,
+              "kind": "new",
+              "prior": 3160.0,
+              "cur": 3528.0,
+              "prior_eff": 3160.0,
+              "cur_eff": 3528.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2173.0,
+              "cur": 2216.0,
+              "prior_eff": 2173.0,
+              "cur_eff": 2216.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 2695.0,
+              "cur": 2829.0,
+              "prior_eff": 2668.0769230769,
+              "cur_eff": 2829.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 1747.0,
+              "cur": 1799.0,
+              "prior_eff": 1747.0,
+              "cur_eff": 1799.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2483.0,
+              "cur": 2483.0,
+              "prior_eff": 2483.0,
+              "cur_eff": 2483.0
+            },
+            {
+              "beds": 2,
+              "kind": "renewal",
+              "prior": 3376.0,
+              "cur": 3376.0,
+              "prior_eff": 3376.0,
+              "cur_eff": 3376.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 4814.0,
+              "cur": 4958.0,
+              "prior_eff": 4814.0,
+              "cur_eff": 4958.0
+            },
+            {
+              "beds": 3,
+              "kind": "new",
+              "prior": 4033.0,
+              "cur": 5514.0,
+              "prior_eff": 4033.0,
+              "cur_eff": 5514.0
+            },
+            {
+              "beds": 1,
+              "kind": "renewal",
+              "prior": 2319.0,
+              "cur": 2388.0,
+              "prior_eff": 2319.0,
+              "cur_eff": 2388.0
+            },
+            {
+              "beds": 3,
+              "kind": "renewal",
+              "prior": 3533.0,
+              "cur": 3533.0,
+              "prior_eff": 3533.0,
+              "cur_eff": 3533.0
+            },
+            {
+              "beds": 2,
+              "kind": "new",
+              "prior": 3422.0,
+              "cur": 3940.0,
+              "prior_eff": 3422.0,
+              "cur_eff": 3940.0
+            }
+          ],
           "leases": 48.0,
           "prior_rent": 3320.3191489362,
           "prior_eff": 3311.8485633752,
           "cur_rent": 3512.8260869565,
           "cur_eff": 3512.8260869565,
+          "ut_beds": {
+            "A1": 1,
+            "A2": 1,
+            "A3": 1,
+            "B1": 2,
+            "B3": 2,
+            "B4": 2,
+            "B5": 2,
+            "C1": 3,
+            "C2": 3,
+            "C3": 3,
+            "C4": 3
+          },
           "tradeout_lease_pct": 0.057978444054685996,
           "tradeout_eff_pct": 0.060684394148891485,
-          "_groups": {
-            "new": [
-              47924.0,
-              53384.0,
-              14
-            ],
-            "renewal": [
-              105166.0,
-              108206.0,
-              32
-            ]
-          },
           "new_n": 14,
           "new_tradeout_pct": 0.11393038978382442,
           "renewal_n": 32,
@@ -482,11 +2670,12 @@
         }
       },
       "rents": {
-        "avg_inplace_rent": 2491.6796116504856,
-        "avg_inplace_psf": 2.789855584483349,
+        "avg_inplace_rent": 2499.940366972477,
+        "avg_inplace_psf": 2.812705474326354,
         "total_contract_mo": 544987.0,
+        "rr_agpr_mo": 595103.0,
         "total_other_mo": 26545.0,
-        "n_occ": 206
+        "n_occ": 218
       },
       "mix": {
         "by_bed": [
@@ -496,8 +2685,16 @@
             "occ": 31,
             "vac": 5,
             "avg_sf": 585.0,
-            "avg_contract": 1871.2037634408603,
-            "t90_ask": 1826.0
+            "in_place": 1871.2037634408603,
+            "hd90_ask": 1826.0,
+            "hd90_eff": 1677.6666666666667,
+            "hd365_ask": 1828.2222222222222,
+            "hd365_eff": 1708.6666666666667,
+            "lto_new_n": 6,
+            "lto_ren_n": 3,
+            "lto_new_to": -0.13831699346405224,
+            "lto_ren_to": 0.02693310165073859,
+            "lto_to": -0.08546818560711311
           },
           {
             "bed": 1,
@@ -505,8 +2702,16 @@
             "occ": 91,
             "vac": 12,
             "avg_sf": 772.1923076923077,
-            "avg_contract": 2274.9573759573755,
-            "t90_ask": 2174.3466666666664
+            "in_place": 2274.9573759573755,
+            "hd90_ask": 2174.3466666666664,
+            "hd90_eff": 2063.72,
+            "hd365_ask": 2225.7281910397296,
+            "hd365_eff": 2078.0199492814872,
+            "lto_new_n": 8,
+            "lto_ren_n": 10,
+            "lto_new_to": -0.08153960343547872,
+            "lto_ren_to": 0.0670386374124261,
+            "lto_to": 0.0014051851331413623
           },
           {
             "bed": 2,
@@ -514,8 +2719,234 @@
             "occ": 84,
             "vac": 11,
             "avg_sf": 1139.3333333333333,
-            "avg_contract": 2997.35664588416,
-            "t90_ask": 2934.4375
+            "in_place": 2997.35664588416,
+            "hd90_ask": 2934.4375,
+            "hd90_eff": 2693.4010416666665,
+            "hd365_ask": 2899.985539215686,
+            "hd365_eff": 2606.9627450980392,
+            "lto_new_n": 22,
+            "lto_ren_n": 20,
+            "lto_new_to": -0.1205566097406705,
+            "lto_ren_to": 0.011769581433899612,
+            "lto_to": -0.0598387464820872
+          }
+        ],
+        "by_plan": [
+          {
+            "plan": "ST",
+            "bed": 0,
+            "bath": 1,
+            "units": 32,
+            "occ": 28,
+            "vac": 4,
+            "avg_sf": 585,
+            "in_place": 1862,
+            "hd90_ask": 1826,
+            "hd90_eff": 1678,
+            "hd365_ask": 1828,
+            "hd365_eff": 1709,
+            "new_n": 12,
+            "renewal_n": 18,
+            "last5_new_avg": 1749,
+            "hd_yoy_ask": -0.11035322777101098
+          },
+          {
+            "plan": "ST.WFH",
+            "bed": 0,
+            "bath": 1,
+            "units": 4,
+            "occ": 3,
+            "vac": 1,
+            "avg_sf": 585,
+            "in_place": 1953,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 0,
+            "hd365_eff": 0,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 2032,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1",
+            "bed": 1,
+            "bath": 1,
+            "units": 72,
+            "occ": 62,
+            "vac": 9,
+            "avg_sf": 768,
+            "in_place": 2249,
+            "hd90_ask": 2153,
+            "hd90_eff": 2023,
+            "hd365_ask": 2208,
+            "hd365_eff": 2057,
+            "new_n": 27,
+            "renewal_n": 39,
+            "last5_new_avg": 2132,
+            "hd_yoy_ask": -0.09485634197617399
+          },
+          {
+            "plan": "A1.WFH",
+            "bed": 1,
+            "bath": 1,
+            "units": 8,
+            "occ": 7,
+            "vac": 1,
+            "avg_sf": 768,
+            "in_place": 2245,
+            "hd90_ask": 2153,
+            "hd90_eff": 2023,
+            "hd365_ask": 2160,
+            "hd365_eff": 2006,
+            "new_n": 7,
+            "renewal_n": 1,
+            "last5_new_avg": 2194,
+            "hd_yoy_ask": -0.09167369901547129
+          },
+          {
+            "plan": "A1M",
+            "bed": 1,
+            "bath": 1,
+            "units": 16,
+            "occ": 16,
+            "vac": 0,
+            "avg_sf": 790,
+            "in_place": 2356,
+            "hd90_ask": 2300,
+            "hd90_eff": 2300,
+            "hd365_ask": 2333,
+            "hd365_eff": 2220,
+            "new_n": 8,
+            "renewal_n": 8,
+            "last5_new_avg": 2231,
+            "hd_yoy_ask": -0.08802537668517052
+          },
+          {
+            "plan": "A1M.WFH",
+            "bed": 1,
+            "bath": 1,
+            "units": 4,
+            "occ": 2,
+            "vac": 2,
+            "avg_sf": 790,
+            "in_place": 2267,
+            "hd90_ask": 2104,
+            "hd90_eff": 1929,
+            "hd365_ask": 2169,
+            "hd365_eff": 1996,
+            "new_n": 0,
+            "renewal_n": 3,
+            "last5_new_avg": 0,
+            "hd_yoy_ask": -0.11534688156972672
+          },
+          {
+            "plan": "A2",
+            "bed": 1,
+            "bath": 1,
+            "units": 4,
+            "occ": 4,
+            "vac": 0,
+            "avg_sf": 767,
+            "in_place": 2408,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 2302,
+            "hd365_eff": 2110,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 2411,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "B1",
+            "bed": 2,
+            "bath": 2,
+            "units": 16,
+            "occ": 14,
+            "vac": 2,
+            "avg_sf": 1071,
+            "in_place": 2805,
+            "hd90_ask": 2928,
+            "hd90_eff": 2716,
+            "hd365_ask": 2809,
+            "hd365_eff": 2508,
+            "new_n": 9,
+            "renewal_n": 5,
+            "last5_new_avg": 2631,
+            "hd_yoy_ask": -0.010837743497354002
+          },
+          {
+            "plan": "B2",
+            "bed": 2,
+            "bath": 2,
+            "units": 36,
+            "occ": 33,
+            "vac": 2,
+            "avg_sf": 1085,
+            "in_place": 2948,
+            "hd90_ask": 2789,
+            "hd90_eff": 2597,
+            "hd365_ask": 2770,
+            "hd365_eff": 2515,
+            "new_n": 19,
+            "renewal_n": 15,
+            "last5_new_avg": 2760,
+            "hd_yoy_ask": -0.09027154856071107
+          },
+          {
+            "plan": "B2.WFH",
+            "bed": 2,
+            "bath": 2,
+            "units": 4,
+            "occ": 3,
+            "vac": 1,
+            "avg_sf": 1085,
+            "in_place": 2893,
+            "hd90_ask": 2764,
+            "hd90_eff": 2534,
+            "hd365_ask": 2660,
+            "hd365_eff": 2545,
+            "new_n": 4,
+            "renewal_n": 0,
+            "last5_new_avg": 2893,
+            "hd_yoy_ask": -0.0861299388328649
+          },
+          {
+            "plan": "B3",
+            "bed": 2,
+            "bath": 2,
+            "units": 36,
+            "occ": 30,
+            "vac": 6,
+            "avg_sf": 1221,
+            "in_place": 3153,
+            "hd90_ask": 3096,
+            "hd90_eff": 2816,
+            "hd365_ask": 3087,
+            "hd365_eff": 2758,
+            "new_n": 16,
+            "renewal_n": 15,
+            "last5_new_avg": 2984,
+            "hd_yoy_ask": -0.003861625100563204
+          },
+          {
+            "plan": "B3.WFH",
+            "bed": 2,
+            "bath": 2,
+            "units": 4,
+            "occ": 4,
+            "vac": 0,
+            "avg_sf": 1221,
+            "in_place": 2989,
+            "hd90_ask": 2989,
+            "hd90_eff": 2529,
+            "hd365_ask": 2989,
+            "hd365_eff": 2529,
+            "new_n": 4,
+            "renewal_n": 0,
+            "last5_new_avg": 2989,
+            "hd_yoy_ask": 0.011078224101479961
           }
         ],
         "hd_t90_ask": 2445.4941520467833,
@@ -692,25 +3123,578 @@
       },
       "lto": {
         "period": "02/25/2026 - 05/25/2026",
+        "rows": [
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2410.0,
+            "cur": 2410.0,
+            "prior_eff": 2224.6153846154,
+            "cur_eff": 2410.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3145.0,
+            "cur": 3145.0,
+            "prior_eff": 2661.1538461538,
+            "cur_eff": 3145.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3070.0,
+            "cur": 3173.0,
+            "prior_eff": 2631.4285714286,
+            "cur_eff": 3173.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3070.0,
+            "cur": 3145.0,
+            "prior_eff": 2595.7142857143,
+            "cur_eff": 3145.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2877.0,
+            "cur": 2588.0,
+            "prior_eff": 2545.0384615385,
+            "cur_eff": 2243.3333333333
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3095.0,
+            "cur": 3135.0,
+            "prior_eff": 2618.8461538462,
+            "cur_eff": 3135.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2385.0,
+            "cur": 2385.0,
+            "prior_eff": 2018.0769230769,
+            "cur_eff": 2385.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2907.0,
+            "cur": 3010.0,
+            "prior_eff": 2421.3076923077,
+            "cur_eff": 3010.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3055.0,
+            "cur": 3055.0,
+            "prior_eff": 2585.0,
+            "cur_eff": 3055.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3170.0,
+            "cur": 3158.0,
+            "prior_eff": 2682.3076923077,
+            "cur_eff": 3158.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2882.0,
+            "cur": 2526.0,
+            "prior_eff": 2438.6153846154,
+            "cur_eff": 2137.3846153846
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3145.0,
+            "cur": 2991.0,
+            "prior_eff": 2661.1538461538,
+            "cur_eff": 2492.5
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2857.0,
+            "cur": 2734.0,
+            "prior_eff": 2448.8571428571,
+            "cur_eff": 2193.7272727273
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2857.0,
+            "cur": 2498.0,
+            "prior_eff": 2359.7692307692,
+            "cur_eff": 2113.6923076923
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2497.0,
+            "cur": 2617.0,
+            "prior_eff": 2304.9230769231,
+            "cur_eff": 2617.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2837.0,
+            "cur": 2556.0,
+            "prior_eff": 2431.7142857143,
+            "cur_eff": 2215.2
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2245.0,
+            "cur": 2183.0,
+            "prior_eff": 2084.6428571429,
+            "cur_eff": 2183.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2375.0,
+            "cur": 2375.0,
+            "prior_eff": 2000.0,
+            "cur_eff": 2375.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2877.0,
+            "cur": 2633.0,
+            "prior_eff": 2671.5,
+            "cur_eff": 2227.9230769231
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 2165.0,
+            "cur": 1697.0,
+            "prior_eff": 1793.4615384615,
+            "cur_eff": 1575.7857142857
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2882.0,
+            "cur": 2882.0,
+            "prior_eff": 2470.2857142857,
+            "cur_eff": 2882.0
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 2015.0,
+            "cur": 1702.0,
+            "prior_eff": 1860.0,
+            "cur_eff": 1702.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2370.0,
+            "cur": 2370.0,
+            "prior_eff": 2005.3846153846,
+            "cur_eff": 2370.0
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 1910.0,
+            "cur": 1674.0,
+            "prior_eff": 1910.0,
+            "cur_eff": 1554.4285714286
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2270.0,
+            "cur": 2174.0,
+            "prior_eff": 2107.8571428571,
+            "cur_eff": 2174.0
+          },
+          {
+            "beds": 0,
+            "kind": "renewal",
+            "prior": 2090.0,
+            "cur": 2141.0,
+            "prior_eff": 1730.0,
+            "cur_eff": 2141.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2982.0,
+            "cur": 3060.0,
+            "prior_eff": 2530.9230769231,
+            "cur_eff": 3060.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3095.0,
+            "cur": 3095.0,
+            "prior_eff": 2652.8571428571,
+            "cur_eff": 3095.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3105.0,
+            "cur": 3123.0,
+            "prior_eff": 2623.8461538462,
+            "cur_eff": 3123.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3145.0,
+            "cur": 3176.0,
+            "prior_eff": 2661.1538461538,
+            "cur_eff": 2540.8
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2430.0,
+            "cur": 2216.0,
+            "prior_eff": 2336.5384615385,
+            "cur_eff": 2216.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2907.0,
+            "cur": 2907.0,
+            "prior_eff": 2421.3076923077,
+            "cur_eff": 2907.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2972.0,
+            "cur": 3062.0,
+            "prior_eff": 2511.7142857143,
+            "cur_eff": 3062.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2857.0,
+            "cur": 2761.0,
+            "prior_eff": 2857.0,
+            "cur_eff": 2392.8666666667
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2882.0,
+            "cur": 2745.0,
+            "prior_eff": 2470.2857142857,
+            "cur_eff": 2379.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2350.0,
+            "cur": 2350.0,
+            "prior_eff": 1950.0,
+            "cur_eff": 2350.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2907.0,
+            "cur": 2797.0,
+            "prior_eff": 2459.7692307692,
+            "cur_eff": 2424.0666666667
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3095.0,
+            "cur": 3095.0,
+            "prior_eff": 2652.8571428571,
+            "cur_eff": 3074.1666666667
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 2045.0,
+            "cur": 1857.0,
+            "prior_eff": 1968.0769230769,
+            "cur_eff": 55.91
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 2015.0,
+            "cur": 1785.0,
+            "prior_eff": 1860.0,
+            "cur_eff": 1785.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2335.0,
+            "cur": 3680.0,
+            "prior_eff": 1937.3076923077,
+            "cur_eff": 3680.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2370.0,
+            "cur": 2370.0,
+            "prior_eff": 2187.6923076923,
+            "cur_eff": 2370.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2972.0,
+            "cur": 2850.0,
+            "prior_eff": 2493.8571428571,
+            "cur_eff": 2850.0
+          },
+          {
+            "beds": 0,
+            "kind": "new",
+            "prior": 2090.0,
+            "cur": 1832.0,
+            "prior_eff": 1929.2307692308,
+            "cur_eff": 1832.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2882.0,
+            "cur": 2757.0,
+            "prior_eff": 2470.2857142857,
+            "cur_eff": 2757.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2547.0,
+            "cur": 2185.0,
+            "prior_eff": 2351.0769230769,
+            "cur_eff": 2185.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2375.0,
+            "cur": 2422.0,
+            "prior_eff": 2009.6153846154,
+            "cur_eff": 2422.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2907.0,
+            "cur": 2943.0,
+            "prior_eff": 2699.3571428571,
+            "cur_eff": 2943.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2960.0,
+            "cur": 2989.0,
+            "prior_eff": 2466.1538461538,
+            "cur_eff": 2989.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3070.0,
+            "cur": 3085.0,
+            "prior_eff": 2597.6923076923,
+            "cur_eff": 3085.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2922.0,
+            "cur": 2781.0,
+            "prior_eff": 2472.4615384615,
+            "cur_eff": 2383.7142857143
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2997.0,
+            "cur": 3071.0,
+            "prior_eff": 2535.9230769231,
+            "cur_eff": 3071.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2160.0,
+            "cur": 2269.0,
+            "prior_eff": 2160.0,
+            "cur_eff": 2269.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3042.0,
+            "cur": 2708.0,
+            "prior_eff": 2535.5384615385,
+            "cur_eff": 2708.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3017.0,
+            "cur": 3099.0,
+            "prior_eff": 2784.9230769231,
+            "cur_eff": 3099.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2857.0,
+            "cur": 2897.0,
+            "prior_eff": 2448.8571428571,
+            "cur_eff": 2897.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3080.0,
+            "cur": 3128.0,
+            "prior_eff": 2606.1538461538,
+            "cur_eff": 3128.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 5735.0,
+            "cur": 3015.0,
+            "prior_eff": 5735.0,
+            "cur_eff": 3015.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2405.0,
+            "cur": 2118.0,
+            "prior_eff": 2220.0,
+            "cur_eff": 2118.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2907.0,
+            "cur": 2907.0,
+            "prior_eff": 2456.0,
+            "cur_eff": 2907.0
+          },
+          {
+            "beds": 0,
+            "kind": "renewal",
+            "prior": 1895.0,
+            "cur": 1895.0,
+            "prior_eff": 1895.0,
+            "cur_eff": 1839.4444444444
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 6385.0,
+            "cur": 3181.0,
+            "prior_eff": 6385.0,
+            "cur_eff": 3181.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3057.0,
+            "cur": 3117.0,
+            "prior_eff": 2821.8461538462,
+            "cur_eff": 3078.5384615385
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2952.0,
+            "cur": 2952.0,
+            "prior_eff": 2952.0,
+            "cur_eff": 2916.2857142857
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3055.0,
+            "cur": 3073.0,
+            "prior_eff": 2585.0,
+            "cur_eff": 3073.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2410.0,
+            "cur": 2125.0,
+            "prior_eff": 2131.9230769231,
+            "cur_eff": 2125.0
+          },
+          {
+            "beds": 0,
+            "kind": "renewal",
+            "prior": 1770.0,
+            "cur": 1874.0,
+            "prior_eff": 1770.0,
+            "cur_eff": 1874.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2370.0,
+            "cur": 2456.0,
+            "prior_eff": 2031.4285714286,
+            "cur_eff": 2400.4444444444
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2395.0,
+            "cur": 2054.0,
+            "prior_eff": 2210.7692307692,
+            "cur_eff": 2054.0
+          }
+        ],
         "leases": 72.0,
         "prior_rent": 2796.3333333333,
         "prior_eff": 2476.9134615385,
         "cur_rent": 2790.4166666667,
         "cur_eff": 2689.169614475,
+        "ut_beds": {
+          "A1": 1,
+          "A1M": 1,
+          "A1.WFH": 1,
+          "B1": 2,
+          "B2": 2,
+          "B2.WFH": 2,
+          "B3": 2,
+          "B3.WFH": 2,
+          "ST": 0
+        },
         "tradeout_lease_pct": -0.002115866014995693,
         "tradeout_eff_pct": 0.08569381055592462,
-        "_groups": {
-          "new": [
-            102247.0,
-            90439.0,
-            36
-          ],
-          "renewal": [
-            89917.0,
-            92380.0,
-            33
-          ]
-        },
         "new_n": 36,
         "new_tradeout_pct": -0.11548505090613903,
         "renewal_n": 33,
@@ -722,14 +3706,23 @@
         "net_balance": -18262.05
       },
       "demo": {
-        "hh_income_mean": 171459.0,
         "hh_income_median": 126909.0,
-        "personal_income_mean": 104255.0,
+        "hh_income_mean": 171459.0,
         "personal_income_median": 79225.0,
+        "personal_income_mean": 104255.0,
+        "lead_income_mean": 171459.0,
         "hh_size_median": 2.0,
         "age_median": 33.0,
         "age_mean": 36.0,
-        "resident_total": 226.0
+        "resident_total": 226.0,
+        "pct_over_100k": 0.7723214285714286,
+        "income_dist": {
+          "<$50K": 3.0,
+          "$50\u201375K": 4.0,
+          "$75\u2013100K": 44.0,
+          "$100K+": 173.0
+        },
+        "lead_count": 256.0
       },
       "jll": {
         "name": "Caroline Golden Glades",
@@ -797,15 +3790,153 @@
         "noi_yr1": 4073671.000469124,
         "noi_exit": 5351094.206818151
       },
+      "jll_pnl": {
+        "lines": {
+          "gsr": {
+            "actual": 7184412.0,
+            "yr0": 7184412.0,
+            "yr1": 7300631.4830476595
+          },
+          "ltl": {
+            "actual": -280.0,
+            "yr0": -280.0,
+            "yr1": -284.5294528283379
+          },
+          "conc": {
+            "actual": -366288.0,
+            "yr0": -366288.0,
+            "yr1": -372213.30077709374
+          },
+          "vacancy": {
+            "actual": -563352.0,
+            "yr0": -359220.60000000003,
+            "yr1": -365031.5741523831
+          },
+          "model": {
+            "actual": -113844.0,
+            "yr0": -113844.00000000001,
+            "yr1": -115685.61081353322
+          },
+          "collection": {
+            "actual": 0.0,
+            "yr0": -14368.824,
+            "yr1": -14601.262966095319
+          },
+          "nri": {
+            "actual": 6140648.0,
+            "yr0": 6330410.576,
+            "yr1": 6432815.204885726
+          },
+          "other_income": {
+            "actual": 505168.0,
+            "yr0": 505168.0,
+            "yr1": 512076.9893799493
+          },
+          "util_reimb": {
+            "actual": 111040.0,
+            "yr0": 111040.0,
+            "yr1": 112558.65157878087
+          },
+          "egr": {
+            "actual": 6756856.0,
+            "yr0": 6946618.576,
+            "yr1": 7057450.845844456
+          },
+          "salaries": {
+            "actual": 554938.0,
+            "yr0": 560500.0,
+            "yr1": 560499.9999999999
+          },
+          "advertising": {
+            "actual": 152658.0,
+            "yr0": 106200.0,
+            "yr1": 106200.0
+          },
+          "contract": {
+            "actual": 380468.0,
+            "yr0": 318600.0,
+            "yr1": 318600.0
+          },
+          "turnover": {
+            "actual": 39439.0,
+            "yr0": 35400.0,
+            "yr1": 35400.0
+          },
+          "maintenance": {
+            "actual": 48780.0,
+            "yr0": 55460.0,
+            "yr1": 55459.99999999999
+          },
+          "ga": {
+            "actual": 111974.0,
+            "yr0": 109740.0,
+            "yr1": 109740.0
+          },
+          "utilities": {
+            "actual": 151636.0,
+            "yr0": 154668.71999999997,
+            "yr1": 154668.71999999997
+          },
+          "mgmt": {
+            "actual": 198437.0,
+            "yr0": 208398.55728,
+            "yr1": 211723.5253753337
+          },
+          "insurance": {
+            "actual": 322003.0,
+            "yr0": 280132.0,
+            "yr1": 280132.00000000006
+          },
+          "taxes": {
+            "actual": 966874.0,
+            "yr0": 1151355.5999999999,
+            "yr1": 1151355.6
+          },
+          "franchise": {
+            "actual": 0.0,
+            "yr0": 0.0,
+            "yr1": 0.0
+          },
+          "opex": {
+            "actual": 2927207.0,
+            "yr0": 2980454.8772799997,
+            "yr1": 2983779.8453753334
+          },
+          "reserves": {
+            "actual": 0.0,
+            "yr0": 64900.0,
+            "yr1": 59000.0
+          },
+          "noi": {
+            "actual": 3829649.0,
+            "yr0": 3966163.6987200007,
+            "yr1": 4014671.0004691225
+          }
+        },
+        "tax": {
+          "current_assessment": 51500000.0,
+          "purchase_price_basis": 85000000.0,
+          "actual_taxes": 966874.0,
+          "uw_taxes_yr0": 1151355.5999999999,
+          "adjustment": 184481.59999999986
+        }
+      },
+      "agpr": {
+        "rr_agpr_mo": 595103.0,
+        "t1_agpr_mo": 596816.0,
+        "var_pct": -0.002870231361089548,
+        "rr_agpr_unit": 2521.6228813559323
+      },
       "hd_rows": 326,
       "as_of": "May 2026",
       "derived": {
         "trailing_cap": 0.044734070588235295,
         "forward_cap_t3": 0.047164329411764704,
+        "inplace_cap": 0.04666074939670589,
         "jll_noi_vs_trailing": 0.04306960630086931,
         "delinq_pct": -0.0015320418706499571,
         "conc_pct_egr": 0.06565675359361402,
-        "rent_to_income": 0.2356031119921032
+        "rent_to_income": 0.23638421549038857
       }
     },
     {
@@ -834,11 +3965,12 @@
         }
       },
       "rents": {
-        "avg_inplace_rent": 1589.9225352112676,
-        "avg_inplace_psf": 1.8604932879545772,
+        "avg_inplace_rent": 1603.0,
+        "avg_inplace_psf": 1.871244801088486,
         "total_contract_mo": 484106.0,
+        "rr_agpr_mo": 522274.0,
         "total_other_mo": 55045.0,
-        "n_occ": 284
+        "n_occ": 302
       },
       "mix": {
         "by_bed": [
@@ -848,8 +3980,16 @@
             "occ": 211,
             "vac": 23,
             "avg_sf": 754.9148936170212,
-            "avg_contract": 1453.2051168600808,
-            "t90_ask": 1550.705464176192
+            "in_place": 1453.2051168600808,
+            "hd90_ask": 1550.705464176192,
+            "hd90_eff": 1463.7370365207696,
+            "hd365_ask": 1475.3489947664054,
+            "hd365_eff": 1396.9370369496733,
+            "lto_new_n": 37,
+            "lto_ren_n": 40,
+            "lto_new_to": -0.15989964907960352,
+            "lto_ren_to": 0.050278508306244696,
+            "lto_to": -0.05793598592609617
           },
           {
             "bed": 2,
@@ -857,8 +3997,16 @@
             "occ": 64,
             "vac": 13,
             "avg_sf": 1111.5714285714287,
-            "avg_contract": 1924.463545071919,
-            "t90_ask": 1867.822510822511
+            "in_place": 1924.463545071919,
+            "hd90_ask": 1867.822510822511,
+            "hd90_eff": 1769.6536796536798,
+            "hd365_ask": 1894.2090384363112,
+            "hd365_eff": 1802.720484061393,
+            "lto_new_n": 18,
+            "lto_ren_n": 5,
+            "lto_new_to": -0.13955835962145113,
+            "lto_ren_to": -0.07012222321348915,
+            "lto_to": -0.12424755085179207
           },
           {
             "bed": 3,
@@ -866,8 +4014,432 @@
             "occ": 9,
             "vac": 1,
             "avg_sf": 1444.0,
-            "avg_contract": 2754.58024691358,
-            "t90_ask": 3020.0
+            "in_place": 2754.58024691358,
+            "hd90_ask": 3020.0,
+            "hd90_eff": 2913.0,
+            "hd365_ask": 2786.8,
+            "hd365_eff": 2691.0,
+            "lto_new_n": 0,
+            "lto_ren_n": 1,
+            "lto_new_to": null,
+            "lto_ren_to": 0.04606172270842923,
+            "lto_to": 0.04606172270842923
+          }
+        ],
+        "by_plan": [
+          {
+            "plan": "A1",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 10,
+            "vac": 0,
+            "avg_sf": 652,
+            "in_place": 1337,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1367,
+            "hd365_eff": 1285,
+            "new_n": 9,
+            "renewal_n": 1,
+            "last5_new_avg": 1302,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1A",
+            "bed": 1,
+            "bath": 1,
+            "units": 19,
+            "occ": 18,
+            "vac": 1,
+            "avg_sf": 652,
+            "in_place": 1340,
+            "hd90_ask": 1420,
+            "hd90_eff": 1323,
+            "hd365_ask": 1378,
+            "hd365_eff": 1307,
+            "new_n": 13,
+            "renewal_n": 6,
+            "last5_new_avg": 1347,
+            "hd_yoy_ask": 0.05382331106161842
+          },
+          {
+            "plan": "A1AS",
+            "bed": 1,
+            "bath": 1,
+            "units": 19,
+            "occ": 17,
+            "vac": 2,
+            "avg_sf": 676,
+            "in_place": 1388,
+            "hd90_ask": 1385,
+            "hd90_eff": 1278,
+            "hd365_ask": 1419,
+            "hd365_eff": 1324,
+            "new_n": 9,
+            "renewal_n": 9,
+            "last5_new_avg": 1372,
+            "hd_yoy_ask": 0.013661868748475303
+          },
+          {
+            "plan": "A1B",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 676,
+            "in_place": 1384,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1367,
+            "hd365_eff": 1285,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 1384,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1BS",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 0,
+            "vac": 1,
+            "avg_sf": 676,
+            "in_place": 0,
+            "hd90_ask": 1516,
+            "hd90_eff": 1458,
+            "hd365_ask": 1516,
+            "hd365_eff": 1458,
+            "new_n": 0,
+            "renewal_n": 0,
+            "last5_new_avg": 0,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1S",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 9,
+            "vac": 1,
+            "avg_sf": 676,
+            "in_place": 1347,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1318,
+            "hd365_eff": 1248,
+            "new_n": 3,
+            "renewal_n": 7,
+            "last5_new_avg": 1235,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A2",
+            "bed": 1,
+            "bath": 1,
+            "units": 19,
+            "occ": 18,
+            "vac": 1,
+            "avg_sf": 724,
+            "in_place": 1393,
+            "hd90_ask": 1470,
+            "hd90_eff": 1418,
+            "hd365_ask": 1346,
+            "hd365_eff": 1290,
+            "new_n": 10,
+            "renewal_n": 9,
+            "last5_new_avg": 1291,
+            "hd_yoy_ask": -0.01342281879194629
+          },
+          {
+            "plan": "A2A",
+            "bed": 1,
+            "bath": 1,
+            "units": 15,
+            "occ": 15,
+            "vac": 0,
+            "avg_sf": 747,
+            "in_place": 1429,
+            "hd90_ask": 1500,
+            "hd90_eff": 1442,
+            "hd365_ask": 1359,
+            "hd365_eff": 1296,
+            "new_n": 5,
+            "renewal_n": 10,
+            "last5_new_avg": 1317,
+            "hd_yoy_ask": 0.05782792665726366
+          },
+          {
+            "plan": "A2AS",
+            "bed": 1,
+            "bath": 1,
+            "units": 15,
+            "occ": 12,
+            "vac": 3,
+            "avg_sf": 747,
+            "in_place": 1401,
+            "hd90_ask": 1542,
+            "hd90_eff": 1489,
+            "hd365_ask": 1376,
+            "hd365_eff": 1299,
+            "new_n": 9,
+            "renewal_n": 6,
+            "last5_new_avg": 1211,
+            "hd_yoy_ask": 0.01669962645572398
+          },
+          {
+            "plan": "A2B",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 724,
+            "in_place": 1304,
+            "hd90_ask": 1470,
+            "hd90_eff": 1418,
+            "hd365_ask": 1304,
+            "hd365_eff": 1221,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 1304,
+            "hd_yoy_ask": -0.01342281879194629
+          },
+          {
+            "plan": "A2BS",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 724,
+            "in_place": 1415,
+            "hd90_ask": 1470,
+            "hd90_eff": 1418,
+            "hd365_ask": 1427,
+            "hd365_eff": 1317,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 1415,
+            "hd_yoy_ask": -0.01342281879194629
+          },
+          {
+            "plan": "A2S",
+            "bed": 1,
+            "bath": 1,
+            "units": 19,
+            "occ": 18,
+            "vac": 1,
+            "avg_sf": 724,
+            "in_place": 1409,
+            "hd90_ask": 1466,
+            "hd90_eff": 1386,
+            "hd365_ask": 1434,
+            "hd365_eff": 1357,
+            "new_n": 5,
+            "renewal_n": 13,
+            "last5_new_avg": 1404,
+            "hd_yoy_ask": 0.01947148817802513
+          },
+          {
+            "plan": "A3",
+            "bed": 1,
+            "bath": 1,
+            "units": 60,
+            "occ": 54,
+            "vac": 6,
+            "avg_sf": 764,
+            "in_place": 1492,
+            "hd90_ask": 1535,
+            "hd90_eff": 1443,
+            "hd365_ask": 1499,
+            "hd365_eff": 1411,
+            "new_n": 33,
+            "renewal_n": 23,
+            "last5_new_avg": 1476,
+            "hd_yoy_ask": -0.007963508505179129
+          },
+          {
+            "plan": "A3A",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 7,
+            "vac": 2,
+            "avg_sf": 757,
+            "in_place": 1370,
+            "hd90_ask": 1535,
+            "hd90_eff": 1443,
+            "hd365_ask": 1499,
+            "hd365_eff": 1411,
+            "new_n": 6,
+            "renewal_n": 3,
+            "last5_new_avg": 1313,
+            "hd_yoy_ask": -0.007963508505179129
+          },
+          {
+            "plan": "A4",
+            "bed": 1,
+            "bath": 1,
+            "units": 3,
+            "occ": 3,
+            "vac": 0,
+            "avg_sf": 819,
+            "in_place": 1491,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1454,
+            "hd365_eff": 1371,
+            "new_n": 2,
+            "renewal_n": 1,
+            "last5_new_avg": 1428,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A5",
+            "bed": 1,
+            "bath": 1,
+            "units": 32,
+            "occ": 27,
+            "vac": 5,
+            "avg_sf": 947,
+            "in_place": 1703,
+            "hd90_ask": 1893,
+            "hd90_eff": 1778,
+            "hd365_ask": 1813,
+            "hd365_eff": 1737,
+            "new_n": 13,
+            "renewal_n": 15,
+            "last5_new_avg": 1703,
+            "hd_yoy_ask": 0.09469423160329615
+          },
+          {
+            "plan": "B1",
+            "bed": 2,
+            "bath": 2,
+            "units": 20,
+            "occ": 18,
+            "vac": 2,
+            "avg_sf": 956,
+            "in_place": 1799,
+            "hd90_ask": 1705,
+            "hd90_eff": 1610,
+            "hd365_ask": 1755,
+            "hd365_eff": 1656,
+            "new_n": 8,
+            "renewal_n": 11,
+            "last5_new_avg": 1730,
+            "hd_yoy_ask": -0.08149245689655171
+          },
+          {
+            "plan": "B3",
+            "bed": 2,
+            "bath": 2,
+            "units": 27,
+            "occ": 21,
+            "vac": 6,
+            "avg_sf": 1123,
+            "in_place": 1888,
+            "hd90_ask": 1846,
+            "hd90_eff": 1746,
+            "hd365_ask": 1875,
+            "hd365_eff": 1774,
+            "new_n": 14,
+            "renewal_n": 9,
+            "last5_new_avg": 1789,
+            "hd_yoy_ask": 0.010892053060727713
+          },
+          {
+            "plan": "B4",
+            "bed": 2,
+            "bath": 2,
+            "units": 9,
+            "occ": 6,
+            "vac": 3,
+            "avg_sf": 1197,
+            "in_place": 2049,
+            "hd90_ask": 2150,
+            "hd90_eff": 2052,
+            "hd365_ask": 2083,
+            "hd365_eff": 2004,
+            "new_n": 6,
+            "renewal_n": 1,
+            "last5_new_avg": 1981,
+            "hd_yoy_ask": 0.01487252124645888
+          },
+          {
+            "plan": "B4A",
+            "bed": 2,
+            "bath": 2,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 1197,
+            "in_place": 2346,
+            "hd90_ask": 2150,
+            "hd90_eff": 2052,
+            "hd365_ask": 2083,
+            "hd365_eff": 2004,
+            "new_n": 0,
+            "renewal_n": 1,
+            "last5_new_avg": 0,
+            "hd_yoy_ask": 0.01487252124645888
+          },
+          {
+            "plan": "B5",
+            "bed": 2,
+            "bath": 2,
+            "units": 20,
+            "occ": 18,
+            "vac": 2,
+            "avg_sf": 1209,
+            "in_place": 2027,
+            "hd90_ask": 1920,
+            "hd90_eff": 1820,
+            "hd365_ask": 1965,
+            "hd365_eff": 1888,
+            "new_n": 11,
+            "renewal_n": 8,
+            "last5_new_avg": 1842,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "C1",
+            "bed": 3,
+            "bath": 2,
+            "units": 9,
+            "occ": 8,
+            "vac": 1,
+            "avg_sf": 1444,
+            "in_place": 2774,
+            "hd90_ask": 3020,
+            "hd90_eff": 2913,
+            "hd365_ask": 2787,
+            "hd365_eff": 2691,
+            "new_n": 4,
+            "renewal_n": 5,
+            "last5_new_avg": 2785,
+            "hd_yoy_ask": 0.051166028541594244
+          },
+          {
+            "plan": "C1A",
+            "bed": 3,
+            "bath": 2,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 1444,
+            "in_place": 2601,
+            "hd90_ask": 3020,
+            "hd90_eff": 2913,
+            "hd365_ask": 2787,
+            "hd365_eff": 2691,
+            "new_n": 1,
+            "renewal_n": 0,
+            "last5_new_avg": 2601,
+            "hd_yoy_ask": 0.28784648187633266
           }
         ],
         "hd_t90_ask": 1681.950289511778,
@@ -1044,25 +4616,843 @@
       },
       "lto": {
         "period": "02/25/2026 - 05/25/2026",
+        "rows": [
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1332.0,
+            "cur": 1348.0,
+            "prior_eff": 1332.0,
+            "cur_eff": 1244.3076923077
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1999.0,
+            "cur": 1880.0,
+            "prior_eff": 1999.0,
+            "cur_eff": 1754.6666666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2246.0,
+            "cur": 1385.0,
+            "prior_eff": 2246.0,
+            "cur_eff": 1257.154
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1599.0,
+            "cur": 1285.0,
+            "prior_eff": 1599.0,
+            "cur_eff": 1157.8792857143
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1574.0,
+            "cur": 2376.0,
+            "prior_eff": 1574.0,
+            "cur_eff": 2376.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1538.0,
+            "cur": 1408.0,
+            "prior_eff": 1538.0,
+            "cur_eff": 1267.21
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1403.0,
+            "cur": 1535.0,
+            "prior_eff": 1403.0,
+            "cur_eff": 1535.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1974.0,
+            "cur": 1915.0,
+            "prior_eff": 1974.0,
+            "cur_eff": 1708.3276923077
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1571.0,
+            "cur": 1594.0,
+            "prior_eff": 1571.0,
+            "cur_eff": 1594.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1633.0,
+            "cur": 1649.0,
+            "prior_eff": 1633.0,
+            "cur_eff": 1649.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1972.0,
+            "cur": 1822.0,
+            "prior_eff": 1972.0,
+            "cur_eff": 1822.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1696.0,
+            "cur": 1499.0,
+            "prior_eff": 1696.0,
+            "cur_eff": 1374.0833333333
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1829.0,
+            "cur": 2246.0,
+            "prior_eff": 1829.0,
+            "cur_eff": 2246.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1413.0,
+            "cur": 1413.0,
+            "prior_eff": 1413.0,
+            "cur_eff": 1413.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1548.0,
+            "cur": 1548.0,
+            "prior_eff": 1548.0,
+            "cur_eff": 1548.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1296.0,
+            "cur": 1840.0,
+            "prior_eff": 1296.0,
+            "cur_eff": 1840.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1480.0,
+            "cur": 1410.0,
+            "prior_eff": 1480.0,
+            "cur_eff": 1410.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1337.0,
+            "cur": 1435.0,
+            "prior_eff": 1337.0,
+            "cur_eff": 1301.076
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1456.0,
+            "cur": 1492.0,
+            "prior_eff": 1456.0,
+            "cur_eff": 1243.3333333333
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1887.0,
+            "cur": 2231.0,
+            "prior_eff": 1887.0,
+            "cur_eff": 2231.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 1959.0,
+            "cur": 2073.0,
+            "prior_eff": 1959.0,
+            "cur_eff": 2073.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 3029.0,
+            "cur": 2124.0,
+            "prior_eff": 3029.0,
+            "cur_eff": 2124.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1575.0,
+            "cur": 1459.0,
+            "prior_eff": 1575.0,
+            "cur_eff": 1322.8266666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1663.0,
+            "cur": 1308.0,
+            "prior_eff": 1663.0,
+            "cur_eff": 1180.1066666667
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1724.0,
+            "cur": 1868.0,
+            "prior_eff": 1724.0,
+            "cur_eff": 1868.0
+          },
+          {
+            "beds": 3,
+            "kind": "renewal",
+            "prior": 2171.0,
+            "cur": 2271.0,
+            "prior_eff": 2171.0,
+            "cur_eff": 2271.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2225.0,
+            "cur": 2127.0,
+            "prior_eff": 2221.1538461538,
+            "cur_eff": 1985.2
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1468.0,
+            "cur": 1467.0,
+            "prior_eff": 1468.0,
+            "cur_eff": 1369.2
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 3018.0,
+            "cur": 1410.0,
+            "prior_eff": 3018.0,
+            "cur_eff": 1316.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1352.0,
+            "cur": 1352.0,
+            "prior_eff": 1352.0,
+            "cur_eff": 1352.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1645.0,
+            "cur": 1456.0,
+            "prior_eff": 1645.0,
+            "cur_eff": 1365.338
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1412.0,
+            "cur": 1426.0,
+            "prior_eff": 1412.0,
+            "cur_eff": 1426.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1632.0,
+            "cur": 1410.0,
+            "prior_eff": 1632.0,
+            "cur_eff": 1301.5384615385
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1542.0,
+            "cur": 1542.0,
+            "prior_eff": 1542.0,
+            "cur_eff": 1439.2
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1290.0,
+            "cur": 1319.0,
+            "prior_eff": 1290.0,
+            "cur_eff": 1231.0666666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2985.0,
+            "cur": 1348.0,
+            "prior_eff": 2985.0,
+            "cur_eff": 1258.1333333333
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1300.0,
+            "cur": 1392.0,
+            "prior_eff": 1300.0,
+            "cur_eff": 1299.2
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1876.0,
+            "cur": 1876.0,
+            "prior_eff": 1876.0,
+            "cur_eff": 1876.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2164.0,
+            "cur": 1879.0,
+            "prior_eff": 2164.0,
+            "cur_eff": 1879.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1334.0,
+            "cur": 1362.0,
+            "prior_eff": 1334.0,
+            "cur_eff": 1362.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1559.0,
+            "cur": 1408.0,
+            "prior_eff": 1559.0,
+            "cur_eff": 1408.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1295.0,
+            "cur": 1359.0,
+            "prior_eff": 1295.0,
+            "cur_eff": 1359.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1542.0,
+            "cur": 1559.0,
+            "prior_eff": 1542.0,
+            "cur_eff": 1559.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1470.0,
+            "cur": 1543.0,
+            "prior_eff": 1470.0,
+            "cur_eff": 1543.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1351.0,
+            "cur": 1528.0,
+            "prior_eff": 1351.0,
+            "cur_eff": 1410.4615384615
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1670.0,
+            "cur": 1670.0,
+            "prior_eff": 1670.0,
+            "cur_eff": 1670.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3080.0,
+            "cur": 1679.0,
+            "prior_eff": 3080.0,
+            "cur_eff": 1567.0666666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1533.0,
+            "cur": 1379.0,
+            "prior_eff": 1533.0,
+            "cur_eff": 1287.0666666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1559.0,
+            "cur": 1405.0,
+            "prior_eff": 1559.0,
+            "cur_eff": 1311.3333333333
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1724.0,
+            "cur": 2097.0,
+            "prior_eff": 1724.0,
+            "cur_eff": 2097.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1997.0,
+            "cur": 2059.0,
+            "prior_eff": 1997.0,
+            "cur_eff": 1900.6153846154
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2099.0,
+            "cur": 1397.0,
+            "prior_eff": 2099.0,
+            "cur_eff": 1289.5384615385
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2376.0,
+            "cur": 1596.0,
+            "prior_eff": 2376.0,
+            "cur_eff": 1473.2307692308
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1521.0,
+            "cur": 1600.0,
+            "prior_eff": 1521.0,
+            "cur_eff": 1544.4444444444
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1528.0,
+            "cur": 1528.0,
+            "prior_eff": 1486.3333333333,
+            "cur_eff": 1528.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1340.0,
+            "cur": 1340.0,
+            "prior_eff": 1340.0,
+            "cur_eff": 1340.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1653.0,
+            "cur": 1653.0,
+            "prior_eff": 1653.0,
+            "cur_eff": 1653.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1295.0,
+            "cur": 1295.0,
+            "prior_eff": 1295.0,
+            "cur_eff": 1295.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 1987.0,
+            "cur": 1987.0,
+            "prior_eff": 1955.75,
+            "cur_eff": 1987.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1727.0,
+            "cur": 1741.0,
+            "prior_eff": 1685.3333333333,
+            "cur_eff": 1741.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1587.0,
+            "cur": 1587.0,
+            "prior_eff": 1587.0,
+            "cur_eff": 1587.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2184.0,
+            "cur": 2189.0,
+            "prior_eff": 2150.6666666667,
+            "cur_eff": 2189.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1367.0,
+            "cur": 1367.0,
+            "prior_eff": 1367.0,
+            "cur_eff": 1367.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1449.0,
+            "cur": 1483.0,
+            "prior_eff": 1413.2857142857,
+            "cur_eff": 1483.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1564.0,
+            "cur": 1564.0,
+            "prior_eff": 1564.0,
+            "cur_eff": 1564.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1449.0,
+            "cur": 1449.0,
+            "prior_eff": 1449.0,
+            "cur_eff": 1449.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1489.0,
+            "cur": 1489.0,
+            "prior_eff": 1476.5,
+            "cur_eff": 1489.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2304.0,
+            "cur": 2065.0,
+            "prior_eff": 2304.0,
+            "cur_eff": 1906.1538461538
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1733.0,
+            "cur": 1696.0,
+            "prior_eff": 1733.0,
+            "cur_eff": 1696.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2019.0,
+            "cur": 1760.0,
+            "prior_eff": 2019.0,
+            "cur_eff": 1624.6153846154
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1673.0,
+            "cur": 1443.0,
+            "prior_eff": 1673.0,
+            "cur_eff": 1347.4666666667
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1674.0,
+            "cur": 1674.0,
+            "prior_eff": 1674.0,
+            "cur_eff": 1674.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1598.0,
+            "cur": 1612.0,
+            "prior_eff": 1598.0,
+            "cur_eff": 1612.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 3150.0,
+            "cur": 1484.0,
+            "prior_eff": 3150.0,
+            "cur_eff": 1374.7333333333
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1495.0,
+            "cur": 1524.0,
+            "prior_eff": 1495.0,
+            "cur_eff": 1524.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1471.0,
+            "cur": 1471.0,
+            "prior_eff": 1471.0,
+            "cur_eff": 1471.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1692.0,
+            "cur": 1692.0,
+            "prior_eff": 1692.0,
+            "cur_eff": 1692.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1400.0,
+            "cur": 1413.0,
+            "prior_eff": 1400.0,
+            "cur_eff": 1413.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1350.0,
+            "cur": 1594.0,
+            "prior_eff": 1350.0,
+            "cur_eff": 1594.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1389.0,
+            "cur": 1389.0,
+            "prior_eff": 1389.0,
+            "cur_eff": 1389.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1588.0,
+            "cur": 1588.0,
+            "prior_eff": 1504.6666666667,
+            "cur_eff": 1588.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 3494.0,
+            "cur": 2060.0,
+            "prior_eff": 3494.0,
+            "cur_eff": 2060.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2072.0,
+            "cur": 2087.0,
+            "prior_eff": 2072.0,
+            "cur_eff": 2087.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2100.0,
+            "cur": 1870.0,
+            "prior_eff": 2100.0,
+            "cur_eff": 1870.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2460.0,
+            "cur": 1765.0,
+            "prior_eff": 2460.0,
+            "cur_eff": 1617.9166666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1541.0,
+            "cur": 1619.0,
+            "prior_eff": 1541.0,
+            "cur_eff": 1619.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2050.0,
+            "cur": 2050.0,
+            "prior_eff": 2050.0,
+            "cur_eff": 2050.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1534.0,
+            "cur": 1534.0,
+            "prior_eff": 1534.0,
+            "cur_eff": 1534.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1952.0,
+            "cur": 1719.0,
+            "prior_eff": 1952.0,
+            "cur_eff": 1719.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1303.0,
+            "cur": 1303.0,
+            "prior_eff": 1303.0,
+            "cur_eff": 1303.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1774.0,
+            "cur": 1749.0,
+            "prior_eff": 1774.0,
+            "cur_eff": 1749.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1973.0,
+            "cur": 1765.0,
+            "prior_eff": 1973.0,
+            "cur_eff": 1765.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2167.0,
+            "cur": 1999.0,
+            "prior_eff": 2167.0,
+            "cur_eff": 1999.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1532.0,
+            "cur": 1543.0,
+            "prior_eff": 1532.0,
+            "cur_eff": 1543.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1507.0,
+            "cur": 1461.0,
+            "prior_eff": 1507.0,
+            "cur_eff": 1461.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 1899.0,
+            "cur": 1895.0,
+            "prior_eff": 1899.0,
+            "cur_eff": 1895.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1605.0,
+            "cur": 1619.0,
+            "prior_eff": 1605.0,
+            "cur_eff": 1619.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1290.0,
+            "cur": 1354.0,
+            "prior_eff": 1290.0,
+            "cur_eff": 1354.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2376.0,
+            "cur": 1530.0,
+            "prior_eff": 2376.0,
+            "cur_eff": 1530.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2097.0,
+            "cur": 1669.0,
+            "prior_eff": 2097.0,
+            "cur_eff": 1669.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2392.0,
+            "cur": 1942.0,
+            "prior_eff": 2392.0,
+            "cur_eff": 1942.0
+          }
+        ],
         "leases": 107.0,
         "prior_rent": 1783.4859813084,
         "prior_eff": 1779.2805877923,
         "cur_rent": 1736.1028037383,
         "cur_eff": 1698.5840276722,
+        "ut_beds": {
+          "A1": 1,
+          "A1A": 1,
+          "A1AS": 1,
+          "A1BS": 1,
+          "A1S": 1,
+          "A2": 1,
+          "A2A": 1,
+          "A2AS": 1,
+          "A2S": 1,
+          "A3": 1,
+          "A3A": 1,
+          "A4": 1,
+          "A5": 1,
+          "B1": 2,
+          "B3": 2,
+          "B4": 2,
+          "B5": 2,
+          "C1": 3
+        },
         "tradeout_lease_pct": -0.026567731996042232,
         "tradeout_eff_pct": -0.045353476384647595,
-        "_groups": {
-          "new": [
-            104597.0,
-            88678.0,
-            55
-          ],
-          "renewal": [
-            74599.0,
-            76991.0,
-            46
-          ]
-        },
         "new_n": 55,
         "new_tradeout_pct": -0.1521936575618804,
         "renewal_n": 46,
@@ -1074,14 +5464,23 @@
         "net_balance": 8244.88
       },
       "demo": {
-        "hh_income_mean": 177989.0,
         "hh_income_median": 93000.0,
-        "personal_income_mean": 138915.0,
+        "hh_income_mean": 177989.0,
         "personal_income_median": 75000.0,
+        "personal_income_mean": 138915.0,
+        "lead_income_mean": 177989.0,
         "hh_size_median": 1.0,
         "age_median": 30.0,
         "age_mean": 33.0,
-        "resident_total": 305.0
+        "resident_total": 305.0,
+        "pct_over_100k": 0.4421768707482993,
+        "income_dist": {
+          "<$50K": 10.0,
+          "$50\u201375K": 79.0,
+          "$75\u2013100K": 75.0,
+          "$100K+": 130.0
+        },
+        "lead_count": 35.0
       },
       "jll": {
         "name": "Pearl Washington",
@@ -1149,15 +5548,153 @@
         "noi_yr1": 3237705.281480174,
         "noi_exit": 4097513.539072747
       },
+      "jll_pnl": {
+        "lines": {
+          "gsr": {
+            "actual": 6998364.0,
+            "yr0": 6998364.0,
+            "yr1": 7180528.333711249
+          },
+          "ltl": {
+            "actual": -492436.0,
+            "yr0": -492435.99999999994,
+            "yr1": -505253.8922724556
+          },
+          "conc": {
+            "actual": -203672.0,
+            "yr0": -203672.0,
+            "yr1": -208973.49248819254
+          },
+          "vacancy": {
+            "actual": -529400.0,
+            "yr0": -349918.2,
+            "yr1": -359026.4166855624
+          },
+          "model": {
+            "actual": -53044.0,
+            "yr0": -53044.0,
+            "yr1": -54424.71196602226
+          },
+          "collection": {
+            "actual": 0.0,
+            "yr0": -13996.728000000001,
+            "yr1": -14361.0566674225
+          },
+          "nri": {
+            "actual": 5719812.0,
+            "yr0": 5885297.072,
+            "yr1": 6038488.763631593
+          },
+          "other_income": {
+            "actual": 652904.0,
+            "yr0": 652904.0,
+            "yr1": 661833.5181051183
+          },
+          "util_reimb": {
+            "actual": 220817.0,
+            "yr0": 220817.0,
+            "yr1": 223837.02958998253
+          },
+          "egr": {
+            "actual": 6593533.0,
+            "yr0": 6759018.072,
+            "yr1": 6924159.311326694
+          },
+          "salaries": {
+            "actual": 616212.0,
+            "yr0": 604072.0,
+            "yr1": 604072.0
+          },
+          "advertising": {
+            "actual": 191184.0,
+            "yr0": 146188.0,
+            "yr1": 146188.0
+          },
+          "contract": {
+            "actual": 551435.0,
+            "yr0": 475272.0,
+            "yr1": 475272.0
+          },
+          "turnover": {
+            "actual": 83792.0,
+            "yr0": 96600.0,
+            "yr1": 96600.0
+          },
+          "maintenance": {
+            "actual": 142617.0,
+            "yr0": 112056.0,
+            "yr1": 112056.0
+          },
+          "ga": {
+            "actual": 140582.0,
+            "yr0": 144256.0,
+            "yr1": 144256.0
+          },
+          "utilities": {
+            "actual": 251630.0,
+            "yr0": 256662.60000000003,
+            "yr1": 256662.59999999998
+          },
+          "mgmt": {
+            "actual": 234132.0,
+            "yr0": 202770.54215999998,
+            "yr1": 207724.7793398008
+          },
+          "insurance": {
+            "actual": 431772.0,
+            "yr0": 365148.0,
+            "yr1": 365148.0
+          },
+          "taxes": {
+            "actual": 1343307.0,
+            "yr0": 1255417.2,
+            "yr1": 1255417.2
+          },
+          "franchise": {
+            "actual": 23701.0,
+            "yr0": 22507.530179760004,
+            "yr1": 23057.450506717887
+          },
+          "opex": {
+            "actual": 4010364.0,
+            "yr0": 3680949.87233976,
+            "yr1": 3686454.0298465188
+          },
+          "reserves": {
+            "actual": 0.0,
+            "yr0": 88550.0,
+            "yr1": 112700.0
+          },
+          "noi": {
+            "actual": 2583169.0,
+            "yr0": 3078068.1996602397,
+            "yr1": 3237705.281480175
+          }
+        },
+        "tax": {
+          "current_assessment": 64391737.0,
+          "purchase_price_basis": 60000000.0,
+          "actual_taxes": 1343307.0,
+          "uw_taxes_yr0": 1255417.2,
+          "adjustment": -87889.80000000005
+        }
+      },
+      "agpr": {
+        "rr_agpr_mo": 522274.0,
+        "t1_agpr_mo": 543238.0,
+        "var_pct": -0.0385908202298072,
+        "rr_agpr_unit": 1621.9689440993789
+      },
       "hd_rows": 445,
       "as_of": "May 2026",
       "derived": {
         "trailing_cap": 0.04621366666666667,
         "forward_cap_t3": 0.045397733333333336,
+        "inplace_cap": 0.051301136661004,
         "jll_noi_vs_trailing": 0.11008583307255426,
         "delinq_pct": 0.003794755459990364,
         "conc_pct_egr": 0.012473213994066994,
-        "rent_to_income": 0.20515129486597
+        "rent_to_income": 0.20683870967741935
       }
     },
     {
@@ -1185,11 +5722,12 @@
         }
       },
       "rents": {
-        "avg_inplace_rent": 1883.0051282051281,
-        "avg_inplace_psf": 1.9965418055472484,
+        "avg_inplace_rent": 1889.813725490196,
+        "avg_inplace_psf": 1.9985484782349496,
         "total_contract_mo": 385522.0,
+        "rr_agpr_mo": 409299.0,
         "total_other_mo": 29385.0,
-        "n_occ": 195
+        "n_occ": 204
       },
       "mix": {
         "by_bed": [
@@ -1199,8 +5737,16 @@
             "occ": 136,
             "vac": 14,
             "avg_sf": 817.1258278145696,
-            "avg_contract": 1692.0378676470589,
-            "t90_ask": 1781.8202247191011
+            "in_place": 1692.0378676470589,
+            "hd90_ask": 1781.8202247191011,
+            "hd90_eff": 1765.4325842696628,
+            "hd365_ask": 1716.7762751322753,
+            "hd365_eff": 1704.973164021164,
+            "lto_new_n": 17,
+            "lto_ren_n": 23,
+            "lto_new_to": -0.0752603593115817,
+            "lto_ren_to": 0.018383977222522274,
+            "lto_to": -0.02265425715270597
           },
           {
             "bed": 2,
@@ -1208,8 +5754,16 @@
             "occ": 56,
             "vac": 5,
             "avg_sf": 1221.5245901639344,
-            "avg_contract": 2274.9436507936507,
-            "t90_ask": 2153.0188679245284
+            "in_place": 2274.9436507936507,
+            "hd90_ask": 2153.0188679245284,
+            "hd90_eff": 2106.6477987421385,
+            "hd365_ask": 2246.221264367816,
+            "hd365_eff": 2206.204022988506,
+            "lto_new_n": 9,
+            "lto_ren_n": 13,
+            "lto_new_to": -0.06541432249451706,
+            "lto_ren_to": 0.012728001603527828,
+            "lto_to": -0.019466488567612128
           },
           {
             "bed": 3,
@@ -1217,8 +5771,522 @@
             "occ": 3,
             "vac": 0,
             "avg_sf": 1709.0,
-            "avg_contract": 3337.6666666666665,
-            "t90_ask": 3349.0
+            "in_place": 3337.6666666666665,
+            "hd90_ask": 3349.0,
+            "hd90_eff": 3349.0,
+            "hd365_ask": 3432.0,
+            "hd365_eff": 3285.5,
+            "lto_new_n": 1,
+            "lto_ren_n": 0,
+            "lto_new_to": -0.052080384941975644,
+            "lto_ren_to": null,
+            "lto_to": -0.052080384941975644
+          }
+        ],
+        "by_plan": [
+          {
+            "plan": "A0",
+            "bed": 1,
+            "bath": 1,
+            "units": 8,
+            "occ": 7,
+            "vac": 1,
+            "avg_sf": 624,
+            "in_place": 1436,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1450,
+            "hd365_eff": 1392,
+            "new_n": 3,
+            "renewal_n": 4,
+            "last5_new_avg": 1423,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A1",
+            "bed": 1,
+            "bath": 1,
+            "units": 7,
+            "occ": 7,
+            "vac": 0,
+            "avg_sf": 629,
+            "in_place": 1502,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1528,
+            "hd365_eff": 1528,
+            "new_n": 4,
+            "renewal_n": 3,
+            "last5_new_avg": 1486,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A2",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 9,
+            "vac": 1,
+            "avg_sf": 679,
+            "in_place": 1541,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1542,
+            "hd365_eff": 1542,
+            "new_n": 8,
+            "renewal_n": 2,
+            "last5_new_avg": 1500,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A3",
+            "bed": 1,
+            "bath": 1,
+            "units": 5,
+            "occ": 5,
+            "vac": 0,
+            "avg_sf": 687,
+            "in_place": 1503,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1552,
+            "hd365_eff": 1552,
+            "new_n": 3,
+            "renewal_n": 2,
+            "last5_new_avg": 1455,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A4",
+            "bed": 1,
+            "bath": 1,
+            "units": 32,
+            "occ": 30,
+            "vac": 1,
+            "avg_sf": 720,
+            "in_place": 1643,
+            "hd90_ask": 1775,
+            "hd90_eff": 1775,
+            "hd365_ask": 1630,
+            "hd365_eff": 1630,
+            "new_n": 9,
+            "renewal_n": 21,
+            "last5_new_avg": 1556,
+            "hd_yoy_ask": 0.03922716627634659
+          },
+          {
+            "plan": "A5",
+            "bed": 1,
+            "bath": 1,
+            "units": 5,
+            "occ": 5,
+            "vac": 0,
+            "avg_sf": 759,
+            "in_place": 1642,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1687,
+            "hd365_eff": 1646,
+            "new_n": 3,
+            "renewal_n": 2,
+            "last5_new_avg": 1622,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A6",
+            "bed": 1,
+            "bath": 1,
+            "units": 5,
+            "occ": 5,
+            "vac": 0,
+            "avg_sf": 760,
+            "in_place": 1607,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1648,
+            "hd365_eff": 1648,
+            "new_n": 2,
+            "renewal_n": 3,
+            "last5_new_avg": 1622,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A7",
+            "bed": 1,
+            "bath": 1,
+            "units": 1,
+            "occ": 1,
+            "vac": 0,
+            "avg_sf": 762,
+            "in_place": 1706,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 0,
+            "hd365_eff": 0,
+            "new_n": 0,
+            "renewal_n": 1,
+            "last5_new_avg": 0,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A8",
+            "bed": 1,
+            "bath": 1,
+            "units": 4,
+            "occ": 4,
+            "vac": 0,
+            "avg_sf": 769,
+            "in_place": 1632,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1656,
+            "hd365_eff": 1538,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 1601,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "A9",
+            "bed": 1,
+            "bath": 1,
+            "units": 3,
+            "occ": 3,
+            "vac": 0,
+            "avg_sf": 772,
+            "in_place": 1667,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1660,
+            "hd365_eff": 1600,
+            "new_n": 2,
+            "renewal_n": 1,
+            "last5_new_avg": 1654,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AA1",
+            "bed": 1,
+            "bath": 1,
+            "units": 6,
+            "occ": 4,
+            "vac": 2,
+            "avg_sf": 824,
+            "in_place": 1604,
+            "hd90_ask": 1566,
+            "hd90_eff": 1541,
+            "hd365_ask": 1602,
+            "hd365_eff": 1582,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 1568,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AA2",
+            "bed": 1,
+            "bath": 1,
+            "units": 2,
+            "occ": 2,
+            "vac": 0,
+            "avg_sf": 848,
+            "in_place": 1722,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1720,
+            "hd365_eff": 1720,
+            "new_n": 1,
+            "renewal_n": 1,
+            "last5_new_avg": 1680,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AA3",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 10,
+            "vac": 0,
+            "avg_sf": 872,
+            "in_place": 1713,
+            "hd90_ask": 1696,
+            "hd90_eff": 1565,
+            "hd365_ask": 1753,
+            "hd365_eff": 1720,
+            "new_n": 3,
+            "renewal_n": 7,
+            "last5_new_avg": 1685,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AA4",
+            "bed": 1,
+            "bath": 1,
+            "units": 2,
+            "occ": 1,
+            "vac": 1,
+            "avg_sf": 985,
+            "in_place": 1774,
+            "hd90_ask": 1734,
+            "hd90_eff": 1734,
+            "hd365_ask": 1766,
+            "hd365_eff": 1766,
+            "new_n": 1,
+            "renewal_n": 1,
+            "last5_new_avg": 1769,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AA5",
+            "bed": 1,
+            "bath": 1,
+            "units": 3,
+            "occ": 1,
+            "vac": 2,
+            "avg_sf": 1024,
+            "in_place": 1988,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 2125,
+            "hd365_eff": 2125,
+            "new_n": 2,
+            "renewal_n": 0,
+            "last5_new_avg": 1988,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AD1",
+            "bed": 1,
+            "bath": 1,
+            "units": 4,
+            "occ": 3,
+            "vac": 1,
+            "avg_sf": 779,
+            "in_place": 1769,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 1820,
+            "hd365_eff": 1820,
+            "new_n": 2,
+            "renewal_n": 2,
+            "last5_new_avg": 1806,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AD2",
+            "bed": 1,
+            "bath": 1,
+            "units": 10,
+            "occ": 6,
+            "vac": 4,
+            "avg_sf": 931,
+            "in_place": 1912,
+            "hd90_ask": 1855,
+            "hd90_eff": 1855,
+            "hd365_ask": 1860,
+            "hd365_eff": 1860,
+            "new_n": 4,
+            "renewal_n": 4,
+            "last5_new_avg": 1915,
+            "hd_yoy_ask": 0.01826500732064429
+          },
+          {
+            "plan": "AD3",
+            "bed": 1,
+            "bath": 1,
+            "units": 20,
+            "occ": 20,
+            "vac": 0,
+            "avg_sf": 969,
+            "in_place": 1734,
+            "hd90_ask": 1714,
+            "hd90_eff": 1714,
+            "hd365_ask": 1776,
+            "hd365_eff": 1776,
+            "new_n": 9,
+            "renewal_n": 11,
+            "last5_new_avg": 1734,
+            "hd_yoy_ask": -0.006086956521739184
+          },
+          {
+            "plan": "AD4",
+            "bed": 1,
+            "bath": 1,
+            "units": 5,
+            "occ": 5,
+            "vac": 0,
+            "avg_sf": 1017,
+            "in_place": 2003,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 2118,
+            "hd365_eff": 2118,
+            "new_n": 1,
+            "renewal_n": 4,
+            "last5_new_avg": 1943,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "AD5",
+            "bed": 1,
+            "bath": 1,
+            "units": 9,
+            "occ": 8,
+            "vac": 1,
+            "avg_sf": 1076,
+            "in_place": 2146,
+            "hd90_ask": 2125,
+            "hd90_eff": 2125,
+            "hd365_ask": 2123,
+            "hd365_eff": 2123,
+            "new_n": 1,
+            "renewal_n": 7,
+            "last5_new_avg": 2086,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "B1",
+            "bed": 2,
+            "bath": 2,
+            "units": 3,
+            "occ": 3,
+            "vac": 0,
+            "avg_sf": 1093,
+            "in_place": 1955,
+            "hd90_ask": 1900,
+            "hd90_eff": 1783,
+            "hd365_ask": 1900,
+            "hd365_eff": 1783,
+            "new_n": 3,
+            "renewal_n": 0,
+            "last5_new_avg": 1955,
+            "hd_yoy_ask": -0.10101726993139337
+          },
+          {
+            "plan": "B2",
+            "bed": 2,
+            "bath": 2,
+            "units": 20,
+            "occ": 20,
+            "vac": 0,
+            "avg_sf": 1171,
+            "in_place": 2059,
+            "hd90_ask": 2064,
+            "hd90_eff": 2064,
+            "hd365_ask": 2057,
+            "hd365_eff": 2045,
+            "new_n": 7,
+            "renewal_n": 13,
+            "last5_new_avg": 2005,
+            "hd_yoy_ask": -0.01830718021873512
+          },
+          {
+            "plan": "B3",
+            "bed": 2,
+            "bath": 2,
+            "units": 10,
+            "occ": 8,
+            "vac": 2,
+            "avg_sf": 1198,
+            "in_place": 2441,
+            "hd90_ask": 2282,
+            "hd90_eff": 2282,
+            "hd365_ask": 2404,
+            "hd365_eff": 2404,
+            "new_n": 6,
+            "renewal_n": 3,
+            "last5_new_avg": 2356,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "B4",
+            "bed": 2,
+            "bath": 2,
+            "units": 10,
+            "occ": 9,
+            "vac": 1,
+            "avg_sf": 1210,
+            "in_place": 2264,
+            "hd90_ask": 2193,
+            "hd90_eff": 2141,
+            "hd365_ask": 2193,
+            "hd365_eff": 2141,
+            "new_n": 3,
+            "renewal_n": 7,
+            "last5_new_avg": 2280,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "B5",
+            "bed": 2,
+            "bath": 2,
+            "units": 10,
+            "occ": 8,
+            "vac": 2,
+            "avg_sf": 1253,
+            "in_place": 2396,
+            "hd90_ask": 2237,
+            "hd90_eff": 2078,
+            "hd365_ask": 2307,
+            "hd365_eff": 2211,
+            "new_n": 4,
+            "renewal_n": 5,
+            "last5_new_avg": 2285,
+            "hd_yoy_ask": -0.07600165220983068
+          },
+          {
+            "plan": "B6",
+            "bed": 2,
+            "bath": 2,
+            "units": 3,
+            "occ": 3,
+            "vac": 0,
+            "avg_sf": 1253,
+            "in_place": 2307,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 0,
+            "hd365_eff": 0,
+            "new_n": 0,
+            "renewal_n": 3,
+            "last5_new_avg": 0,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "BD1",
+            "bed": 2,
+            "bath": 2,
+            "units": 5,
+            "occ": 5,
+            "vac": 0,
+            "avg_sf": 1489,
+            "in_place": 2873,
+            "hd90_ask": 0,
+            "hd90_eff": 0,
+            "hd365_ask": 2881,
+            "hd365_eff": 2830,
+            "new_n": 2,
+            "renewal_n": 3,
+            "last5_new_avg": 2842,
+            "hd_yoy_ask": null
+          },
+          {
+            "plan": "C1",
+            "bed": 3,
+            "bath": 3,
+            "units": 3,
+            "occ": 3,
+            "vac": 0,
+            "avg_sf": 1709,
+            "in_place": 3338,
+            "hd90_ask": 3349,
+            "hd90_eff": 3349,
+            "hd365_ask": 3432,
+            "hd365_eff": 3286,
+            "new_n": 2,
+            "renewal_n": 1,
+            "last5_new_avg": 3370,
+            "hd_yoy_ask": null
           }
         ],
         "hd_t90_ask": 1949.9241379310345,
@@ -1395,25 +6463,542 @@
       },
       "lto": {
         "period": "02/25/2026 - 05/25/2026",
+        "rows": [
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1515.0,
+            "cur": 1506.0,
+            "prior_eff": 1515.0,
+            "cur_eff": 1506.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2182.0,
+            "cur": 2182.0,
+            "prior_eff": 2182.0,
+            "cur_eff": 2182.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2233.0,
+            "cur": 2233.0,
+            "prior_eff": 2233.0,
+            "cur_eff": 2233.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1890.0,
+            "cur": 1827.0,
+            "prior_eff": 1890.0,
+            "cur_eff": 1827.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1899.0,
+            "cur": 1899.0,
+            "prior_eff": 1899.0,
+            "cur_eff": 1899.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1810.0,
+            "cur": 2010.0,
+            "prior_eff": 1810.0,
+            "cur_eff": 2010.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1655.0,
+            "cur": 1655.0,
+            "prior_eff": 1655.0,
+            "cur_eff": 1655.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2014.0,
+            "cur": 2149.0,
+            "prior_eff": 2014.0,
+            "cur_eff": 2149.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1787.0,
+            "cur": 1622.0,
+            "prior_eff": 1787.0,
+            "cur_eff": 1564.0714285714
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2406.0,
+            "cur": 2283.0,
+            "prior_eff": 2406.0,
+            "cur_eff": 2130.8
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1706.0,
+            "cur": 1796.0,
+            "prior_eff": 1706.0,
+            "cur_eff": 1796.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2005.0,
+            "cur": 1814.0,
+            "prior_eff": 2005.0,
+            "cur_eff": 1814.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1725.0,
+            "cur": 1743.0,
+            "prior_eff": 1725.0,
+            "cur_eff": 1676.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2453.0,
+            "cur": 2453.0,
+            "prior_eff": 2447.2307692308,
+            "cur_eff": 2453.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2498.0,
+            "cur": 2523.0,
+            "prior_eff": 2498.0,
+            "cur_eff": 2523.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1611.0,
+            "cur": 1505.0,
+            "prior_eff": 1611.0,
+            "cur_eff": 1505.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2450.0,
+            "cur": 2181.0,
+            "prior_eff": 2450.0,
+            "cur_eff": 2013.2307692308
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2436.0,
+            "cur": 2259.0,
+            "prior_eff": 2436.0,
+            "cur_eff": 2108.4
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1700.0,
+            "cur": 1700.0,
+            "prior_eff": 1700.0,
+            "cur_eff": 1700.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1691.0,
+            "cur": 1691.0,
+            "prior_eff": 1691.0,
+            "cur_eff": 1691.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2501.0,
+            "cur": 2501.0,
+            "prior_eff": 2501.0,
+            "cur_eff": 2501.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1708.0,
+            "cur": 1708.0,
+            "prior_eff": 1708.0,
+            "cur_eff": 1708.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1729.0,
+            "cur": 1669.0,
+            "prior_eff": 1729.0,
+            "cur_eff": 1635.6666666667
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1679.0,
+            "cur": 1679.0,
+            "prior_eff": 1679.0,
+            "cur_eff": 1679.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2112.0,
+            "cur": 1900.0,
+            "prior_eff": 2112.0,
+            "cur_eff": 1900.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2678.0,
+            "cur": 2196.0,
+            "prior_eff": 2678.0,
+            "cur_eff": 2013.0
+          },
+          {
+            "beds": 3,
+            "kind": "new",
+            "prior": 3533.0,
+            "cur": 3349.0,
+            "prior_eff": 3533.0,
+            "cur_eff": 3069.9166666667
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1707.0,
+            "cur": 1677.0,
+            "prior_eff": 1707.0,
+            "cur_eff": 1537.25
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2250.0,
+            "cur": 2070.0,
+            "prior_eff": 2250.0,
+            "cur_eff": 2070.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2347.0,
+            "cur": 2347.0,
+            "prior_eff": 2347.0,
+            "cur_eff": 2347.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2315.0,
+            "cur": 2361.0,
+            "prior_eff": 2315.0,
+            "cur_eff": 2361.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2409.0,
+            "cur": 2443.0,
+            "prior_eff": 2409.0,
+            "cur_eff": 2280.1333333333
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1852.0,
+            "cur": 1952.0,
+            "prior_eff": 1852.0,
+            "cur_eff": 1952.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2115.0,
+            "cur": 2184.0,
+            "prior_eff": 2115.0,
+            "cur_eff": 2184.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1716.0,
+            "cur": 1767.0,
+            "prior_eff": 1716.0,
+            "cur_eff": 1767.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2468.0,
+            "cur": 2468.0,
+            "prior_eff": 2468.0,
+            "cur_eff": 2468.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1746.0,
+            "cur": 1752.0,
+            "prior_eff": 1746.0,
+            "cur_eff": 1752.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1734.0,
+            "cur": 1734.0,
+            "prior_eff": 1734.0,
+            "cur_eff": 1734.0
+          },
+          {
+            "beds": 2,
+            "kind": "new",
+            "prior": 2118.0,
+            "cur": 2086.0,
+            "prior_eff": 2118.0,
+            "cur_eff": 2052.6666666667
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2579.0,
+            "cur": 2579.0,
+            "prior_eff": 2579.0,
+            "cur_eff": 2579.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2171.0,
+            "cur": 2171.0,
+            "prior_eff": 2171.0,
+            "cur_eff": 2171.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1739.0,
+            "cur": 1739.0,
+            "prior_eff": 1739.0,
+            "cur_eff": 1739.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1524.0,
+            "cur": 1554.0,
+            "prior_eff": 1524.0,
+            "cur_eff": 1554.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1734.0,
+            "cur": 1777.0,
+            "prior_eff": 1734.0,
+            "cur_eff": 1777.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2166.0,
+            "cur": 2166.0,
+            "prior_eff": 2166.0,
+            "cur_eff": 2166.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 3115.0,
+            "cur": 1758.0,
+            "prior_eff": 3115.0,
+            "cur_eff": 1758.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1770.0,
+            "cur": 1817.0,
+            "prior_eff": 1770.0,
+            "cur_eff": 1817.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2021.0,
+            "cur": 2081.0,
+            "prior_eff": 2021.0,
+            "cur_eff": 2081.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1790.0,
+            "cur": 1790.0,
+            "prior_eff": 1790.0,
+            "cur_eff": 1790.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1652.0,
+            "cur": 1549.0,
+            "prior_eff": 1652.0,
+            "cur_eff": 1549.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1587.0,
+            "cur": 1587.0,
+            "prior_eff": 1587.0,
+            "cur_eff": 1587.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1770.0,
+            "cur": 1823.0,
+            "prior_eff": 1770.0,
+            "cur_eff": 1823.0
+          },
+          {
+            "beds": 2,
+            "kind": "renewal",
+            "prior": 2000.0,
+            "cur": 2250.0,
+            "prior_eff": 2000.0,
+            "cur_eff": 2250.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1697.0,
+            "cur": 1697.0,
+            "prior_eff": 1697.0,
+            "cur_eff": 1697.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1709.0,
+            "cur": 1738.0,
+            "prior_eff": 1709.0,
+            "cur_eff": 1738.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2121.0,
+            "cur": 2150.0,
+            "prior_eff": 2121.0,
+            "cur_eff": 2150.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1899.0,
+            "cur": 1899.0,
+            "prior_eff": 1899.0,
+            "cur_eff": 1899.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2149.0,
+            "cur": 1978.0,
+            "prior_eff": 2149.0,
+            "cur_eff": 1978.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 1653.0,
+            "cur": 1765.0,
+            "prior_eff": 1653.0,
+            "cur_eff": 1765.0
+          },
+          {
+            "beds": 1,
+            "kind": "renewal",
+            "prior": 2170.0,
+            "cur": 2170.0,
+            "prior_eff": 2170.0,
+            "cur_eff": 2170.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1763.0,
+            "cur": 1775.0,
+            "prior_eff": 1763.0,
+            "cur_eff": 1775.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 2223.0,
+            "cur": 1857.0,
+            "prior_eff": 2223.0,
+            "cur_eff": 1857.0
+          },
+          {
+            "beds": 1,
+            "kind": "new",
+            "prior": 1581.0,
+            "cur": 1604.0,
+            "prior_eff": 1581.0,
+            "cur_eff": 1604.0
+          }
+        ],
         "leases": 64.0,
         "prior_rent": 2008.046875,
         "prior_eff": 2007.9567307692,
         "cur_rent": 1988.484375,
         "cur_eff": 1966.189617674,
+        "ut_beds": {
+          "A0": 1,
+          "A2": 1,
+          "A4": 1,
+          "A5": 1,
+          "A6": 1,
+          "A8": 1,
+          "A9": 1,
+          "AA1": 1,
+          "AA3": 1,
+          "AA4": 1,
+          "AD2": 1,
+          "AD3": 1,
+          "AD4": 1,
+          "AD5": 1,
+          "B1": 2,
+          "B2": 2,
+          "B3": 2,
+          "B4": 2,
+          "B5": 2,
+          "B6": 2,
+          "C1": 3
+        },
         "tradeout_lease_pct": -0.009742053456794908,
         "tradeout_eff_pct": -0.020800803351574304,
-        "_groups": {
-          "new": [
-            56290.0,
-            52342.0,
-            27
-          ],
-          "renewal": [
-            70676.0,
-            71806.0,
-            36
-          ]
-        },
         "new_n": 27,
         "new_tradeout_pct": -0.07013679161485165,
         "renewal_n": 36,
@@ -1425,14 +7010,23 @@
         "net_balance": -16978.78
       },
       "demo": {
-        "hh_income_mean": 264948.0,
         "hh_income_median": 97000.0,
-        "personal_income_mean": 197587.0,
+        "hh_income_mean": 264948.0,
         "personal_income_median": 78624.0,
+        "personal_income_mean": 197587.0,
+        "lead_income_mean": 264948.0,
         "hh_size_median": 1.0,
         "age_median": 32.0,
         "age_mean": 35.0,
-        "resident_total": 206.0
+        "resident_total": 206.0,
+        "pct_over_100k": 0.5102040816326531,
+        "income_dist": {
+          "<$50K": 6.0,
+          "$50\u201375K": 39.0,
+          "$75\u2013100K": 51.0,
+          "$100K+": 100.0
+        },
+        "lead_count": 7.0
       },
       "jll": {
         "name": "Pearl 21 Eleven",
@@ -1500,15 +7094,153 @@
         "noi_yr1": 2463850.3792823004,
         "noi_exit": 3255236.3124470427
       },
+      "jll_pnl": {
+        "lines": {
+          "gsr": {
+            "actual": 5033880.0,
+            "yr0": 5033880.0,
+            "yr1": 5195749.161060697
+          },
+          "ltl": {
+            "actual": -8440.0,
+            "yr0": -8440.0,
+            "yr1": -8711.396163466805
+          },
+          "conc": {
+            "actual": -83764.0,
+            "yr0": -83764.0,
+            "yr1": -86457.51045457741
+          },
+          "vacancy": {
+            "actual": -330828.0,
+            "yr0": -251694.0,
+            "yr1": -259787.45805303485
+          },
+          "model": {
+            "actual": -43356.0,
+            "yr0": -43356.0,
+            "yr1": -44750.153088064784
+          },
+          "collection": {
+            "actual": 0.0,
+            "yr0": -10067.76,
+            "yr1": -10391.498322121393
+          },
+          "nri": {
+            "actual": 4567492.0,
+            "yr0": 4636558.24,
+            "yr1": 4785651.144979432
+          },
+          "other_income": {
+            "actual": 360657.0,
+            "yr0": 360657.0,
+            "yr1": 365589.5677453924
+          },
+          "util_reimb": {
+            "actual": 144203.0,
+            "yr0": 144203.0,
+            "yr1": 146175.20923644572
+          },
+          "egr": {
+            "actual": 5072352.0,
+            "yr0": 5141418.24,
+            "yr1": 5297415.92196127
+          },
+          "salaries": {
+            "actual": 458283.0,
+            "yr0": 458283.0,
+            "yr1": 458283.0
+          },
+          "advertising": {
+            "actual": 123679.0,
+            "yr0": 108575.0,
+            "yr1": 108575.00000000001
+          },
+          "contract": {
+            "actual": 275472.0,
+            "yr0": 275472.0,
+            "yr1": 275472.0
+          },
+          "turnover": {
+            "actual": 56227.0,
+            "yr0": 56227.00000000001,
+            "yr1": 56227.00000000002
+          },
+          "maintenance": {
+            "actual": 112678.0,
+            "yr0": 112677.99999999999,
+            "yr1": 112677.99999999996
+          },
+          "ga": {
+            "actual": 126952.0,
+            "yr0": 112875.0,
+            "yr1": 112875.0
+          },
+          "utilities": {
+            "actual": 249742.0,
+            "yr0": 254736.84000000003,
+            "yr1": 254736.84000000005
+          },
+          "mgmt": {
+            "actual": 153024.0,
+            "yr0": 154242.5472,
+            "yr1": 158922.4776588381
+          },
+          "insurance": {
+            "actual": 286608.0,
+            "yr0": 243595.0,
+            "yr1": 243595.00000000003
+          },
+          "taxes": {
+            "actual": 1019356.0,
+            "yr0": 1034560.83,
+            "yr1": 1034560.8299999997
+          },
+          "franchise": {
+            "actual": 16891.0,
+            "yr0": 17120.922739200003,
+            "yr1": 17640.395020131025
+          },
+          "opex": {
+            "actual": 2878912.0,
+            "yr0": 2828366.1399392,
+            "yr1": 2833565.542678969
+          },
+          "reserves": {
+            "actual": 0.0,
+            "yr0": 59125.0,
+            "yr1": 75250.0
+          },
+          "noi": {
+            "actual": 2193440.0,
+            "yr0": 2313052.1000608,
+            "yr1": 2463850.3792823013
+          }
+        },
+        "tax": {
+          "current_assessment": 46814087.0,
+          "purchase_price_basis": 46500000.0,
+          "actual_taxes": 1019356.0,
+          "uw_taxes_yr0": 1034560.83,
+          "adjustment": 15204.829999999958
+        }
+      },
+      "agpr": {
+        "rr_agpr_mo": 409299.0,
+        "t1_agpr_mo": 417266.0,
+        "var_pct": -0.01909333614528863,
+        "rr_agpr_unit": 1903.7162790697676
+      },
       "hd_rows": 244,
       "as_of": "May 2026",
       "derived": {
         "trailing_cap": 0.04817832258064516,
         "forward_cap_t3": 0.04528498924731183,
+        "inplace_cap": 0.04974305591528602,
         "jll_noi_vs_trailing": 0.03247795379388041,
         "delinq_pct": -3.63576406271107e-05,
         "conc_pct_egr": 0.0022325662439656347,
-        "rent_to_income": 0.23294908802537667
+        "rent_to_income": 0.23379138872043664
       }
     }
   ]

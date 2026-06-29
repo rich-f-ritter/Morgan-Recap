@@ -124,76 +124,173 @@ def occ_breakdown(units):
 
 
 def inplace_rents(units):
-    occ_u = [u for u in units if u.occupancy == "Occupied" and u.contract_rent > 0]
+    occ_u = [u for u in units if u.contract_rent > 0]          # paying (in-place) units
     contract = [u.contract_rent for u in occ_u]
     sf = [u.sqft for u in occ_u if u.sqft]
     tot_contract = sum(u.contract_rent for u in units)
     tot_other = sum(u.other_income for u in units if u.other_income > 0)
+    # rent-roll AGPR (full-occupancy in-place): paying units at lease rent, vacant at market
+    rr_agpr = sum(u.contract_rent if u.contract_rent > 0 else u.market_rent for u in units)
     return {
         "avg_inplace_rent": (sum(contract) / len(contract)) if contract else 0.0,
         "avg_inplace_psf": (sum(contract) / sum(sf)) if sf else 0.0,
         "total_contract_mo": tot_contract,
+        "rr_agpr_mo": rr_agpr,
         "total_other_mo": tot_other,
         "n_occ": len(occ_u),
     }
 
 
-def unit_mix_summary(units, hd):
-    # group by bedroom count from inferred bed/bath
+def parse_demographics_full(paths):
+    """Full resident-demographics analysis (resident-weighted across files for a combined
+    deal): median/mean household & personal income, the income distribution, % of residents
+    earning $100K+, median household size & age, and a Leads (prospect-pool) income compare."""
+    SECTIONS = ("Household Income", "Personal Income", "Household Size", "Age", "Legal Gender")
+    agg = {}   # (section, bucket) -> {"res":x, "lead":y}
+    stat = {}  # (section, stat) -> [(val, weight)]
+    file_resid = []
+    for path in paths:
+        wb = openpyxl.load_workbook(path, data_only=True)
+        ws = wb[wb.sheetnames[0]]
+        section = None
+        this_resid = 0
+        for r in range(6, ws.max_row + 1):
+            a = il._s(ws.cell(r, 1).value)
+            b = ws.cell(r, 2).value
+            c = ws.cell(r, 3).value
+            if a in SECTIONS and il._s(b) in ("", "Leads"):
+                section = a
+                continue
+            if not section:
+                continue
+            if a in ("Mean", "Median", "Total"):
+                stat.setdefault((section, a), []).append((num(c), None))
+                if section == "Household Income" and a == "Total":
+                    this_resid = num(c)
+            elif a and a != "Unknown":
+                d = agg.setdefault((section, a), {"res": 0.0, "lead": 0.0})
+                d["res"] += num(c); d["lead"] += num(b)
+        file_resid.append(this_resid or 1)
+        wb.close()
+    wsum = sum(file_resid) or 1
+
+    def stat_w(section, s):
+        vals = stat.get((section, s), [])
+        if not vals:
+            return 0.0
+        if len(vals) == len(file_resid) and s in ("Mean", "Median"):
+            return sum(v * w for (v, _), w in zip(vals, file_resid)) / wsum
+        return sum(v for v, _ in vals)
+
+    # income distribution (residents) for Household Income
+    inc_buckets = [(k[1], v["res"]) for k, v in agg.items() if k[0] == "Household Income"]
+    tot_res = sum(v for _, v in inc_buckets) or 1
+    over100 = sum(v for kk, v in inc_buckets if "100" in kk) / tot_res
+    return {
+        "hh_income_median": stat_w("Household Income", "Median"),
+        "hh_income_mean": stat_w("Household Income", "Mean"),
+        "personal_income_median": stat_w("Personal Income", "Median"),
+        "personal_income_mean": stat_w("Personal Income", "Mean"),
+        "lead_income_mean": stat_w("Household Income", "Mean"),   # placeholder; leads handled below
+        "hh_size_median": stat_w("Household Size", "Median"),
+        "age_median": stat_w("Age", "Median"),
+        "age_mean": stat_w("Age", "Mean"),
+        "resident_total": stat_w("Household Income", "Total"),
+        "pct_over_100k": over100,
+        "income_dist": _income_bands(agg),
+        "lead_count": sum(v["lead"] for k, v in agg.items() if k[0] == "Household Income"),
+    }
+
+
+def _income_bands(agg):
+    """Collapse the fine income buckets into 5 readable bands (residents)."""
+    bands = {"<$50K": 0.0, "$50–75K": 0.0, "$75–100K": 0.0, "$100K+": 0.0}
+    import re as _re
+    for (sec, bucket), v in agg.items():
+        if sec != "Household Income":
+            continue
+        nums = [int(x.replace(",", "")) for x in _re.findall(r"\d[\d,]*", bucket)]
+        lo = nums[0] if nums else 0
+        if "100" in bucket:
+            bands["$100K+"] += v["res"]
+        elif lo < 50000:
+            bands["<$50K"] += v["res"]
+        elif lo < 75000:
+            bands["$50–75K"] += v["res"]
+        else:
+            bands["$75–100K"] += v["res"]
+    return bands
+
+
+def unit_mix_summary(units, hd, lto=None):
+    """Per-bedroom unit mix joined to HelloData (T90/T365 asking & effective) and the
+    LTO trade-outs (blended, new, renewal). Also returns per-plan detail and the
+    mix-weighted portfolio HelloData reads."""
     rr = il.RentRoll(units=units)
     mix = il.build_unit_mix(rr, hd)
+    ref = il.classify_lease  # noqa
+    bed_to = lto_by_bed(lto) if lto else {}
     by_bed = {}
     for m in mix:
         bd = m.bed if isinstance(m.bed, int) else None
-        key = bd
-        g = by_bed.setdefault(key, {"units": 0, "occ": 0, "vac": 0, "sf": 0.0, "sf_n": 0,
-                                    "contract_sum": 0.0, "contract_n": 0,
-                                    "t90_ask_sum": 0.0, "t90_ask_w": 0,
-                                    "new": 0})
-        g["units"] += m.units
-        g["occ"] += m.occ
-        g["vac"] += m.vac
-        g["new"] += m.new_count
+        g = by_bed.setdefault(bd, {"units": 0, "occ": 0, "vac": 0, "sf": 0.0, "sf_n": 0,
+                                   "contract_sum": 0.0, "contract_n": 0,
+                                   "t90a": 0.0, "t90e": 0.0, "t90w": 0, "t365a": 0.0, "t365e": 0.0, "t365w": 0,
+                                   "new": 0, "renewal": 0})
+        g["units"] += m.units; g["occ"] += m.occ; g["vac"] += m.vac
+        g["new"] += m.new_count; g["renewal"] += m.renewal_count
         if m.avg_sqft:
-            g["sf"] += m.avg_sqft * m.units
-            g["sf_n"] += m.units
+            g["sf"] += m.avg_sqft * m.units; g["sf_n"] += m.units
         if m.avg_contract:
-            g["contract_sum"] += m.avg_contract * m.occ
-            g["contract_n"] += m.occ
+            g["contract_sum"] += m.avg_contract * m.occ; g["contract_n"] += m.occ
         if m.t90_ask:
-            g["t90_ask_sum"] += m.t90_ask * m.units
-            g["t90_ask_w"] += m.units
+            g["t90a"] += m.t90_ask * m.units; g["t90e"] += m.t90_eff * m.units; g["t90w"] += m.units
+        if m.t365_ask:
+            g["t365a"] += m.t365_ask * m.units; g["t365e"] += m.t365_eff * m.units; g["t365w"] += m.units
     rows = []
     for bd in sorted(by_bed, key=lambda x: (99 if x is None else x)):
         g = by_bed[bd]
+        lb = bed_to.get(bd, {})
         rows.append({
             "bed": bd, "units": g["units"], "occ": g["occ"], "vac": g["vac"],
             "avg_sf": g["sf"] / g["sf_n"] if g["sf_n"] else 0,
-            "avg_contract": g["contract_sum"] / g["contract_n"] if g["contract_n"] else 0,
-            "t90_ask": g["t90_ask_sum"] / g["t90_ask_w"] if g["t90_ask_w"] else 0,
+            "in_place": g["contract_sum"] / g["contract_n"] if g["contract_n"] else 0,
+            "hd90_ask": g["t90a"] / g["t90w"] if g["t90w"] else 0,
+            "hd90_eff": g["t90e"] / g["t90w"] if g["t90w"] else 0,
+            "hd365_ask": g["t365a"] / g["t365w"] if g["t365w"] else 0,
+            "hd365_eff": g["t365e"] / g["t365w"] if g["t365w"] else 0,
+            "lto_new_n": lb.get("new_n", 0), "lto_ren_n": lb.get("ren_n", 0),
+            "lto_new_to": lb.get("new_tradeout"), "lto_ren_to": lb.get("ren_tradeout"),
+            "lto_to": lb.get("tradeout"),
         })
-    # mix-weighted HelloData executed reads (portfolio-level)
-    t90a = t90e = t365a = t365e = w90 = w365 = 0.0
+    # per-plan detail (for the Excel)
+    plans = []
+    for m in mix:
+        plans.append({
+            "plan": m.plan, "bed": m.bed, "bath": m.bath, "units": m.units, "occ": m.occ, "vac": m.vac,
+            "avg_sf": round(m.avg_sqft), "in_place": round(m.avg_contract),
+            "hd90_ask": round(m.t90_ask), "hd90_eff": round(m.t90_eff),
+            "hd365_ask": round(m.t365_ask), "hd365_eff": round(m.t365_eff),
+            "new_n": m.new_count, "renewal_n": m.renewal_count,
+            "last5_new_avg": round(m.avg_new_last5), "hd_yoy_ask": m.yoy_ask,
+        })
+    # mix-weighted portfolio HelloData reads
+    def wavg(attr):
+        num_ = den = 0.0
+        for m in mix:
+            v = getattr(m, attr)
+            if v:
+                num_ += v * m.units; den += m.units
+        return num_ / den if den else 0
     yoy_num = yoy_w = 0.0
     for m in mix:
-        if m.t90_ask:
-            t90a += m.t90_ask * m.units; w90 += m.units
-        if m.t90_eff:
-            t90e += m.t90_eff * m.units
-        if m.t365_ask:
-            t365a += m.t365_ask * m.units; w365 += m.units
-        if m.t365_eff:
-            t365e += m.t365_eff * m.units
         if m.yoy_ask is not None:
             yoy_num += m.yoy_ask * m.units; yoy_w += m.units
     return {
-        "by_bed": rows,
-        "hd_t90_ask": t90a / w90 if w90 else 0,
-        "hd_t90_eff": t90e / w90 if w90 else 0,
-        "hd_t365_ask": t365a / w365 if w365 else 0,
-        "hd_t365_eff": t365e / w365 if w365 else 0,
-        "hd_yoy_ask": yoy_num / yoy_w if yoy_w else None,
-        "n_plans": len(mix),
+        "by_bed": rows, "by_plan": plans,
+        "hd_t90_ask": wavg("t90_ask"), "hd_t90_eff": wavg("t90_eff"),
+        "hd_t365_ask": wavg("t365_ask"), "hd_t365_eff": wavg("t365_eff"),
+        "hd_yoy_ask": yoy_num / yoy_w if yoy_w else None, "n_plans": len(mix),
     }
 
 
@@ -272,65 +369,100 @@ def parse_rediq(path):
 # ════════════════════════════════════════════════════════════════════════════
 # LEASE TRADE-OUT (LTO)
 # ════════════════════════════════════════════════════════════════════════════
+def _bed_of(unit_type):
+    """Bed count from a floor-plan / unit-type code first letter (S/E=studio, A=1, B=2 ...)."""
+    s = il._s(unit_type).upper()
+    if not s:
+        return None
+    return {"S": 0, "E": 0, "A": 1, "B": 2, "C": 3, "D": 4, "F": 5}.get(s[0])
+
+
 def parse_lto(path):
+    """Lease trade-out. Returns the blended summary plus the raw per-lease detail
+    rows (beds, new/renewal, prior/current lease & effective rents) so trade-outs
+    can be rolled up by bedroom and split new vs renewal downstream."""
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[wb.sheetnames[0]]
     period = il._s(ws.cell(4, 1).value)
-    # --- Summary 'Total/Average:' row ---
-    # header row 7: 3=Leases 5=PriorLeaseRent 8=PriorEffRent 10=CurLeaseRent 12=CurEffRent
-    res = {"period": period}
-    for r in range(7, min(ws.max_row, 40) + 1):
+    res = {"period": period, "rows": []}
+    # --- Summary 'Total/Average:' row (cols: 3 Leases,5 PriorRent,8 PriorEff,10 CurRent,12 CurEff) ---
+    # also capture unit-type -> beds from the summary (col2 = Beds)
+    ut_beds = {}
+    for r in range(7, min(ws.max_row, 60) + 1):
         a = il._s(ws.cell(r, 1).value)
         if a.startswith("Total/Average"):
-            res["leases"] = num(ws.cell(r, 3).value)
-            res["prior_rent"] = num(ws.cell(r, 5).value)
-            res["prior_eff"] = num(ws.cell(r, 8).value)
-            res["cur_rent"] = num(ws.cell(r, 10).value)
-            res["cur_eff"] = num(ws.cell(r, 12).value)
+            res.update(leases=num(ws.cell(r, 3).value), prior_rent=num(ws.cell(r, 5).value),
+                       prior_eff=num(ws.cell(r, 8).value), cur_rent=num(ws.cell(r, 10).value),
+                       cur_eff=num(ws.cell(r, 12).value))
             break
+        b = ws.cell(r, 2).value
+        if a and isinstance(b, (int, float)):
+            ut_beds[a] = int(b)
+    res["ut_beds"] = ut_beds
     if res.get("prior_rent"):
         res["tradeout_lease_pct"] = res["cur_rent"] / res["prior_rent"] - 1
         res["tradeout_eff_pct"] = (res["cur_eff"] / res["prior_eff"] - 1) if res.get("prior_eff") else None
 
-    # --- Detail: split new (Application) vs renewal/MTM ---
-    # find detail header row (has 'Current Lease Type')
+    # --- Detail rows ---
     hdr = None
     for r in range(1, ws.max_row + 1):
-        labs = [il._s(ws.cell(r, c).value).lower() for c in range(1, ws.max_column + 1)]
-        if any(l == "current lease type" for l in labs):
-            hdr = r
-            cols = {il._s(ws.cell(r, c).value).lower(): c for c in range(1, ws.max_column + 1)}
+        labs = {il._s(ws.cell(r, c).value).lower(): c for c in range(1, ws.max_column + 1)}
+        if "current lease type" in labs:
+            hdr, cols = r, labs
             break
-    # accumulate rent-weighted sums per group (Yardi's own trade-out method:
-    # Σcurrent / Σprior − 1), so the split ties to the blended summary number
-    groups = {"new": [0.0, 0.0, 0], "renewal": [0.0, 0.0, 0]}   # [prior_sum, cur_sum, n]
     if hdr:
+        c_ut = cols.get("unit type")
         c_type = cols.get("current lease type")
-        c_prior = cols.get("prior lease rent")
-        c_cur = cols.get("current lease rent") or cols.get("current  lease rent")
+        c_pr = cols.get("prior lease rent")
+        c_cu = cols.get("current lease rent") or cols.get("current  lease rent")
+        c_pe = cols.get("prior effective rent")
+        c_ce = cols.get("current effective rent")
         for r in range(hdr + 1, ws.max_row + 1):
             t = il._s(ws.cell(r, c_type).value) if c_type else ""
             if not t:
                 continue
-            pr = num(ws.cell(r, c_prior).value) if c_prior else 0
-            cu = num(ws.cell(r, c_cur).value) if c_cur else 0
-            if pr <= 0 or cu <= 0 or abs(cu / pr - 1) > 0.6:   # drop data errors
+            pr = num(ws.cell(r, c_pr).value) if c_pr else 0
+            cu = num(ws.cell(r, c_cu).value) if c_cu else 0
+            if pr <= 0 or cu <= 0 or abs(cu / pr - 1) > 0.6:
                 continue
+            ut = il._s(ws.cell(r, c_ut).value) if c_ut else ""
+            beds = ut_beds.get(ut, _bed_of(ut))
             tl = t.lower()
-            is_new = ("appl" in tl) or tl.startswith("new")   # NOT 're-NEW-al'
-            g = groups["new"] if is_new else groups["renewal"]
-            g[0] += pr; g[1] += cu; g[2] += 1
-    res["_groups"] = groups
+            res["rows"].append({
+                "beds": beds, "kind": "new" if ("appl" in tl or tl.startswith("new")) else "renewal",
+                "prior": pr, "cur": cu,
+                "prior_eff": num(ws.cell(r, c_pe).value) if c_pe else 0,
+                "cur_eff": num(ws.cell(r, c_ce).value) if c_ce else 0,
+            })
     wb.close()
     return finalize_lto(res)
 
 
 def finalize_lto(res):
     for grp in ("new", "renewal"):
-        pr, cu, n = res.get("_groups", {}).get(grp, [0, 0, 0])
-        res[f"{grp}_n"] = n
+        rws = [x for x in res["rows"] if x["kind"] == grp]
+        pr, cu = sum(x["prior"] for x in rws), sum(x["cur"] for x in rws)
+        res[f"{grp}_n"] = len(rws)
         res[f"{grp}_tradeout_pct"] = (cu / pr - 1) if pr else None
     return res
+
+
+def lto_by_bed(res):
+    """Roll the LTO detail rows up by bedroom: blended + new/renewal trade-outs & counts."""
+    out = {}
+    for x in res["rows"]:
+        b = x["beds"]
+        g = out.setdefault(b, {"prior": 0.0, "cur": 0.0, "n": 0,
+                               "new_prior": 0.0, "new_cur": 0.0, "new_n": 0,
+                               "ren_prior": 0.0, "ren_cur": 0.0, "ren_n": 0})
+        g["prior"] += x["prior"]; g["cur"] += x["cur"]; g["n"] += 1
+        p = "new" if x["kind"] == "new" else "ren"
+        g[f"{p}_prior"] += x["prior"]; g[f"{p}_cur"] += x["cur"]; g[f"{p}_n"] += 1
+    for b, g in out.items():
+        g["tradeout"] = (g["cur"] / g["prior"] - 1) if g["prior"] else None
+        g["new_tradeout"] = (g["new_cur"] / g["new_prior"] - 1) if g["new_prior"] else None
+        g["ren_tradeout"] = (g["ren_cur"] / g["ren_prior"] - 1) if g["ren_prior"] else None
+    return out
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -474,6 +606,54 @@ def parse_jll(path):
     return out
 
 
+def parse_jll_pnl(path):
+    """JLL line-item P&L from 'Historical_YR 0': col D = annualized actual (T12),
+    col F = Year-0 (in-place underwriting), col J = Year-1. Matched by row label so
+    it is robust to row shifts. Also pulls the tax-reassessment analysis."""
+    wb = openpyxl.load_workbook(path, data_only=True)
+    ws = wb["Historical_YR 0"]
+    label_row = {}
+    for r in range(1, ws.max_row + 1):
+        lab = il._s(ws.cell(r, 1).value)
+        if lab and lab not in label_row:
+            label_row[lab] = r
+
+    def get(label, col):
+        r = label_row.get(label)
+        return num(ws.cell(r, col).value) if r else 0.0
+
+    def trip(label):
+        r = label_row.get(label)
+        if not r:
+            return {"actual": 0.0, "yr0": 0.0, "yr1": 0.0}
+        return {"actual": num(ws.cell(r, 4).value), "yr0": num(ws.cell(r, 6).value),
+                "yr1": num(ws.cell(r, 10).value)}
+
+    lines = {k: trip(lbl) for k, lbl in {
+        "gsr": "Gross Scheduled Rent", "ltl": "Loss To Lease", "conc": "Concessions",
+        "vacancy": "Vacancy Loss", "model": "Model/Office/Employee Units",
+        "collection": "Collection Loss", "nri": "Net Rental Income",
+        "other_income": "Other Income", "util_reimb": "Utility Reimbursement",
+        "egr": "Total Income", "salaries": "Salaries", "advertising": "Advertising",
+        "contract": "Contract Services", "turnover": "Turnover Costs",
+        "maintenance": "Maintenance", "ga": "General & Administrative",
+        "utilities": "Utilities", "mgmt": "Management Fee", "insurance": "Insurance",
+        "taxes": "Property Taxes", "franchise": "Franchise Tax",
+        "opex": "Total Operating Expenses", "reserves": "Normalized Capital Expenditures",
+        "noi": "NCLF Before Partnership Costs",
+    }.items()}
+    # tax reassessment analysis
+    ca_row = label_row.get("Actual Current Assessment")
+    tax = {
+        "current_assessment": num(ws.cell(ca_row, 4).value) if ca_row else 0.0,
+        "purchase_price_basis": num(ws.cell(ca_row, 6).value) if ca_row else 0.0,
+        "actual_taxes": lines["taxes"]["actual"], "uw_taxes_yr0": lines["taxes"]["yr0"],
+    }
+    tax["adjustment"] = tax["uw_taxes_yr0"] - tax["actual_taxes"]
+    wb.close()
+    return {"lines": lines, "tax": tax}
+
+
 # ════════════════════════════════════════════════════════════════════════════
 # DEAL CONFIG
 # ════════════════════════════════════════════════════════════════════════════
@@ -546,13 +726,7 @@ def combine_lto(paths):
            "period": parts[0].get("period", "")}
     res["tradeout_lease_pct"] = cu / pr - 1 if pr else None
     res["tradeout_eff_pct"] = ce / pe - 1 if pe else None
-    # new/renewal: pool the per-group prior/current rent sums, then ratio
-    pooled = {"new": [0.0, 0.0, 0], "renewal": [0.0, 0.0, 0]}
-    for p in parts:
-        for grp in ("new", "renewal"):
-            g = p.get("_groups", {}).get(grp, [0, 0, 0])
-            pooled[grp][0] += g[0]; pooled[grp][1] += g[1]; pooled[grp][2] += g[2]
-    res["_groups"] = pooled
+    res["rows"] = [row for p in parts for row in p.get("rows", [])]
     return finalize_lto(res)
 
 
@@ -563,28 +737,38 @@ def run_deal(d):
     units, as_of = parse_rr(d["rr"])
     occ = occ_breakdown(units)
     rents = inplace_rents(units)
-    mix = unit_mix_summary(units, hd)
     op = parse_rediq(d["rediq"])
     lto = combine_lto(d["lto"]) if len(d["lto"]) > 1 else parse_lto(d["lto"][0])
+    mix = unit_mix_summary(units, hd, lto)
     _dq = [parse_delinquency(p) for p in d["delinq"]]
     delq = {k: sum(x[k] for x in _dq) for k in ("total_delinquent", "past_due_30", "net_balance")}
-    demo = parse_demographics(d["demo"])
+    demo = parse_demographics_full(d["demo"])
     jll = parse_jll(d["jll"])
+    jll_pnl = parse_jll_pnl(d["jll"])
 
     # derived comparisons
     trailing_cap = op["noi_t12"] / jll["price"] if jll["price"] else 0
     forward_cap_t3 = op["noi_t3_ann"] / jll["price"] if jll["price"] else 0
+    inplace_cap = jll["noi_yr0"] / jll["price"] if jll["price"] else 0   # JLL Year-0 in-place
     delinq_pct = delq["total_delinquent"] / op["rentinc_t12"] if op["rentinc_t12"] else 0
     conc_pct_egr = abs(op["concessions_t12"]) / op["egr_t12"] if op["egr_t12"] else 0
     rent_to_income = (rents["avg_inplace_rent"] * 12 / demo["hh_income_median"]) if demo["hh_income_median"] else 0
+    # in-place AGPR tie: rent-roll AGPR vs T1 AGPR (latest-month Rentinc + LtL)
+    t1_agpr_mo = op["rentinc"][-1] + op["ltl"][-1]
+    agpr_tie = {
+        "rr_agpr_mo": rents["rr_agpr_mo"], "t1_agpr_mo": t1_agpr_mo,
+        "var_pct": (rents["rr_agpr_mo"] / t1_agpr_mo - 1) if t1_agpr_mo else None,
+        "rr_agpr_unit": rents["rr_agpr_mo"] / occ["units"] if occ["units"] else 0,
+    }
 
     rec = {
         "label": d["label"], "key": d["key"],
         "occ": occ, "rents": rents, "mix": mix, "op": op, "lto": lto,
-        "delinq": delq, "demo": demo, "jll": jll, "hd_rows": hd_n,
-        "as_of": as_of,
+        "delinq": delq, "demo": demo, "jll": jll, "jll_pnl": jll_pnl, "agpr": agpr_tie,
+        "hd_rows": hd_n, "as_of": as_of,
         "derived": {
             "trailing_cap": trailing_cap, "forward_cap_t3": forward_cap_t3,
+            "inplace_cap": inplace_cap,
             "jll_noi_vs_trailing": (jll["noi_yr0"] / op["noi_t12"] - 1) if op["noi_t12"] else 0,
             "delinq_pct": delinq_pct, "conc_pct_egr": conc_pct_egr,
             "rent_to_income": rent_to_income,
@@ -595,12 +779,13 @@ def run_deal(d):
         su, _ = parse_rr(s["rr"])
         sub_hd_path, _ = split_hellodata(s["hd_props"])
         sub_hd = il.parse_hellodata(sub_hd_path)
+        sub_lto = combine_lto(s["lto"]) if len(s["lto"]) > 1 else parse_lto(s["lto"][0])
         rec["sub"] = {
             "label": s["label"],
             "occ": occ_breakdown(su),
             "rents": inplace_rents(su),
-            "mix": unit_mix_summary(su, sub_hd),
-            "lto": combine_lto(s["lto"]) if len(s["lto"]) > 1 else parse_lto(s["lto"][0]),
+            "mix": unit_mix_summary(su, sub_hd, sub_lto),
+            "lto": sub_lto,
         }
     # print summary
     print(f"  units(RR)={occ['units']} phys_occ={occ['phys_occ']*100:.1f}% leased={occ['leased_occ']*100:.1f}% | JLL occ={jll['occupancy']*100:.1f}% units={jll['units']}")
