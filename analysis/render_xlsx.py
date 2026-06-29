@@ -53,18 +53,18 @@ def build():
     dash.section("Asset-Level Data Tape",
                  "Act Cap = trailing-12 NOI ÷ ask · JLL UW Cap = JLL underwritten Year-0 (in-place) NOI ÷ price · "
                  "Contract /mo = T1 AGPR ÷ units · New T/O = rent-weighted new-lease trade-out vs prior lease (Yardi LTO, T90)")
-    cols = [("Units", "num"), ("Built", "year"), ("Ask", "m"), ("$/Unit", "usd"), ("Occ", "pct"),
+    cols = [("Market", "text"), ("Units", "num"), ("Built", "year"), ("Ask", "m"), ("$/Unit", "usd"), ("Occ", "pct"),
             ("Contract /mo", "usd"), ("New T/O", "pct"), ("T12 NOI", "m"), ("Act Cap", "pct2"),
             ("JLL UW Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("JLL UW LIRR", "pct"), ("EM", "ratio")]
     rows = []
     for x in DEALS:
         j, op, lto, occ = x["jll"], x["op"], x["lto"], x["occ"]
         rows.append((SHORT[x["key"]], [
-            occ["units"], _year(j.get("year_built")), j["price"], j["price_unit"], occ["phys_occ"],
+            _market(x), occ["units"], _year(j.get("year_built")), j["price"], j["price_unit"], occ["phys_occ"],
             x["agpr"]["t1_agpr_unit"], lto.get("new_tradeout_pct"), op["noi_t12"],
             x["derived"]["trailing_cap"], j["cap_yr0"], j["cap_yr1"], j["exit_cap"], j["irr_lev"], j["em_lev"],
         ], "num", None))
-    rows.append(("PORTFOLIO", [tot_units, None, tot_price, tot_price / tot_units, wtd_occ, None, None,
+    rows.append(("PORTFOLIO", ["3 Houston · 1 Miami", tot_units, None, tot_price, tot_price / tot_units, wtd_occ, None, None,
                                tot_noi, blend_trailing, blend_goingin, None, blend_exit, None, None], "num", None))
     dash.compare_table("", cols, rows, heat=False)
 
@@ -123,6 +123,12 @@ def _year(v):
 
 def _debt(j):
     return f"{j['financing_type']} {j['rate']*100:.2f}% IO, {j['ltv']*100:.0f}% LTV"
+
+
+def _market(x):
+    j = x["jll"]
+    state = "FL" if x["key"] == "golden_glades" else (j.get("state") or "")
+    return f"{j.get('city')}, {state}"
 
 
 def operating_df():

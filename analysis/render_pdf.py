@@ -228,6 +228,12 @@ def shortname(x):
             "pearl_washington": "Pearl Washington", "pearl_21eleven": "Pearl 21 Eleven"}[x["key"]]
 
 
+def market_of(x):
+    j = x["jll"]
+    state = "FL" if x["key"] == "golden_glades" else (j.get("state") or "")
+    return f"{j.get('city')}, {state}"
+
+
 def portfolio_page(pdf, deals, page_no):
     U = sum(x["occ"]["units"] for x in deals)
     price = sum(x["jll"]["price"] for x in deals)
@@ -265,16 +271,16 @@ def portfolio_page(pdf, deals, page_no):
     rows = []
     for x in deals:
         j, opx, lto, oc, m = x["jll"], x["op"], x["lto"], x["occ"], x["mtm"]
-        rows.append([shortname(x), f"{oc['units']:,}", str(j.get("year_built")), money(j["price"]),
+        rows.append([shortname(x), market_of(x), f"{oc['units']:,}", str(j.get("year_built")), money(j["price"]),
                      perU(j["price"], oc["units"]), pct(oc["phys_occ"], 1), usd(round(x["agpr"]["t1_agpr_unit"])),
                      usd(m["mkt_t12_eff"]), spct(m["loss_to_lease_t12"], 1),
                      spct(lto.get("new_tradeout_pct"), 1) + "/" + spct(lto.get("new_tradeout_eff_pct"), 1),
                      money(opx["noi_t12"]), pct(x["derived"]["trailing_cap"], 2), pct(x["derived"]["inplace_cap"], 2),
                      pct(j["exit_cap"], 2), pct(j["irr_lev"], 1)])
-    rows.append(["PORTFOLIO", f"{U:,}", "—", money(price), perU(price, U), pct(occ, 1), "—", "—", "—", "—",
+    rows.append(["PORTFOLIO", "3 Hou · 1 Mia", f"{U:,}", "—", money(price), perU(price, U), pct(occ, 1), "—", "—", "—", "—",
                  money(noi), pct(cap_act, 2), pct(cap_uw, 2), pct(cap_exit, 2), "—"])
     pg.table(0, 0, 1, 1,
-             headers=["Asset", "Units", "Built", "Ask", "$/Unit", "Occ", "Contract/U", "Mkt T12", "vs Mkt",
+             headers=["Asset", "Market", "Units", "Built", "Ask", "$/Unit", "Occ", "Contract/U", "Mkt T12", "vs Mkt",
                       "New T/O g/e", "T12 NOI", "Act Cap", "JLL UW Cap", "Exit", "JLL UW LIRR"],
              rows_data=rows, title="Asset-Level Data Tape", highlight=[len(rows) - 1], heat=False,
              note="Contract/U = T1 AGPR ÷ units (monthly, ties to the financials); Mkt T12 = HelloData executed effective, "
