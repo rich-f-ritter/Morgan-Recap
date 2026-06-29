@@ -55,7 +55,7 @@ def build():
                  "New T/O = rent-weighted new-lease trade-out vs prior lease (Yardi LTO, T90)")
     cols = [("Units", "num"), ("Built", "year"), ("Ask", "m"), ("$/Unit", "usd"), ("Occ", "pct"),
             ("In-Place /mo", "usd"), ("New T/O", "pct"), ("T12 NOI", "m"), ("Act Cap", "pct2"),
-            ("In-Place Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("Lev IRR", "pct"), ("EM", "ratio")]
+            ("JLL UW Cap", "pct2"), ("Yr-1 Cap", "pct2"), ("Exit Cap", "pct2"), ("Lev IRR", "pct"), ("EM", "ratio")]
     rows = []
     for x in DEALS:
         j, op, lto, occ = x["jll"], x["op"], x["lto"], x["occ"]
@@ -70,7 +70,7 @@ def build():
 
     # ── Underwriting & returns vs in-place ──
     dash.section("Underwriting vs. In-Place / Trailing  (per asset)")
-    cols2 = [("Trailing Cap", "pct2"), ("JLL In-Place Cap", "pct2"), ("NOI UW vs Trl", "pct"),
+    cols2 = [("Trailing Cap", "pct2"), ("JLL UW Cap", "pct2"), ("NOI UW vs Trl", "pct"),
              ("Mkt Growth Y1", "pct"), ("New-Lease T/O", "pct"), ("LtL Assumed", "pct"),
              ("Conc Assumed", "pct"), ("T12 Conc", "pct"), ("Debt Rate", "pct2"), ("LTV", "pct")]
     rows2 = []
@@ -211,16 +211,19 @@ def capstack_df():
 
 
 def mtm_df():
-    """Mark-to-market: in-place vs HelloData market/effective + the forward rent signal."""
+    """Mark-to-market on HelloData EXECUTED rents (T12=HD365, T3=HD90, mix-wtd) + forward signal."""
     recs = []
     for x in DEALS:
-        m = x["mtm"]
+        m, lto = x["mtm"], x["lto"]
         recs.append({
             "Asset": SHORT[x["key"]], "In-Place Rent": round(m["in_place"]),
-            "HD Market T90": round(m["hd_market_t90"]), "HD Market T365": round(m["hd_market_t365"]),
-            "HD Effective T90": round(m["hd_eff_t90"]), "Loss-to-Lease %": _r(m["loss_to_lease_pct"]),
-            "HD Concession %": _r(m["hd_conc_pct"]), "New-Lease Trade-Out": _r(m["new_lease_to"]),
-            "HD Asking YoY": _r(m["hd_yoy"]),
+            "Mkt T12 (HD365 eff)": round(m["mkt_t12_eff"]), "Mkt T3 (HD90 eff)": round(m["mkt_t3_eff"]),
+            "Mkt T12 (HD365 ask)": round(m["mkt_t12_ask"]), "Mkt T3 (HD90 ask)": round(m["mkt_t3_ask"]),
+            "Loss-to-Lease T12": _r(m["loss_to_lease_t12"]), "Loss-to-Lease T3": _r(m["loss_to_lease_t3"]),
+            "Market Direction (T3 vs T12)": _r(m["mkt_direction"]),
+            "HD Concession T12": _r(m["conc_t12"]), "HD Concession T3": _r(m["conc_t3"]),
+            "New-Lease T/O (gross)": _r(lto.get("new_tradeout_pct")), "New-Lease T/O (eff)": _r(lto.get("new_tradeout_eff_pct")),
+            "Renewal T/O (gross)": _r(lto.get("renewal_tradeout_pct")), "HD Asking YoY": _r(m["hd_yoy"]),
         })
     return pd.DataFrame(recs)
 

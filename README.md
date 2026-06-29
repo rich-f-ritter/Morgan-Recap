@@ -13,9 +13,18 @@ and resident demographics — compared against the JLL models.
 
 | File | What it is |
 |---|---|
-| `Morgan_Recap_Analysis.pdf` | 10 branded, **table‑driven** pages. **p1** portfolio data tape + NOI‑bridge / tax / economic‑loss table; **p2** Key Findings & Trends scorecard; then **two pages per deal** — **A (Financials):** NOI & cap‑rate bridge (GPR → loss‑to‑lease → **AGPR** → vacancy/bad‑debt/concessions → NRI → EGR → opex → NOI, columns T12/T3/JLL), the **cap‑rate stack with explicit definitions + the NOI walk** (actual → JLL underwritten), and **economic losses as % of AGPR on a T12/T6/T3 trend**; **B (Rents & Residents):** **mark‑to‑market** (in‑place vs HelloData market/effective), the full **unit mix** (in‑place / HD90 ask+eff / HD365 / new & renewal counts / trade‑outs by bed), and **resident demographics**. |
+| `Morgan_Recap_Analysis.pdf` | 5 branded, **table‑driven** pages. **p1** portfolio data tape + NOI‑bridge / tax / economic‑loss table; then **one page per deal** that flows top‑to‑bottom: **NOI & cap‑rate bridge** (GPR → loss‑to‑lease → **AGPR** → vacancy/bad‑debt/concessions → NRI → EGR → opex → NOI, columns T12/T3/JLL, with the cap stack + NOI walk in the note) · **Market Rent (HelloData executed) & economic‑loss trend** (T12/T3/JLL) · **unit mix** (in‑place vs HD‑executed market, new/renewal counts, gross & effective trade‑outs) · **resident demographics**. |
 | `Morgan_Recap_Data_Tape.xlsx` | Editable, brand‑styled Excel: a dashboard + ten raw tabs — NOI bridge (T12 vs JLL), **cap stack & NOI walk**, **economic losses (%AGPR)**, **mark‑to‑market**, operating T12 monthly, rent & leasing, **unit mix by plan** (86 floor plans), underwriting & returns, demographics. |
 | `*.png` | Page previews of each PDF page. |
+
+### Market rent = HelloData executed only (seller asking ignored)
+Per the underwriting view, the seller's "market rent" (rent‑roll asking / GPR) is **not** used
+as a market signal. Market rent is **HelloData executed, mix‑weighted**, aligned to the
+operating window: **T12 market = HD365 executed**, **T3 market = HD90 executed**. Comparing
+in‑place to that market gives the true mark: at **Pearl Washington (−4%)** and **Golden Glades
+(−10%)** in‑place rents are **above** executed market (over‑rented → downside on turnover),
+while only **City Centre (+6%)** has genuine embedded upside. HD90‑vs‑HD365 also reads the
+market's own direction. Trade‑outs are shown **gross (face) and effective (net of concessions)**.
 
 ### The cap rates, broken out (each defined)
 - **Actual cap — Trailing‑12 (the true in‑place cap):** seller's standardized T12 NOI ÷ ask.

@@ -262,8 +262,8 @@ def unit_mix_summary(segments, lto=None):
             "hd365_ask": g["t365a"] / g["t365w"] if g["t365w"] else 0,
             "hd365_eff": g["t365e"] / g["t365w"] if g["t365w"] else 0,
             "lto_new_n": lb.get("new_n", 0), "lto_ren_n": lb.get("ren_n", 0),
-            "lto_new_to": lb.get("new_tradeout"), "lto_ren_to": lb.get("ren_tradeout"),
-            "lto_to": lb.get("tradeout"),
+            "lto_new_to": lb.get("new_tradeout"), "lto_new_to_eff": lb.get("new_tradeout_eff"),
+            "lto_ren_to": lb.get("ren_tradeout"), "lto_to": lb.get("tradeout"),
         })
     # per-plan detail (for the Excel)
     plans = []
@@ -495,8 +495,10 @@ def finalize_lto(res):
     for grp in ("new", "renewal"):
         rws = [x for x in res["rows"] if x["kind"] == grp]
         pr, cu = sum(x["prior"] for x in rws), sum(x["cur"] for x in rws)
+        pe, ce = sum(x["prior_eff"] for x in rws), sum(x["cur_eff"] for x in rws)
         res[f"{grp}_n"] = len(rws)
-        res[f"{grp}_tradeout_pct"] = (cu / pr - 1) if pr else None
+        res[f"{grp}_tradeout_pct"] = (cu / pr - 1) if pr else None          # gross (face) lease rent
+        res[f"{grp}_tradeout_eff_pct"] = (ce / pe - 1) if pe else None        # effective (net of concessions)
     return res
 
 
@@ -505,15 +507,18 @@ def lto_by_bed(res):
     out = {}
     for x in res["rows"]:
         b = x["beds"]
-        g = out.setdefault(b, {"prior": 0.0, "cur": 0.0, "n": 0,
-                               "new_prior": 0.0, "new_cur": 0.0, "new_n": 0,
-                               "ren_prior": 0.0, "ren_cur": 0.0, "ren_n": 0})
-        g["prior"] += x["prior"]; g["cur"] += x["cur"]; g["n"] += 1
+        g = out.setdefault(b, {"prior": 0.0, "cur": 0.0, "pe": 0.0, "ce": 0.0, "n": 0,
+                               "new_prior": 0.0, "new_cur": 0.0, "new_pe": 0.0, "new_ce": 0.0, "new_n": 0,
+                               "ren_prior": 0.0, "ren_cur": 0.0, "ren_pe": 0.0, "ren_ce": 0.0, "ren_n": 0})
+        g["prior"] += x["prior"]; g["cur"] += x["cur"]; g["pe"] += x["prior_eff"]; g["ce"] += x["cur_eff"]; g["n"] += 1
         p = "new" if x["kind"] == "new" else "ren"
-        g[f"{p}_prior"] += x["prior"]; g[f"{p}_cur"] += x["cur"]; g[f"{p}_n"] += 1
+        g[f"{p}_prior"] += x["prior"]; g[f"{p}_cur"] += x["cur"]
+        g[f"{p}_pe"] += x["prior_eff"]; g[f"{p}_ce"] += x["cur_eff"]; g[f"{p}_n"] += 1
     for b, g in out.items():
         g["tradeout"] = (g["cur"] / g["prior"] - 1) if g["prior"] else None
+        g["tradeout_eff"] = (g["ce"] / g["pe"] - 1) if g["pe"] else None
         g["new_tradeout"] = (g["new_cur"] / g["new_prior"] - 1) if g["new_prior"] else None
+        g["new_tradeout_eff"] = (g["new_ce"] / g["new_pe"] - 1) if g["new_pe"] else None
         g["ren_tradeout"] = (g["ren_cur"] / g["ren_prior"] - 1) if g["ren_prior"] else None
     return out
 
@@ -842,14 +847,22 @@ def run_deal(d):
     other_exp_delta = (op["opex_t12"] - op["expense_t12"].get("Real Estate Taxes", 0)) - (L["opex"]["yr0"] - L["taxes"]["yr0"])
     walk = {"actual_noi": op["noi_t12"], "rev": rev_delta, "tax": tax_delta,
             "opex_ex_tax": other_exp_delta, "uw_noi": jll["noi_yr0"]}
-    # mark-to-market: in-place vs HelloData executed market (loss/gain to lease) + forward signal
-    hd_mkt = mix["hd_t90_ask"] or mix["hd_t365_ask"]
+    # Mark-to-market on HelloData EXECUTED rents (seller asking ignored):
+    #   T12 market = HD365 executed (mix-wtd); T3 market = HD90 executed (mix-wtd).
+    ip = rents["avg_inplace_rent"]
+    m_t12_eff, m_t3_eff = mix["hd_t365_eff"], mix["hd_t90_eff"]
+    m_t12_ask, m_t3_ask = mix["hd_t365_ask"], mix["hd_t90_ask"]
     mtm = {
-        "in_place": rents["avg_inplace_rent"], "hd_market_t90": mix["hd_t90_ask"], "hd_eff_t90": mix["hd_t90_eff"],
-        "hd_market_t365": mix["hd_t365_ask"],
-        "loss_to_lease_pct": (hd_mkt / rents["avg_inplace_rent"] - 1) if rents["avg_inplace_rent"] else None,
-        "new_lease_to": lto.get("new_tradeout_pct"), "hd_yoy": mix["hd_yoy_ask"],
-        "hd_conc_pct": (1 - mix["hd_t90_eff"] / mix["hd_t90_ask"]) if mix["hd_t90_ask"] else None,
+        "in_place": ip,
+        "mkt_t12_eff": m_t12_eff, "mkt_t3_eff": m_t3_eff,        # executed effective, T12=HD365 / T3=HD90
+        "mkt_t12_ask": m_t12_ask, "mkt_t3_ask": m_t3_ask,        # executed asking
+        "loss_to_lease_t12": (m_t12_eff / ip - 1) if ip and m_t12_eff else None,   # in-place vs T12 market (HD365 eff)
+        "loss_to_lease_t3": (m_t3_eff / ip - 1) if ip and m_t3_eff else None,      # in-place vs T3 market (HD90 eff)
+        "mkt_direction": (m_t3_eff / m_t12_eff - 1) if (m_t12_eff and m_t3_eff) else None,  # HD90 vs HD365 = market trend
+        "conc_t12": (1 - m_t12_eff / m_t12_ask) if m_t12_ask else None,
+        "conc_t3": (1 - m_t3_eff / m_t3_ask) if m_t3_ask else None,
+        "new_lease_to": lto.get("new_tradeout_pct"), "new_lease_to_eff": lto.get("new_tradeout_eff_pct"),
+        "hd_yoy": mix["hd_yoy_ask"],
     }
 
     rec = {
