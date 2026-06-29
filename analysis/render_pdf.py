@@ -143,9 +143,13 @@ def asset_page(pdf, d, page_no):
         ("Operating Expenses", opex[0], None, opex[1]), ("Net Operating Income", *noi),
     ]
     rows = [[lab, acct(t12), (acct(t3v) if t3v is not None else ""), acct(jllv), perU(t12, U)] for (lab, t12, t3v, jllv) in R]
-    hl = [2, 5, 7, 8, 15, 16]
-    capnote = (f"Caps ÷ ask: Actual T12 {pct(caps['actual_t12']['cap'],2)} · T3 {pct(caps['actual_t3']['cap'],2)} · JLL UW Yr-0 "
-               f"{pct(caps['jll_uw_yr0']['cap'],2)} · JLL Yr-1 {pct(caps['jll_yr1']['cap'],2)} · exit {pct(caps['exit']['cap'],2)}.  "
+    price = jll["price"]
+    rows.append([f"Guidance Price (ask)", money(price), "", money(price), perU(price, U)])
+    rows.append([f"Cap Rate (NOI ÷ price)", pct(caps["actual_t12"]["cap"], 2), pct(caps["actual_t3"]["cap"], 2),
+                 pct(caps["jll_uw_yr0"]["cap"], 2), ""])
+    hl = [2, 5, 7, 8, 15, 16, 18]
+    capnote = (f"Cap = NOI ÷ JLL guidance price ({money(price)}, = {perU(price,U)}/unit). Forward caps "
+               f"(÷ price): JLL Yr-1 {pct(caps['jll_yr1']['cap'],2)} · exit {pct(caps['exit']['cap'],2)}.  "
                f"NOI walk actual→JLL UW: {money(walk['actual_noi'])} {'+' if walk['rev']>=0 else '−'}rev {money(abs(walk['rev']))} "
                f"{'+' if walk['tax']>=0 else '−'}tax {money(abs(walk['tax']))} {'+' if walk['opex_ex_tax']>=0 else '−'}opex "
                f"{money(abs(walk['opex_ex_tax']))} = {money(walk['uw_noi'])}.")
